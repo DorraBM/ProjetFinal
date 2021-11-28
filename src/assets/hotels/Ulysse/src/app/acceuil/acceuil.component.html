@@ -1,0 +1,26 @@
+
+<h2>Nos meilleurs Hôtels en Tunisie</h2>
+<h3> Réservez maintenant votre hôtel en temps réel</h3>
+<br>
+<div class="row"  >
+    <div class="col mb-4" *ngFor=" let t of listHotel">
+        <div class="card  rounded-3 " style="width: 25rem;" >
+            <img class="card-img-top p-0 d-flex justify-content-center " [src]="t.image" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title fw-bold fs-4 text-muted ff-oswald">{{t.nom}}</h5>
+                <p class="card-text fas fa-map-marker-alt"  >{{t.lieu}}</p>
+                <br>
+                <div class="d-flex justify-content-between">
+                
+                <div class=" mb-1" >
+                    <span class="fw-bold fs-4 text-dark me-1 "> Prix:</span>
+                    <span class="fw-bold fs-4 ff-oswald text-dark">  {{t.prix}}</span>
+                    <span class="text-dark ms-1 fs-4"> TND</span>
+
+                </div>
+                <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i> Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
