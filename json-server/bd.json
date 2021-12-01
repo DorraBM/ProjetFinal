@@ -1,0 +1,165 @@
+{
+    "hotels": [
+        {
+            "id": 1,
+            "nom": "El mouradi Africa",
+            "image": "../assets/hotels/africa/africa1.jfif",
+            "lieu": "Tunis",
+            "prix": 120,
+            "nbEtoiles": 3,
+            "promotion": true,
+            "description": "Situé dans un gratte-ciel du centre-ville, cet hôtel se trouve à 1 km de la mosquée Zitouna et à 5 km du musée national du Bardo.
+                Les chambres traditionnelles et sobrement meublées sont équipées de la TV par satellite, d'un accès Wi-Fi gratuit, d'un coffre-fort et d'un minibar.
+                Les suites incluent en sus un espace de vie,
+                et certaines offrent une vue panoramique sur la ville.
+                Les 3 restaurants de l'établissement proposent des buffets, et des dîners raffinés et internationaux.
+                L'hôtel comprend également un chaleureux café et un bar à la réception.",
+            "telephone": 71 347 477, 
+            "adresse": "50 Av. Habib Bourguiba, Tunis 1001",
+            "internet": true,
+            "piscine": false,
+            "Parking et services de transport": true
+        },
+        {
+            "id": 2,
+            "nom": "Hasdrabal Thalasso Djerba",
+            "image": "../assets/hotels/hasdrabal/hasdrubal1.jfif",
+            "lieu": "'Djerba",
+            "prix": "210",
+            "nbEtoiles": 3,
+            "promotion": false,
+            "description":"Donnant sur la mer Méditerranée, cet hôtel chic se trouve à 5 km du phare de Tourgueness et à 6 km du musée Lalla Hadria.
+                Dotées d'un balcon ou d'une terrasse, les chambres et les suites élégantes disposent du Wi-Fi gratuit, d'une télévision à écran plat,
+                d'un minibar, d'un coffre-fort, d'une salle de bain en marbre, ainsi que d'un nécessaire à thé et café. Certaines bénéficient d'un coin salon.
+                Le petit-déjeuner est gratuit. L'établissement possède 4 restaurants,
+                        2 bars et un café. Il comprend également une discothèque,
+                un court de tennis, une salle de sport, l'accès direct à la plage et une salle de jeux. Le spa inclut un salon de thé,
+                        2 hammams,
+                des saunas, de même que des piscines intérieures et extérieures.",
+            "telephone": 75 730 657,
+            "adresse": "Zone touristique Midoun B.P. N° 82 Djerba, 4116",
+            "internet": true,
+            "piscine": true,
+            "Parking et services de transport": true
+        },
+        {
+            "id": 3,
+            "nom": "Bel Azur Thalasson&bangaloas",
+            "image": "../assets/hotels/thalasson/thalasso1.jpg",
+            "lieu": "Hamamet",
+            "prix": 200,
+            "nbEtoiles": 4,
+            "promotion": false,
+            "description":"L’hôtel Bel azur Thalassa & Bungalows fait partie du Azur Hotels composé de 3 unités.
+                Totalement et fraichement rénové, ouvert à partir de novembre 2014,
+                l’hôtel Bel Azur implanté dans la station balnéaire de Hammamet dans un cadre paradisiaques en bord de mer avec une plage de sable fin,
+                vous offre des vacances inoubliables avec ses grands espaces de détente et d’animation.
+                Son parc de 5 hectares offre une adresse incontournable qui lui permettra de suivre les traces de son grand frère Hôtel Les Orangers Beach Resort & Bungalows avec lequel il partage le même concept et la même formule Ultra All In 24h/24 à compter à partir du 01/11/2014.
+                L’hôtel Bel Azur se situe à 20 mn du centre ville de Hammamet et à 15 minutes des deux parcours de golfs de Hammamet le Citrus et le Yasmine.",
+            "telephone": 72 280 544,
+            "adresse": " 13 Avenue Ibn Fourat Boite Postale Hammamet, 8050",
+            "internet": true,
+            "piscine": true,
+            "Parking et services de transport": true
+        },
+        {
+            "id": 4,
+            "nom": "Iberostar selection royal el mansour",
+            "image": "../assets/hotels/iberostar/iberostar1.jpg",
+            "lieu": "Mahdia",
+            "prix": 100,
+            "nbEtoiles": 5,
+            "promotion": true,
+            "description":"Ce complexe moderne en bord de plage se trouve à 3 km de la Grande Mosquée de Mahdia.
+                Les chambres lumineuses sont équipées d'un accès Wi-Fi gratuit, d'un coffre-fort,
+                d'un minibar et de la TV par satellite. Elles disposent toutes d'un balcon,
+                et certaines donnent sur la mer. Les suites et chambres familiales comprennent en prime un canapé-lit et/ou un coin salon.
+                Le petit-déjeuner et le parking sont gratuits, tandis que les repas et les boissons sont payants.
+                L'établissement possède un snack-bar au bord de la piscine, un salon de thé arabe,
+                et un restaurant buffet proposant une cuisine internationale et tunisienne.
+                Il dispose également d'une piscine intérieure chauffée, d'une piscine extérieure,
+                d'une piscine pour enfants, d'une boîte de nuit animée, d'une salle de sport,
+                d'un centre de thalassothérapie et d'un club enfants.",
+            "telephone": 73 681 100,
+            "adresse": " Avenue Taher Sfar, Route de la Corniche, B.P. 217, El Jem, Mahdia 5150",
+            "internet": true,
+            "piscine": true,
+            "Parking et services de transport": true
+        },
+        {
+            "id": 5,
+            "nom": "Mahdia Palace Thalasso",
+            "image": "../assets/hotels/thalasso/palace1.jpg",
+            "lieu": "Mahdia",
+            "prix": 220,
+            "nbEtoiles": 5,
+            "promotion": false,
+            "description":"Cet hôtel haut de gamme est installé sur un site de 6 hectares, le long d'une plage de la mer Méditerranée. Il se trouve à 6 km de Skifa el Kahla, une porte fortifiée du Xe siècle, et à 49 km de l'aéroport international Habib Bourguiba. Les chambres et suites de style décontracté sont équipées d'une télévision à écran plat, d'un mini-frigo, d'un coffre-fort et d'un balcon. Un service de chambre est proposé. Le Wi-Fi est en supplément. L'établissement comprend une piscine extérieure, un bassin intérieur chauffé ouvert en saison, une piscine pour enfants, ainsi qu'un espace privé sur la plage et une salle de sport. Il possède également 5 restaurants,  5 bars et une boîte de nuit. Un parking est à disposition. Un spa pourvu d'un bassin de thalassothérapie, d'un hammam et d'un sauna est accessible moyennant un supplément.",
+            "telephone": 73683777,
+            "adresse": "BP 134, Zone Touristique, Mahdia",
+            "internet": true,
+            "piscine": true,
+            "Parking et services de transport": true
+        },
+        {
+            "id": 6,
+            "nom": "Medina Belisaire",
+            "image": "../assets/hotels/belisaire/belisaire1.jpg",
+            "lieu": "Hammamet",
+            "prix": 100,
+            "nbEtoiles": 2,
+            "promotion": false,
+            "description":"Ce complexe balnéaire haut de gamme tout compris offre une vue sur le golfe d'Hammamet. Il est situé à proximité de la route RN1 et à 2 km du parc d'attractions Carthageland.Les chambres à l'ambiance décontractée sont équipées du Wi-Fi gratuit,d'une télévision à écran plat et d'un mini-frigo. Certaines bénéficient d'une vue sur la piscine,d'un coin salon et/ou d'un mobilier en bois richement sculpté. Les suites disposent en outre d'un espace de vie séparé.Les repas et les boissons (inclus) sont servis dans 3 restaurants et un bar. L'établissement comprend 3 piscines extérieures,un accès à la plage, un club enfants et 2 courts de tennis. Il dispose également d'un spa avec hammam, sauna et bassin intérieur.Des animations sont organisées régulièrement.",
+            "telephone": 72244855,
+            "adresse": "98, C28, Hammamet",
+            "internet": true,
+            "piscine": true,
+            "Parking et services de transport": true
+        },
+        {
+            "id": 7,
+            "nom": "The Penthouse",
+            "image": "../assets/hotels/penthouse/penthouse1.webp",
+            "lieu": "Tunis",
+            "prix": 170,
+            "nbEtoiles": 2,
+            "promotion": false,
+            "description":"Situé à Tunis, le Penthouse Suites Hotel propose une piscine extérieure, une patinoire et un restaurant. Cet hébergement indépendant est doté d'une connexion Wi-Fi gratuite.",
+            "telephone": 29650620,
+            "adresse": "Rue Medinat Radhoua, Ariana",
+            "internet": true,
+            "piscine": true,
+            "Parking et services de transport": true
+        },
+        {
+            "id": 8,
+            "nom": "Vincci Helios Beach",
+            "image": "../assets/hotels/vincci/vincci1.jpg",
+            "lieu": "Djerba",
+            "prix": 180,
+            "nbEtoiles": 5,
+            "promotion": true,
+            "description":"Situé sur une plage de sable au bord de la mer Méditerranée,ce vaste hôtel haut de gamme tout compris de l'île de Djerba se trouve à 2 km de la route C209 et à 3 km du musée d'Histoirelocale Lalla Hadria.Les chambres lumineuses sont dotées de la télévision par satellite, d'un minibar et d'un patio ou d'un balcon. Certaines offrent une vue sur la mer. Des suites et des bungalows sont disponibles. Un service de chambre est proposé 24h/24 et 7j/7.Le petit-déjeuner buffet, les repas et le parking sont gratuits. L'établissement comprend un restaurant à l'ambiance décontractée et un bar sur la plage. Il possède également un spa, des piscines extérieures, des courts de tennis, une salle de sport, ainsi qu'une discothèque et une aire de jeux.  Un espace privé avec parasols et chaises longues est accessible sur la plage.",
+            "telephone": 75745110,
+            "adresse": " vincci helios beach, djerba 4116",
+            "internet": true,
+            "piscine": true,
+            "Parking et services de transport": true
+        },
+        {
+            "id": 9,
+            "nom": "Ulysse Palace Djerba Resort & Thalasso",
+            "image": "../assets/hotels/Ulysse/ulysse1.jpg",
+            "lieu": "Djerba",
+            "prix": 180,
+            "nbEtoiles": 5,
+            "promotion": false,
+            "description":"Situé sur une plage de sable blanc au bord de la mer Méditerranée, cet hôtel haut de gamme est entouré de palmiers. Il se trouve à 8 km du Djerba Golf Club et à 20 km de l'aéroport international de Djerba-Zarzis Dotées d'un balcon ou d'un patio, les chambres de style décontracté sont équipées d'une télévision à écran plat,d'une connexion Wi-Fi gratuite, d'un mini-frigo, d'une théière et d'une cafetière. Certaines bénéficient d'un accès direct à la piscine,  tandis que d'autres offrent une vue sur la mer. Les suites possèdent en outre un coin salon.Le petit-déjeuner est gratuit. L'établissement comprend 3 restaurants , 3 bars,un salon à chicha, un café, des courts de tennis en terre battue ainsi que plusieurs piscines intérieures et extérieures. Un spa, une salle de sport et un espace privé sur la plage avec des chaises longues à l'ombre de parasols sont également à disposition.",
+            "telephone": 75758777,
+            "adresse": " Route touristique, Plage de Sidi Mehrez, Mezraya, Houmt Souk , Djerba Tunisie Houmt Souk, djerba TN 4128،, Mezraya",
+            "internet": true,
+            "piscine": true,
+            "Parking et services de transport": true
+        }
+    ]
+}
