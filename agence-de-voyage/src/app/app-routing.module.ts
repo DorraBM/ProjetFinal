@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'acceuil', component: AcceuilComponent  },
   { path: 'contact', component: ContactComponent  },
   { path: 'menu', component: MenuComponent  },
+  {path:'search/:searchTerm', component:AcceuilComponent},
   {path: 'detail/:id', component:DetailComponent},
   {path: 'detail', component:DetailComponent},
   {path: 'app-forbidden', component: ForbiddenComponent}, 

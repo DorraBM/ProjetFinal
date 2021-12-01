@@ -22,6 +22,11 @@ import { ContactComponent } from './contact/contact.component';
 import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { ErrorComponent } from './error/error.component';
+
+
+import { SearchComponent } from './search/search/search.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +43,7 @@ import { ErrorComponent } from './error/error.component';
     FooterComponent,
     ContactComponent,
     ErrorComponent,
+    SearchComponent,
    
   ],
   imports: [

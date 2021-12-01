@@ -1,15 +1,21 @@
-<app-navbar></app-navbar>
+
+    <app-navbar></app-navbar>
+
 <app-menu></app-menu>
+
 
 <div *ngIf="!authService.isloggedIn">
     <h2>Nos meilleurs Hôtels en Tunisie</h2>
     <h3> Réservez maintenant votre hôtel en temps réel</h3>
 
 </div>
+<!-- search -->
+<app-search></app-search>
+<!-- se rchfin -->
 <br>
 <div *ngIf="authService.isloggedIn">
     <a routerLink="/Ajouter"><button class="btn btn-primary"
-            style="margin-left: 550px; width: 250px; margin-top: 50px;">Ajouter Hoteel</button></a>
+            style="margin-left: 550px; width: 250px; margin-top: 50px;">Ajouter Hotel</button></a>
 </div>
 
 <div class="row  " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
