@@ -1,0 +1,32 @@
+<footer class="page-footer font-small  mdb-color bg-primary darken-3 pt-4" >
+    <div class="container ">
+        <ul class="text-center ">
+            <li class="list-inline-item">
+                <h5 class="mb-1">For More Info</h5>
+            </li>
+            <li class="list-inline-item">
+                <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()"
+                    mdbWavesEffect>Contact us</button>
+            </li>
+        </ul>
+    </div>
+</footer>
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                 <h3 class="dark-grey-text text-center modal-title w-100" id="myModalLabel">
+                    <strong> Send us a message</strong>
+                  </h3>
+            </div>
+            <div class="modal-body">
+                <app-contact></app-contact>
+            </div>
+
+        </div>
+    </div>
+</div>

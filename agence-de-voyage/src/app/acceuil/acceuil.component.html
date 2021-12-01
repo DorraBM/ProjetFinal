@@ -1,0 +1,50 @@
+
+    <app-navbar></app-navbar>
+
+<app-menu></app-menu>
+
+
+<div *ngIf="!authService.isloggedIn">
+    <h2>Nos meilleurs Hôtels en Tunisie</h2>
+    <h3> Réservez maintenant votre hôtel en temps réel</h3>
+
+</div>
+<!-- search -->
+<app-search></app-search>
+<!-- se rchfin -->
+<br>
+<div *ngIf="authService.isloggedIn">
+    <a routerLink="/Ajouter"><button class="btn btn-primary"
+            style="margin-left: 550px; width: 250px; margin-top: 50px;">Ajouter Hotel</button></a>
+</div>
+
+<div class="row" id="a">
+    <div class="col mb-4 " style="margin-left: 20px;" *ngFor=" let t of listHotel">
+        <div class="card  rounded-3 dorra " style="width: 25rem;">
+            <img class="card-img-top p-0 d-flex justify-content-center " [src]="t.image" alt="Card image cap">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h5 class="card-title fw-bold fs-4 text-muted ff-oswald">{{t.nom}}</h5>
+                    <ngb-rating id="star" [rate]="t.nbEtoiles">
+                    </ngb-rating>
+                </div>
+                <p class="card-text fas fa-map-marker-alt">{{t.lieu}}</p>
+                <br>
+                <div class="d-flex justify-content-between">
+
+                    <div class="font-weight-bold">
+                        <span class="fw-bold fs-4 text-dark me-1 "> Prix:</span>
+                        <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix}}</span>
+                        <span class="text-dark ms-1 fs-7 ">TND</span>
+                    </div>
+                    <!--  <a class="btn btn-primary" [routerLink]="['/detail',t.id]"> <i class="fas fa-info-circle"></i> Details</a>-->
+                    <a class="btn btn-primary" routerLink="/detail"> <i class="fas fa-info-circle"></i>Details</a>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+<!-- nour -->
