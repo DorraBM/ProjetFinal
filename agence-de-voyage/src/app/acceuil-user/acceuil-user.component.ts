@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { subscribeOn } from 'rxjs/operators';
 import { Hotel } from 'src/model/hotel';
 import { HotelsService } from 'src/service/hotels.service';
 
@@ -18,7 +19,7 @@ export class AcceuilUserComponent implements OnInit {
      config.readonly = true; }
  
    ngOnInit(): void {
-    this.listHotel= this.hotelService.getHotel();
+     this.hotelService.getHotels().subscribe(data => this.listHotel= data);
    }
  
  

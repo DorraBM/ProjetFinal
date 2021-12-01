@@ -15,19 +15,20 @@ export class AcceuilComponent implements OnInit {
   rating=0;
    constructor( private hotelService:HotelsService, config: NgbRatingConfig,public authService: AuthService,private route: ActivatedRoute) {config.max = 5;
      config.readonly = true;
-    this.listHotel=hotelService.getHotel();
+    hotelService.getHotels().subscribe(data=>this.listHotel=data);
     }
  
    ngOnInit(): void {
-    this.listHotel = this.hotelService.getHotel();
-    this.route.params.subscribe(params => {
-      if (params.searchTerm)
-        this.listHotel = this.hotelService.getHotel().filter(hotel =>
-          hotel.lieu.toLowerCase().includes(params.searchTerm.toLowerCase()));
-      else
-        this.listHotel = this.hotelService.getHotel();
-    })
-    this.listHotel= this.hotelService.getHotel();
+    this.hotelService.getHotels().subscribe(data=>this.listHotel=data);
+   
+  //   this.route.params.subscribe(params => {
+  //      if (params.searchTerm)
+  //       this.listHotel = this.hotelService.getHotels().filter(hotel =>
+  //         hotel.lieu.toLowerCase().includes(params.searchTerm.toLowerCase()));
+  //    else
+  //       this.hotelService.getHotels();
+  //  })
+    
    }
 
 }

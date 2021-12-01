@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Hotel } from '../model/hotel';
-
+const URL="http://localhost:3000/hotels"
 @Injectable({
   providedIn: 'root'
 })
@@ -17,9 +18,13 @@ export class HotelsService {
     new Hotel(8, 'Vincci Helios Beach', '../assets/hotels/vincci/vincci1.jpg', 'Djerba', 130,2,true),
     new Hotel(9, ' Ulysse Palace Djerba Resort & Thalasso', '../assets/hotels/Ulysse/ulysse1.jpg', 'Djerba', 180,5,false)
   ];
-  getHotel() {
-    return this.hotels;
-  }
+  // getHotel() {
+  //   return this.hotels;
+  // }
+  getHotels():Observable<Hotel[]>{
+    return this.http.get<Hotel[]>(URL);
+    }
+    
   ajouterHotel(hotel:Hotel)
   {
     this.hotels.push(hotel);
