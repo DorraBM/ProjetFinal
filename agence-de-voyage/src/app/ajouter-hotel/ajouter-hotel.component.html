@@ -1,15 +1,15 @@
 <div class="conatiner " >
-    <div> <!--Hne lazmou ki bech izidni hotel yasna3li fichier fel assets eb essem el hotel bech inajem i7at fih el tsawer-->
+    <div> 
         <h2>Ajouter Hotel:</h2>
     </div>
     <form #f="ngForm" >
         <div class="col-sm-2 col-md-2 col-lg-2" >
-            <div >
-                <label > <!--Hne lazem iverifi est ce que cette id exite deja ou non-->
+            <!--<div >
+                <label > 
                     Id:
                 </label>
                 <input type="number" [(ngModel)]="newHotel.id" name="idHotel" class="form-control" #id>
-            </div>
+            </div>-->
             <div >
                 <label >
                     Nom Hotel:
@@ -48,7 +48,7 @@
             </div>
             <br>
             <div class="text-center" >
-                <button type="submit" (click)="ajouterHotels(id.value,nom.value,prix.value,lieu.value,nbEtoiles.value,promotion.value,image.value)" class="btn btn-success">
+                <button type="submit" (click)="onAjouter()" class="btn btn-success">
                     Ajouter
                 </button>
                 <button class="btn btn-secondary" type="reset" (click)="onReset(f)">

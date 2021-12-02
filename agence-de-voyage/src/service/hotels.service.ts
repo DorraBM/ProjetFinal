@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hotel } from '../model/hotel';
-const URL="http://localhost:3000/hotels"
+const URL=" http://localhost:4000/hotels"
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +27,15 @@ export class HotelsService {
     
   ajouterHotel(hotel:Hotel)
   {
-    this.hotels.push(hotel);
+   return this.http.post<Hotel[]>(URL,hotel);
+  }
+  supprimerHotel(id:number)
+  {
+    return this.http.delete(URL+"/"+id); 
+  }
+  modifierHotel(id:number,hotel:Hotel)
+  {
+    return this.http.put<Hotel[]>(URL+"/"+id,hotel);
   }
 
   constructor(private http:HttpClient) { }

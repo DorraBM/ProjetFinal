@@ -16,8 +16,17 @@ export class AjouterHotelComponent implements OnInit {
    this.newHotel=new Hotel(Number(id), nom, image, lieu, Number(prix),Number(nbEtoiles),Boolean(promotion));
    this.hotelService.ajouterHotel(this.newHotel);
    console.log();
+  
 
  
+  }
+  onAjouter()
+  {
+    this.hotelService.ajouterHotel(this.newHotel).subscribe(data=>{
+      console.log(data);
+     
+  
+    });
   }
   constructor( private hotelService:HotelsService) { }
 
