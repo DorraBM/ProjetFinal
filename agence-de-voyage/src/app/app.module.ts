@@ -22,7 +22,7 @@ import { ContactComponent } from './contact/contact.component';
 import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { ErrorComponent } from './error/error.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { SearchComponent } from './search/search/search.component';
 import { ModifierHotelComponent } from './modifier-hotel/modifier-hotel.component';
@@ -60,7 +60,8 @@ import { TelephonePipe } from './telephone.pipe';
     MDBBootstrapModule.forRoot(),
     NoopAnimationsModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
  
   providers: [],

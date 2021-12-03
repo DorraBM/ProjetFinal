@@ -46,6 +46,7 @@
         <div class="col-md-2">
             <h1>List of Hotels</h1>
         </div>
+<<<<<<< HEAD
         <div class="col-md-10 text-right">
             <a routerLink="/Ajouter"><button class="btn btn-dark btn-sm">
                     <i class="fa fa-plus"></i>
@@ -55,12 +56,51 @@
         </div>
     </div>
 
+=======
+         <div class="col-md-10 text-right">
+                <button type="button" mdbBtn  class="relative waves-light btn btn-dark btn-sm" (click)="basicModal.show()"
+                    mdbWavesEffect> <i class="fa fa-plus"></i>
+                    New Hotel</button>
+         </div>
+     </div>
+            
+>>>>>>> d436fb86a517967b5c2e4609089f6f1a9161fce6
 </div>
 
+<!--Ajouter Hotel-->
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">Close</span>
+                </button>
+                 <h3 class="dark-grey-text text-center modal-title w-100" id="myModalLabel">
+                    <strong> Add new Hotel</strong>
+                  </h3>
+            </div>
+            <div class="modal-body">
+        
+                    <app-ajouter-hotel></app-ajouter-hotel>
+             
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
 <div class="row  " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
-    <div class="col mb-4 " style="margin-left: 20px;" *ngFor=" let t of listHotel">
+    <div class="col mb-4 " style="margin-left: 20px;" *ngFor=" let t of listHotel; let i=index;">
         <div class="card  rounded-3 height " style="width: 25rem;">
             <img class="card-img-top p-0 d-flex justify-content-center " [src]="t.image" alt="Card image cap">
+           
+            <div class="ribbons-wrapper" *ngIf="t.promotion">
+              <div class="ribbon">
+                <span class="ribbon1"><span>Discount</span></span>
+              </div>
+              </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h5 class="card-title fw-bold fs-4 text-muted ff-oswald">{{t.nom}}</h5>
@@ -74,10 +114,16 @@
                     <div class="font-weight-bold">
                         <span class="fw-bold fs-4 text-dark me-1 "> Prix:</span>
                         <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix}}</span>
-                        <span class="text-dark ms-1 fs-7 ">TND</span>
+                        <span class="text-dark ms-1 fs-7 ">TND</span><br>
+                        
+                        <!--<span *ngIf="t.promotion" >10<i class="fas fa-percentage "></i></span>-->
                     </div>
+<<<<<<< HEAD
                     <!--  <a class="btn btn-primary" [routerLink]="['/detail',t.id]"> <i class="fas fa-info-circle"></i> Details</a>-->
 
+=======
+              
+>>>>>>> d436fb86a517967b5c2e4609089f6f1a9161fce6
                     <div *ngIf="!authService.isloggedIn">
                         <a class="btn btn-primary" routerLink="/detail" (click)="getNavigation('detail', t.id)"> <i
                                 class="fas fa-info-circle"></i>Details</a>
@@ -86,8 +132,13 @@
                         <!--<button class="btn btn-warning btn-sm" (click)="onModifier(t.id)">
                             <i class="fa fa-pencil"></i>
                         </button>-->
+<<<<<<< HEAD
                         <button type="button" mdbBtn class="relative waves-lightbtn btn-warning btn-sm"
                             (click)="basicModal.show()" mdbWavesEffect (click)="onModifier(t.id)">
+=======
+                        <button type="button" mdbBtn  class="relative waves-lightbtn btn-warning btn-sm" (click)="basicModal2.show()"
+                            mdbWavesEffect (click)="onModifier(t)">
+>>>>>>> d436fb86a517967b5c2e4609089f6f1a9161fce6
                             <i class="fa fa-pencil"></i>
                         </button>
                         <button class="btn btn-sm btn-dark" (click)="onSupprimer(t.id)">
@@ -104,13 +155,15 @@
 </div>
 
 
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+
+<!--Modifier Hotel-->
+<div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="myBasicModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-                    <span aria-hidden="true">×</span>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal2.hide()">
+                    <span aria-hidden="true">Close</span>
                 </button>
                 <h3 class="dark-grey-text text-center modal-title w-100" id="myModalLabel">
                     <strong> Modify Hotel</strong>
@@ -118,12 +171,61 @@
             </div>
             <div class="modal-body">
 
+<<<<<<< HEAD
 
 
+=======
+                <form >
+                    <div >
+                        <label >
+                            Nom Hotel:
+                        </label>
+                        <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control"#nom >
+                    </div>
+                    <div >
+                        <label >
+                            Prix:
+                        </label>
+                        <input type="number" [(ngModel)]="newHotel.prix" name="prixHotel" class="form-control" #prix>
+                    </div>
+                    <div>
+                        <label >
+                            Lieu:
+                        </label>
+                        <input type="text" [(ngModel)]="newHotel.lieu" name="lieuHotel" class="form-control" #lieu>
+                    </div>
+                    <div >
+                        <label > <!--Hne lazem el pattern ikoun max 5-->
+                            nombre etoiles:
+                        </label>
+                        <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel" class="form-control" #nbEtoiles>
+                    </div>
+                    <div >
+                        <label >
+                            En promotion:<input type="checkbox" name="promotion" [(ngModel)]="newHotel.promotion" value="promoHotel" checked #promotion>
+                        </label>
+                        
+                    </div>
+                    <div >
+                        <label > <!--Hne bech ya3tini lien ta3 tasswira lazzemni nsobha fel fichier ta3 hotels bech emba3ed inajem yafichiha -->
+                            image:
+                        </label>
+                        <input type="text" [(ngModel)]="newHotel.image" name="imageHotel" class="form-control" #image>
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        <button (click)="upDate()"  aria-label="Close" class="close" (click)="basicModal.hide()">
+                            <span aria-hidden="true">Enregistrer</span></button>
+                    </div>
+                </form>
+                
+>>>>>>> d436fb86a517967b5c2e4609089f6f1a9161fce6
             </div>
 
         </div>
     </div>
 </div>
+
 <app-footer></app-footer>
 <!-- nour -->
