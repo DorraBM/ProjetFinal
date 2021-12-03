@@ -9,19 +9,49 @@ img{
 .height{
       height: 70vh;
 }
-.ribbon6 {
-      width: 200px;
-      height: 40px;
-      line-height: 40px;
+
+   
+    .ribbon1 {
       position: absolute;
-      top: 30px;
-      right: -50px;
-      z-index: 2;
-      overflow: hidden;
-      -webkit-transform: rotate(45deg);
-      transform: rotate(45deg);
-      border: 1px dashed;
-      box-shadow: 0 0 0 3px #57dd43, 0px 21px 5px -18px rgba(0, 0, 0, 0.6);
-      background: #57dd43;
+      top: -6.1px;
+      right: 10px;
+    }
+    .ribbon1:after {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 53px solid transparent;
+      border-right: 53px solid transparent;
+      border-top: 10px solid #F8463F;
+    }
+    .ribbon1 span {
+      position: relative;
+      display: block;
       text-align: center;
+      background: #F8463F;
+      font-size: 14px;
+      line-height: 1;
+      padding: 12px 8px 10px;
+      border-top-right-radius: 8px;
+      width: 90px;
+    }
+    .ribbon1 span:before, .ribbon1 span:after {
+      position: absolute;
+      content: "";
+    }
+    .ribbon1 span:before {
+     height: 6px;
+     width: 6px;
+     left: -6px;
+     top: 0;
+     background: #F8463F;
+    }
+    .ribbon1 span:after {
+     height: 6px;
+     width: 8px;
+     left: -8px;
+     top: 0;
+     border-radius: 8px 8px 0 0;
+     background: #C02031;
     }

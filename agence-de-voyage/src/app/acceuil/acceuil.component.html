@@ -52,11 +52,17 @@
         </div>
     </div>
 </div>
+<br>
 <div class="row  " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
     <div class="col mb-4 " style="margin-left: 20px;" *ngFor=" let t of listHotel; let i=index;">
         <div class="card  rounded-3 height " style="width: 25rem;">
             <img class="card-img-top p-0 d-flex justify-content-center " [src]="t.image" alt="Card image cap">
-            <span class="ribbon6" *ngIf="t.promotion">Promo :10%</span>
+           
+            <div class="ribbons-wrapper" *ngIf="t.promotion">
+              <div class="ribbon">
+                <span class="ribbon1"><span>Discount</span></span>
+              </div>
+              </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h5 class="card-title fw-bold fs-4 text-muted ff-oswald">{{t.nom}}</h5>
@@ -72,7 +78,7 @@
                         <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix}}</span>
                         <span class="text-dark ms-1 fs-7 ">TND</span><br>
                         
-                        <span *ngIf="t.promotion" >10<i class="fas fa-percentage "></i></span>
+                        <!--<span *ngIf="t.promotion" >10<i class="fas fa-percentage "></i></span>-->
                     </div>
               
                     <div *ngIf="!authService.isloggedIn">
