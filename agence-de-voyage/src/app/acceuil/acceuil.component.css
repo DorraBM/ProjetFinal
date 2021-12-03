@@ -1,68 +1,82 @@
-h2{text-align: center;}
-h3{text-align: center;
-color: #ee16a6;}
-#star{color: #ffd000;
-      font-size:  30px; ;}
-img{
-      height: 40vh;
+h2 {
+    text-align: center;
 }
-.height{
-      height: 70vh;
-}
-<<<<<<< HEAD
-button{height: 57px;
-      width:30px;
-      text-align:right;
-      text-decoration:solid;
-      margin-top:9px;
-      margin-right: 20px;}
-      
-      
-=======
 
-   
-    .ribbon1 {
-      position: absolute;
-      top: -6.1px;
-      right: 10px;
-    }
-    .ribbon1:after {
-      position: absolute;
-      content: "";
-      width: 0;
-      height: 0;
-      border-left: 53px solid transparent;
-      border-right: 53px solid transparent;
-      border-top: 10px solid #F8463F;
-    }
-    .ribbon1 span {
-      position: relative;
-      display: block;
-      text-align: center;
-      background: #F8463F;
-      font-size: 14px;
-      line-height: 1;
-      padding: 12px 8px 10px;
-      border-top-right-radius: 8px;
-      width: 90px;
-    }
-    .ribbon1 span:before, .ribbon1 span:after {
-      position: absolute;
-      content: "";
-    }
-    .ribbon1 span:before {
-     height: 6px;
-     width: 6px;
-     left: -6px;
-     top: 0;
-     background: #F8463F;
-    }
-    .ribbon1 span:after {
-     height: 6px;
-     width: 8px;
-     left: -8px;
-     top: 0;
-     border-radius: 8px 8px 0 0;
-     background: #C02031;
-    }
->>>>>>> d436fb86a517967b5c2e4609089f6f1a9161fce6
+h3 {
+    text-align: center;
+    color: #ee16a6;
+}
+
+#star {
+    color: #ffd000;
+    font-size: 30px;
+    ;
+}
+
+img {
+    height: 40vh;
+}
+
+.height {
+    height: 70vh;
+}
+
+button {
+    height: 57px;
+    width: 30px;
+    text-align: right;
+    text-decoration: solid;
+    margin-top: 9px;
+    margin-right: 20px;
+}
+
+.ribbon1 {
+    position: absolute;
+    top: -6.1px;
+    right: 10px;
+}
+
+.ribbon1:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 53px solid transparent;
+    border-right: 53px solid transparent;
+    border-top: 10px solid #F8463F;
+}
+
+.ribbon1 span {
+    position: relative;
+    display: block;
+    text-align: center;
+    background: #F8463F;
+    font-size: 14px;
+    line-height: 1;
+    padding: 12px 8px 10px;
+    border-top-right-radius: 8px;
+    width: 90px;
+}
+
+.ribbon1 span:before,
+.ribbon1 span:after {
+    position: absolute;
+    content: "";
+}
+
+.ribbon1 span:before {
+    height: 6px;
+    width: 6px;
+    left: -6px;
+    top: 0;
+    background: #F8463F;
+}
+
+.ribbon1 span:after {
+    height: 6px;
+    width: 8px;
+    left: -8px;
+    top: 0;
+    border-radius: 8px 8px 0 0;
+    background: #C02031;
+}
