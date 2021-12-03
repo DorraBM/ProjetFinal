@@ -24,7 +24,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ErrorComponent } from './error/error.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-import { SearchComponent } from './search/search/search.component';
+
 import { ModifierHotelComponent } from './modifier-hotel/modifier-hotel.component';
 import { TelephonePipe } from './telephone.pipe';
 
@@ -45,7 +45,7 @@ import { TelephonePipe } from './telephone.pipe';
     FooterComponent,
     ContactComponent,
     ErrorComponent,
-    SearchComponent,
+  
     ModifierHotelComponent,
     TelephonePipe,
    
