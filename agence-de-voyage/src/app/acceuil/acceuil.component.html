@@ -1,7 +1,6 @@
+<app-navbar></app-navbar>
+<app-caroussel></app-caroussel>
 
-    <app-navbar></app-navbar>
-
-<app-menu></app-menu>
 
 
 <div *ngIf="!authService.isloggedIn">
@@ -10,17 +9,57 @@
 
 </div>
 <!-- search -->
-<app-search></app-search>
+<div *ngIf="authService.isloggedIn"><br><br></div>
+<div class="mask" style="background-color:rgb(11, 195, 228);">
+    <div class="d-flex flex-row">
+        <!-- <div class="">
+            <input class="form-control-sm" type="text" placeholder="votre distination" [(ngModel)]="searchTerm"
+                (change)="search()">
+            <button (click)="search()" rounded="true" class="btn btn-outline-blue btn-md my-0 ml-sm-2">Search</button>
+        </div> -->
+        <div class="input-group mb-5 ">
+            <div class="form-outline-sm ">
+                <input type="search" placeholder="votre destination" class="form-control w-1 p-3 h-3 mt-2"#input
+                    height="10px" />
+            </div>
+            <button type="button" class="btn btn-primary mw-8" (click)="search(input.value)">
+                <i class="fas fa-search " ></i>
+            </button>
+
+            <div class="md-form md-outline input-with-post-icon datepicker">
+                <input placeholder="Select date" type="date" class="form-control w-1 p-3 h-2 mt-1">
+                <label>date arivée</label>
+            </div>
+            <div class="md-form md-outline input-with-post-icon datepicker">
+                <input placeholder="Select date" type="date" class="form-control w-1 p-3 h-2 mt-1">
+                <label>date depart</label>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- se rchfin -->
-<br>
+
 <div *ngIf="authService.isloggedIn">
-    <a routerLink="/Ajouter"><button class="btn btn-primary"
-            style="margin-left: 550px; width: 250px; margin-top: 50px;">Ajouter Hotel</button></a>
+
+    <div class="row">
+        <div class="col-md-2">
+            <h1>List of Hotels</h1>
+        </div>
+        <div class="col-md-10 text-right">
+            <a routerLink="/Ajouter"><button class="btn btn-dark btn-sm">
+                    <i class="fa fa-plus"></i>
+                    New Hotel
+                </button>
+            </a>
+        </div>
+    </div>
+
 </div>
 
 <div class="row  " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
     <div class="col mb-4 " style="margin-left: 20px;" *ngFor=" let t of listHotel">
-        <div class="card  rounded-3 dorra " style="width: 25rem;">
+        <div class="card  rounded-3 height " style="width: 25rem;">
             <img class="card-img-top p-0 d-flex justify-content-center " [src]="t.image" alt="Card image cap">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
@@ -38,11 +77,51 @@
                         <span class="text-dark ms-1 fs-7 ">TND</span>
                     </div>
                     <!--  <a class="btn btn-primary" [routerLink]="['/detail',t.id]"> <i class="fas fa-info-circle"></i> Details</a>-->
-                    <a class="btn btn-primary"   (click)="getNavigation('detail', t.id)"> <i class="fas fa-info-circle"></i>Details</a>
+
+                    <div *ngIf="!authService.isloggedIn">
+                        <a class="btn btn-primary" routerLink="/detail" (click)="getNavigation('detail', t.id)"> <i
+                                class="fas fa-info-circle"></i>Details</a>
+                    </div>
+                    <div *ngIf="authService.isloggedIn">
+                        <!--<button class="btn btn-warning btn-sm" (click)="onModifier(t.id)">
+                            <i class="fa fa-pencil"></i>
+                        </button>-->
+                        <button type="button" mdbBtn class="relative waves-lightbtn btn-warning btn-sm"
+                            (click)="basicModal.show()" mdbWavesEffect (click)="onModifier(t.id)">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-dark" (click)="onSupprimer(t.id)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+
 
 
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h3 class="dark-grey-text text-center modal-title w-100" id="myModalLabel">
+                    <strong> Modify Hotel</strong>
+                </h3>
+            </div>
+            <div class="modal-body">
+
+
+
+            </div>
+
         </div>
     </div>
 </div>

@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hotel } from '../model/hotel';
-const URL="http://localhost:3000/hotels"
+const URL = " http://localhost:3000/hotels"
 @Injectable({
   providedIn: 'root'
 })
 export class HotelsService {
-  private hotels: Hotel[] 
+  private hotels: Hotel[]
   //   new Hotel(1, 'El mouradi Africa', '../assets/hotels/africa/africa1.jfif', 'Tunis', 120,3,true),
   //   new Hotel(2, 'Hasdrabal Thalasso Djerba', '../assets/hotels/hasdrabal/hasdrubal1.jfif', 'Djerba', 210,3,false),
   //   new Hotel(3, ' Bel Azur Thalasson&bangaloas', '../assets/hotels/thalasson/thalasso1.jpg', 'Hamamet', 200,4,false),
@@ -21,17 +21,22 @@ export class HotelsService {
   // getHotel() {
   //   return this.hotels;
   // }
-  getHotels():Observable<Hotel[]>{
+  getHotels(): Observable<Hotel[]> {
     return this.http.get<Hotel[]>(URL);
-    }
-    getProductDetails(id):Observable<Hotel[]>{
-      return this.http.get<Hotel[]>(URL+ id);
-    }
-    
-  ajouterHotel(hotel:Hotel)
-  {
-    this.hotels.push(hotel);
+  }
+  getProductDetails(id): Observable<Hotel> {
+    return this.http.get<Hotel>(URL +"/"+ id);
   }
 
-  constructor(private http:HttpClient) { }
+  ajouterHotel(hotel: Hotel) {
+    return this.http.post<Hotel[]>(URL, hotel);
+  }
+  supprimerHotel(id: number) {
+    return this.http.delete(URL + "/" + id);
+  }
+  modifierHotel(id: number, hotel: Hotel) {
+    return this.http.put<Hotel[]>(URL + "/" + id, hotel);
+  }
+
+  constructor(private http: HttpClient) { }
 }

@@ -1,79 +1,72 @@
-<div class="conatiner " >
-    <div> <!--Hne lazmou ki bech izidni hotel yasna3li fichier fel assets eb essem el hotel bech inajem i7at fih el tsawer-->
+<div class="conatiner ">
+    <div>
         <h2>Ajouter Hotel:</h2>
     </div>
-    <form #f="ngForm" >
-        <div class="col-sm-2 col-md-2 col-lg-2" >
-            <div >
-                <label > <!--Hne lazem iverifi est ce que cette id exite deja ou non-->
+    <form #f="ngForm">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <!--<div >
+                <label > 
                     Id:
                 </label>
                 <input type="number" [(ngModel)]="newHotel.id" name="idHotel" class="form-control" #id>
-            </div>
-            <div >
-                <label >
+            </div>-->
+            <div>
+                <label>
                     Nom Hotel:
                 </label>
-                <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control"#nom>
+                <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control" #nom>
             </div>
-            <div >
-                <label >
+            <div>
+                <label>
                     Prix:
                 </label>
                 <input type="number" [(ngModel)]="newHotel.prix" name="prixHotel" class="form-control" #prix>
             </div>
             <div>
-                <label >
+                <label>
                     Lieu:
                 </label>
                 <input type="text" [(ngModel)]="newHotel.lieu" name="lieuHotel" class="form-control" #lieu>
             </div>
-            <div >
-                <label > <!--Hne lazem el pattern ikoun max 5-->
+            <div>
+                <label>
+                    <!--Hne lazem el pattern ikoun max 5-->
                     nombre etoiles:
                 </label>
-                <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel" class="form-control" #nbEtoiles>
+                <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel" class="form-control"
+                    #nbEtoiles>
             </div>
-            <div >
-                <label >
-                    En promotion:<input type="checkbox" name="promotion" [(ngModel)]="newHotel.promotion" value="promoHotel" checked #promotion>
+            <div>
+                <label>
+                    En promotion:<input type="checkbox" name="promotion" [(ngModel)]="newHotel.promotion"
+                        value="promoHotel" checked #promotion>
                 </label>
-                
+
             </div>
-            <div >
-                <label > <!--Hne bech ya3tini lien ta3 tasswira lazzemni nsobha fel fichier ta3 hotels bech emba3ed inajem yafichiha -->
+            <div>
+                <label>
+                    <!--Hne bech ya3tini lien ta3 tasswira lazzemni nsobha fel fichier ta3 hotels bech emba3ed inajem yafichiha -->
                     image:
                 </label>
                 <input type="text" [(ngModel)]="newHotel.image" name="imageHotel" class="form-control" #image>
             </div>
             <br>
-            <div class="text-center" >
-                <button type="submit" (click)="ajouterHotels(id.value,nom.value,prix.value,lieu.value,nbEtoiles.value,promotion.value,image.value)" class="btn btn-success">
+            <div class="text-center">
+                <button type="submit" (click)="onAjouter()" class="btn btn-success">
                     Ajouter
                 </button>
                 <button class="btn btn-secondary" type="reset" (click)="onReset(f)">
                     Vider
                 </button>
             </div>
-            <div [hidden] ="!f.submitted" class="alert alert-success"> 
-                {{message}} 
-                   </div> 
-            
+            <div [hidden]="!f.submitted" class="alert alert-success">
+                {{message}}
+            </div>
+
         </div>
         <br>
-        
-        <a routerLink="/acceuil" ><button>Retour</button></a>
+
+        <a routerLink="/acceuil"><button>Retour</button></a>
     </form>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-

@@ -11,33 +11,56 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AcceuilComponent implements OnInit {
 
-  listHotel:Hotel[]=[];
-  rating=0;
-   constructor( private hotelService:HotelsService, config: NgbRatingConfig,public authService: AuthService,private route: ActivatedRoute,private router: Router) {config.max = 5;
-     config.readonly = true;
-    hotelService.getHotels().subscribe(data=>this.listHotel=data);
+  listHotel: Hotel[] = [];
+  allHotels: Hotel[] = [];
+  rating = 0;
+  constructor(private hotelService: HotelsService, config: NgbRatingConfig, public authService: AuthService, private route: ActivatedRoute, private router: Router) {
+    config.max = 5;
+    config.readonly = true;
+ 
+  }
+  getNavigation(link, id) {
+    if (id === '') {
+      this.router.navigate([link]);
+    } else {
+      this.router.navigate([link + '/' + id]);
     }
-    getNavigation(link, id){
-      if(id === ''){
-          this.router.navigate([link]);
-      } else {
-          this.router.navigate([link + '/' + id]);
-      }
   }
 
- 
-   ngOnInit(): void {
-    this.hotelService.getHotels().subscribe(data=>this.listHotel=data);
-   
-  //   this.route.params.subscribe(params => {
-  //      if (params.searchTerm)
-  //       this.listHotel = this.hotelService.getHotels().filter(hotel =>
-  //         hotel.lieu.toLowerCase().includes(params.searchTerm.toLowerCase()));
-  //    else
-  //       this.hotelService.getHotels();
-  //  })
-    
-   }
-   
+
+  ngOnInit(): void {
+    this.hotelService.getHotels().subscribe(data => this.listHotel = data);
+    this.hotelService.getHotels().subscribe(data => this.allHotels = data);
+
+
+
+
+
+  }
+  onSupprimer(id: number) {
+    this.hotelService.supprimerHotel(id).subscribe(data => {
+      this.listHotel = this.listHotel.filter(elet => elet.id != id);
+    });
+  }
+  onModifier(id: number) {
+    //this.hotelService.modifierHotel(id,this.listHotel).subscribe(data=>console.log(data));
+  }
+  onPersister() {
+    // this.hotelService.persister();
+  }
+
+  search(a: string) {
+
+    if (a != "") {
+
+      this.listHotel = this.allHotels.filter(hotel =>
+        hotel.lieu.toLowerCase().includes(a.toLowerCase()));
+
+    }
+    else
+     this.listHotel=this.allHotels;
+
+
+  }
 
 }

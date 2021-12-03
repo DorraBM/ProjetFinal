@@ -10,18 +10,24 @@ import { HotelsService } from 'src/service/hotels.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  
+
   hotelID: any;
-  hotelData:Hotel[]=[];
+  hotelData: Hotel;
   ngOnInit(): void {
-    this. hotelID = this.activeRoute.snapshot.params['listHotel.id'];
-    console.lo
+    this.hotelID = this.activeRoute.snapshot.params['id'];
+    
     this.loadHotelDetails(this.hotelID);
+    console.log(this.hotelID.images);
   }
-  constructor (public authService: AuthService, private hotelService:HotelsService, private route:Router, private activeRoute: ActivatedRoute) {}
-  loadHotelDetails(productID){
+  constructor(public authService: AuthService, private hotelService: HotelsService, private route: Router, private activeRoute: ActivatedRoute) { }
+  loadHotelDetails(productID) {
     this.hotelService.getProductDetails(productID).subscribe(data => {
+     
+      
       this.hotelData = data;
+     
+     
     });
   }
+  
 }

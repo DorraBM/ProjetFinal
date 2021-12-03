@@ -6,6 +6,14 @@ color: #ee16a6;}
 img{
       height: 40vh;
 }
-.dorra{
+.height{
       height: 70vh;
 }
+button{height: 57px;
+      width:30px;
+      text-align:right;
+      text-decoration:solid;
+      margin-top:9px;
+      margin-right: 20px;}
+      
+      

@@ -1,24 +1,37 @@
+<app-navbar></app-navbar>
+<div class="d-flex justify-content-center decalage ">
+    <div class="card design" style="width: 50rem;">
+        <div>
+            <!-- <div class=" d-flex justify-content-center"> -->
 
-<!-- <div class="card"  >
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body" >
-      <h5 class="card-title">{{hotelData.description}}</h5>
-      <p class="card-text">description de l'hotel<br></p>
+
+            <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+
+
+                <mdb-carousel-item *ngFor=" let t of hotelData.images">
+
+                    <div class="view w-100 ">
+                        <img class="d-block w-100 " [src]=t alt=" First slide ">
+                        <div class="mask rgba-black-light waves-light " mdbWavesEffect></div>
+                    </div>
+
+                </mdb-carousel-item>
+
+
+            </mdb-carousel>
+            <!-- <img src="https://image.resabooking.com/images/image_panoramique/Hasdrubal_Prestige_Thalassa_et_Spa_2.jpg " style=" width:100vw; "></div> -->
+            <div class="card-body ">
+                <h1 class="card-title ">{{hotelData.nom}}</h1>
+                <p class="card-text " class="mw-100 "><strong>description de l'hotel:</strong><br> {{hotelData.description}}<br></p>
+            </div>
+            <ul class="list-group list-group-flush ">
+                <li class="list-group-item "><img src="https://img.icons8.com/dotty/30/000000/money-bag.png " /><strong>Prix:</strong> {{hotelData.prix}}</li>
+                <li class="list-group-item "><img src="https://img.icons8.com/ios/30/000000/visit.png " /> <strong>Adresse:</strong> {{hotelData.adresse}}</li>
+                <li class="list-group-item "> <img src="https://img.icons8.com/ios/30/000000/phone-not-being-used.png " /><strong>Telephone:</strong>{{hotelData.telephone|telephone}}</li>
+            </ul>
+            <div class="card-body ">
+                <a routerLink="/acceuil " class="btn btn-dark ">Retour</a>
+
+            </div>
+        </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"></li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Card lin    </a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
-<div > -->
-    <div *ngFor="let t of hotelData">
-    <div>{{t.id|json}}</div>
-
-    <a  routerLink="/acceuil" class="btn btn-dark">Retour</a>
-</div>
-

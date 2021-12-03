@@ -25,6 +25,8 @@ import { ErrorComponent } from './error/error.component';
 
 
 import { SearchComponent } from './search/search/search.component';
+import { ModifierHotelComponent } from './modifier-hotel/modifier-hotel.component';
+import { TelephonePipe } from './telephone.pipe';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { SearchComponent } from './search/search/search.component';
     ContactComponent,
     ErrorComponent,
     SearchComponent,
+    ModifierHotelComponent,
+    TelephonePipe,
    
   ],
   imports: [
