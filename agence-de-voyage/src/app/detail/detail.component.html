@@ -21,32 +21,51 @@
             </mdb-carousel>
             <!-- <img src="https://image.resabooking.com/images/image_panoramique/Hasdrubal_Prestige_Thalassa_et_Spa_2.jpg " style=" width:100vw; "></div> -->
             <div class="card-body ">
-                <h1 class="card-title ">{{hotelData.nom|titlecase}}</h1>
-                <p class="card-text " class="mw-100 ">
-                    <strong>Description de l'hotel:</strong>
-                    <br> {{hotelData.description}}<br>
-                </p>
-            </div>
-            <ul class="list-group list-group-flush ">
-                <li class="list-group-item ">
-                    <img src="https://img.icons8.com/dotty/30/000000/money-bag.png " />
-                    <strong>Prix:</strong> 
-                    {{hotelData.prix}} TND
-                </li>
-                <li class="list-group-item ">
-                    <img src="https://img.icons8.com/ios/30/000000/visit.png " />
-                     <strong>Adresse:</strong> 
-                     {{hotelData.adresse}}
-                    </li>
-                <li class="list-group-item ">
-                     <img src="https://img.icons8.com/ios/30/000000/phone-not-being-used.png " />
-                     <strong>Telephone:</strong>
-                     {{hotelData.telephone|telephone}}
-                    </li>
-            </ul>
-            <div class="card-body ">
-                <a routerLink="/acceuil " class="btn btn-dark " >Retour</a>
+                <h1 class="card-title ">{{hotelData.nom}}</h1>
 
+
+                <ul class="list-group list-group-flush ">
+                    <li class="list-group-item "><strong>description de l'hotel:</strong><br> {{hotelData.description}}
+                    </li>
+
+                    <li class="list-group-item "><img src="https://img.icons8.com/dotty/30/000000/money-bag.png " /><strong>Prix:</strong> {{hotelData.prix}}</li>
+                    <li class="list-group-item "><img src="https://img.icons8.com/ios/30/000000/visit.png " /> <strong>Adresse:</strong> {{hotelData.adresse}}</li>
+                    <li class="list-group-item "> <img src="https://img.icons8.com/ios/30/000000/phone-not-being-used.png " /><strong>Telephone:</strong>{{hotelData.telephone|telephone}}</li>
+                    <li class="list-group-item "><strong>Équipements:</strong>
+                        <div class="d-flex flex-row mr-3">
+                            <div *ngIf=" hotelData.internet==true "><img src="https://img.icons8.com/ios/30/000000/wifi--v1.png " /> WI-FI gratuit </div>
+                            <div *ngIf="hotelData.piscine==true "> <img src="https://img.icons8.com/ios/30/000000/swimming-pool.png " />piscine</div>
+                            <div *ngIf="hotelData.Parking==true "><img src="https://img.icons8.com/ios/30/000000/parking.png " />parking</div>
+                        </div>
+                    </li>
+                    <li class="list-group-item ">
+                        <div></div>
+
+                        <div class="col-md-10 text-right">
+                            <button type="button" mdbBtn class="relative waves-light btn btn-primary btn-sm" (click)="basicModal.show()" mdbWavesEffect>
+                              
+                                reserver</button>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+    <!-- model reserver -->
+    <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-lg modal" role="document">
+            <div class="modal-content">
+                <div class="modal-header ">
+
+                    <h1 class="dark-grey-text text-center modal-title w-100 couleur " id="myModalLabel ">
+                        <span> reservation</span>
+                    </h1>
+                </div>
+
+                <div class="modal-body ">
+                    <app-reservation></app-reservation>
+
+
+                </div>
+            </div>
+        </div>

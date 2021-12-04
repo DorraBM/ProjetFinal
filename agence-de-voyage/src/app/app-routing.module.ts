@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
   { path: 'acceuil', component: AcceuilComponent  },
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'app-forbidden', component: ForbiddenComponent}, 
   {path : 'Ajouter', component :AjouterHotelComponent, canActivate:[ProduitGuard]}, 
  { path: 'login', component: LoginComponent },
+ { path: 'reserver/:id', component: ReservationComponent },
  {path:'',redirectTo:'acceuil', pathMatch:'full'},
  { path: '**', component: ErrorComponent },
    
