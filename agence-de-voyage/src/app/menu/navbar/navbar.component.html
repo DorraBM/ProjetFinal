@@ -14,9 +14,12 @@
                 <li *ngIf="authService.isloggedIn">
                      <a  class="nav-link waves-light">{{authService.loggedUser}}</a>
                  </li> 
+                 <li *ngIf="!authService.isloggedIn">
+                    <a  class="nav-link waves-light" routerLink="/aboutus">About Us</a>
+                </li>
               
                 <li *ngIf="!authService.isloggedIn">
-                    <a  class="nav-link waves-light" routerLink="/acceuil">Acceuil</a>
+                    <a  class="nav-link waves-light" routerLink="/acceuil">Home</a>
                 </li>
                 <li *ngIf="!authService.isloggedIn">
                     <a class="nav-link waves-light" routerLink="/login">Login</a>

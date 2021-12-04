@@ -1,3 +1,4 @@
+import { AboutUsComponent } from './about-us/about-us.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -15,6 +16,8 @@ import { MenuComponent } from './menu/menu.component';
 const routes: Routes = [
   { path: 'acceuil', component: AcceuilComponent  },
   { path: 'contact', component: ContactComponent  },
+  { path: 'aboutus', component: AboutUsComponent  },
+
   { path: 'menu', component: MenuComponent  },
   {path:'search/:searchTerm', component:AcceuilComponent},
   {path: 'detail/:id', component:DetailComponent},

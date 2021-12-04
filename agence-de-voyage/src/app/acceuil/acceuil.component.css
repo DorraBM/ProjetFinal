@@ -4,7 +4,10 @@ h2 {
 
 h3 {
     text-align: center;
-    color: #ee16a6;
+    color: wheat;
+}
+.couleur{
+    color: wheat;
 }
 
 #star {
@@ -21,7 +24,7 @@ img {
     height: 70vh;
 }
 
-button {
+search {
     height: 57px;
     width: 30px;
     text-align: right;

@@ -9,21 +9,21 @@ import { HotelsService } from 'src/service/hotels.service';
   styleUrls: ['./ajouter-hotel.component.css']
 })
 export class AjouterHotelComponent implements OnInit {
-  newHotel = new Hotel(10, '', '', '', 0, 0, true, "", 0, "", true, true, true);
+  newHotel = new Hotel(10, '', '', '', 0, 0, false, "", 0, "", false, false, false,[]);
   message: string = "Votre nouveau Hotel a bien été ajouté";
-  ajouterHotels(id: string, nom: string, prix: string, lieu: string, nbEtoiles: string, promotion: string, image: string) {
+  /*ajouterHotels(id: string, nom: string, prix: string, lieu: string, nbEtoiles: string, promotion: string, image: string) {
     this.newHotel = new Hotel(Number(id), nom, image, lieu, Number(prix), Number(nbEtoiles), Boolean(promotion));
     this.hotelService.ajouterHotel(this.newHotel);
     console.log();
 
 
 
-  }
+  }*/
   onAjouter() {
     this.hotelService.ajouterHotel(this.newHotel).subscribe(data => {
       console.log(data);
-
-
+    
+  
     });
   }
   constructor(private hotelService: HotelsService) { }
@@ -37,4 +37,5 @@ export class AjouterHotelComponent implements OnInit {
 function adresse(adresse: any): number {
   throw new Error('Function not implemented.');
 }
+
 

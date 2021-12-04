@@ -15,6 +15,8 @@ export class AcceuilComponent implements OnInit {
   listHotel: Hotel[] = [];
   allHotels: Hotel[] = [];
   rating = 0;
+  hotelID: any;
+  hotelData: Hotel;
   /*constructor(private hotelService: HotelsService, config: NgbRatingConfig, public authService: AuthService, private route: ActivatedRoute, private router: Router) {
     config.max = 5;
     config.readonly = true;
@@ -22,7 +24,7 @@ export class AcceuilComponent implements OnInit {
   }*/
  
 
-  newHotel= new Hotel(10, '', '', '', 0,0,true);
+  newHotel = new Hotel(10, '', '', '', 0, 0, true, "", 0, "", true, true, true,[]);
   /*listHotel:Hotel[]=[];
   rating=0;*/
    constructor( private hotelService:HotelsService,private _snackBar: MatSnackBar, config: NgbRatingConfig,public authService: AuthService,private route: ActivatedRoute,private router: Router)
@@ -32,7 +34,9 @@ export class AcceuilComponent implements OnInit {
     }
  
    ngOnInit(): void {
+    this.hotelID = this.route.snapshot.params['id'];
     
+    this.loadHotelDetails(this.hotelID);
     this.hotelService.getHotels().subscribe(data => this.listHotel = data);
     this.hotelService.getHotels().subscribe(data => this.allHotels = data);
 
@@ -46,6 +50,15 @@ export class AcceuilComponent implements OnInit {
     //  })
     
    }
+   loadHotelDetails(productID) {
+    this.hotelService.getProductDetails(productID).subscribe(data => {
+     
+      
+      this.hotelData = data;
+     
+     
+    });
+  }
    getNavigation(link, id) {
     if (id === '') {
       this.router.navigate([link]);
@@ -57,6 +70,7 @@ export class AcceuilComponent implements OnInit {
    {
      this.hotelService.supprimerHotel(id).subscribe(data =>{
      this.listHotel=this.listHotel.filter(elet=>elet.id!=id);
+     this.SuccessSnackBar("Hotel Deleted");
      });  
    }
    onModifier(t:Hotel)
