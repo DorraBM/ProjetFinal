@@ -27,6 +27,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { ModifierHotelComponent } from './modifier-hotel/modifier-hotel.component';
 import { TelephonePipe } from './telephone.pipe';
+import { ReservationComponent } from './reservation/reservation.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { TelephonePipe } from './telephone.pipe';
   
     ModifierHotelComponent,
     TelephonePipe,
+    ReservationComponent,
    
   ],
   imports: [

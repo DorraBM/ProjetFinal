@@ -12,6 +12,6 @@ export class Hotel {
         public adresse?: string,
         public internet?: boolean,
         public piscine?: boolean,
-        public parking?: boolean,
+        public Parking?: boolean,
         public images?: string[]) { }
 }
