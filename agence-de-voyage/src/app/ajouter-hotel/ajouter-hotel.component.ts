@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, FormGroup, Validators } from '@angular/forms';
 import { Hotel } from 'src/model/hotel';
 import { HotelsService } from 'src/service/hotels.service';
 
@@ -9,34 +9,88 @@ import { HotelsService } from 'src/service/hotels.service';
   styleUrls: ['./ajouter-hotel.component.css']
 })
 export class AjouterHotelComponent implements OnInit {
-  listHotel: Hotel[] = [];
-  newHotel = new Hotel(10, '', '', '', 0, 0, true, "", 0, "", true, true, true);
+  newHotel = new Hotel(10, '', '', '', 0, 0, false, "", 0, "", false, false, false,[]);
+  listHotel:Hotel[]=[];
+  hotelForm:FormGroup=new FormGroup({});
   message: string = "Votre nouveau Hotel a bien été ajouté";
-  ajouterHotels(id: string, nom: string, prix: string, lieu: string, nbEtoiles: string, promotion: string, image: string) {
-    this.newHotel = new Hotel(Number(id), nom, image, lieu, Number(prix), Number(nbEtoiles), Boolean(promotion));
-    this.hotelService.ajouterHotel(this.newHotel);
-    console.log();
-
-
-
+  galerie:number=0;
+ 
+  counter(i:number)
+  {
+    return new Array(i);
   }
   onAjouter() {
-    this.hotelService.ajouterHotel(this.newHotel).subscribe(data => {
-      this.listHotel.push();
+    this.hotelService.ajouterHotel(this.hotelForm.value).subscribe(data => {
+      console.log(data);
+      this.hotelForm.value.push(data);
+     this.onReset();
+    }
+    );
+  }
+  onReset() {
+    this.hotelForm.reset();
+  }
+  constructor(private hotelService: HotelsService, private fb:FormBuilder) { }
 
+  ngOnInit(): void {
+    this.hotelForm=this.fb.group({
+      nom:['',Validators.required],
+      prix:[0,Validators.required],
+      lieu:['',Validators.required],
+      adresse:['',Validators.required],
+      telephone:['',[Validators.required, Validators.pattern('[1-9][0-9]{7}')]],
+      nbEtoiles:[0,[Validators.required, Validators.pattern('[0-5]')]],
+      promotion:[false],
+      internet:[false],
+      piscine:[false],
+      Parking:[false],
+      image:['']
 
 
     });
+ 
+    this.hotelService.getHotels().subscribe(data=>this.listHotel=data);
+    
   }
-  constructor(private hotelService: HotelsService) { }
+  isValidTel():boolean
+  { return this.hotelForm.controls['telephone'].errors?.pattern
 
-  ngOnInit(): void {
   }
-  onReset(f: NgForm) {
-    f.reset();
+  isValidEtoile():boolean
+  { return this.hotelForm.controls['nbEtoiles'].errors?.pattern
+
   }
+ 
+  public get nom()
+  {
+    return this.hotelForm.get('nom');
+  }
+  public get prix()
+  {
+    return this.hotelForm.get('prix');
+  }
+  public get lieu()
+  {
+    return this.hotelForm.get('lieu');
+  }
+  public get telephone()
+  {
+    return this.hotelForm.get('telephone');
+  }
+  public get adresse()
+  {
+    return this.hotelForm.get('adresse');
+  }
+  public get nbEtoiles()
+  {
+    return this.hotelForm.get('nbEtoiles');
+  }
+
+
 }
 function adresse(adresse: any): number {
   throw new Error('Function not implemented.');
-}
 
+
+
+}

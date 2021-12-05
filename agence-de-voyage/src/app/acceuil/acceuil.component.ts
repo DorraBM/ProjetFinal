@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from '../../model/hotel';
 import { HotelsService } from '../../service/hotels.service';
@@ -11,32 +12,28 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./acceuil.component.css']
 })
 export class AcceuilComponent implements OnInit {
-
+  constructor( private hotelService:HotelsService,private _snackBar: MatSnackBar, config: NgbRatingConfig,public authService: AuthService,private route: ActivatedRoute,private router: Router, private fb:FormBuilder)
+  {config.max = 5;
+   config.readonly = true;
+  hotelService.getHotels().subscribe(data=>this.listHotel=data);
+  }
   listHotel: Hotel[] = [];
   allHotels: Hotel[] = [];
   rating = 0;
-  /*constructor(private hotelService: HotelsService, config: NgbRatingConfig, public authService: AuthService, private route: ActivatedRoute, private router: Router) {
-    config.max = 5;
-    config.readonly = true;
- 
-  }*/
- 
-
-  newHotel= new Hotel(10, '', '', '', 0,0,true);
-  /*listHotel:Hotel[]=[];
-  rating=0;*/
-   constructor( private hotelService:HotelsService,private _snackBar: MatSnackBar, config: NgbRatingConfig,public authService: AuthService,private route: ActivatedRoute,private router: Router)
-    {config.max = 5;
-     config.readonly = true;
-   
-    }
- 
+  hotelID: any;
+  hotelData: Hotel;
+  newHotel = new Hotel(10, '', '', '', 0, 0, true, "", 0, "", true, true, true,[]);
+  galerie:string[]=this.newHotel.images;
+  
    ngOnInit(): void {
+    this.hotelID = this.route.snapshot.params['id'];
     
+    this.loadHotelDetails(this.hotelID);
     this.hotelService.getHotels().subscribe(data => this.listHotel = data);
     this.hotelService.getHotels().subscribe(data => this.allHotels = data);
+     
 
-   
+ 
     //   this.route.params.subscribe(params => {
     //      if (params.searchTerm)
     //       this.listHotel = this.hotelService.getHotels().filter(hotel =>
@@ -46,6 +43,15 @@ export class AcceuilComponent implements OnInit {
     //  })
     
    }
+   loadHotelDetails(productID) {
+    this.hotelService.getProductDetails(productID).subscribe(data => {
+     
+      
+      this.hotelData = data;
+     
+     
+    });
+  }
    getNavigation(link, id) {
     if (id === '') {
       this.router.navigate([link]);
@@ -57,24 +63,38 @@ export class AcceuilComponent implements OnInit {
    {
      this.hotelService.supprimerHotel(id).subscribe(data =>{
      this.listHotel=this.listHotel.filter(elet=>elet.id!=id);
+     this.SuccessSnackBar("Hotel Deleted");
      });  
    }
-   onModifier(t:Hotel)
-   { this.newHotel=t;
+   nePasSupprimer()
+   {this.SuccessSnackBar("Hotel is not Deleted");
+
+   }
+   onModifier(id:number,t:Hotel)
+   { let p=Object.assign({},t)
+     this.newHotel=p;
+    console.log("listHotel:"+this.listHotel);
+  
      
    }
    upDate()
    {
     this.hotelService.modifierHotel(this.newHotel.id,this.newHotel).subscribe(data=>
-      {this.SuccessSnackBar("Hotel modified");}
+      {this.SuccessSnackBar("Hotel Modified");
+      console.log("listHotel:"+data)}
       );
    }
+   annuler()
+   {this.SuccessSnackBar("Hotel is not Modified");
+
+   }
+  
    SuccessSnackBar(message: string) {
     this._snackBar.open(message, 'SUCCEEDED', { duration: 3000});
   }
-  /*ErrorSnackBar(message: string) {
+  ErrorSnackBar(message: string) {
     this._snackBar.open(message, 'ERROR', { duration: 3000 });
-  }*/
+  }
   search(a: string) {
 
     if (a != "") {

@@ -25,7 +25,7 @@ import { ErrorComponent } from './error/error.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
-import { ModifierHotelComponent } from './modifier-hotel/modifier-hotel.component';
+
 import { TelephonePipe } from './telephone.pipe';
 import { ReservationComponent } from './reservation/reservation.component';
 
@@ -47,7 +47,7 @@ import { ReservationComponent } from './reservation/reservation.component';
     ContactComponent,
     ErrorComponent,
   
-    ModifierHotelComponent,
+   
     TelephonePipe,
     ReservationComponent,
    

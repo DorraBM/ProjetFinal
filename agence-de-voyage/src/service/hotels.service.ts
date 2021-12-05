@@ -31,14 +31,14 @@ export class HotelsService {
     return this.http.get<Hotel>(URL +"/"+ id);
   }
 
-  ajouterHotel(hotel: Hotel) {
-    return this.http.post<Hotel[]>(URL, hotel);
+  ajouterHotel(hotel: Hotel):Observable<Hotel> {
+    return this.http.post<Hotel>(URL, hotel);
   }
   supprimerHotel(id: number) {
     return this.http.delete(URL + "/" + id);
   }
-  modifierHotel(id: number, hotel: Hotel) {
-    return this.http.put<Hotel[]>(URL + "/" + id, hotel);
+  modifierHotel(id: number, hotel: Hotel):Observable<Hotel> {
+    return this.http.put<Hotel>(URL + "/" + id, hotel);
   }
 
   addReservation(reservation:Reservation):Observable<Reservation>

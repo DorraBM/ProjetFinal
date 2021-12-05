@@ -1,32 +1,37 @@
 <div class="decalage">
-<mdb-navbar SideClass="navbar navbar-expand-lg fixed-top navbar-dark bg-primary"  [containerInside]="false">
-    <mdb-navbar-brand>
-        <div class="collapse navbar-collapse" id="navbarExample01">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
-                <li class="nav-item active" style="width: 150px; ">
-                    <a class="nav-link fas fa-plane" aria-current="page" href="#intro">Best Tunisia Travel </a>
+    <mdb-navbar SideClass="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" [containerInside]="false">
+        <mdb-navbar-brand>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
+                    <li class="nav-item active" style="width: 150px; ">
+                        <a class="nav-link fas fa-plane" aria-current="page" href="#intro" routerLinkActive="active">Best Tunisia Travel </a>
+                    </li>
+                </ul>
+            </div>
+        </mdb-navbar-brand>
+        <links>
+            <ul class="navbar-nav ms-auto">
+                <div class="collapse navbar-collapse  ">
+                    <li *ngIf="!authService.isloggedIn" class="nav-item">
+                        <a class="nav-link waves-light " routerLink="/acceuil" routerLinkActive="active">Home</a>
+                    </li>
+                    <li *ngIf="!authService.isloggedIn" class="nav-item">
+                        <a class="nav-link waves-light" routerLink="/aboutus" routerLinkActive="active">About Us</a>
+                    </li>
+                </div>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li *ngIf="authService.isloggedIn" class="nav-item">
+                    <a class="nav-link waves-light" routerLinkActive="active">{{authService.loggedUser}}</a>
+                </li>
+                <li *ngIf="!authService.isloggedIn" class="nav-item">
+                    <a class="nav-link waves-light" routerLink="/login" routerLinkActive="active">Login</a>
+                </li>
+                <li *ngIf="authService.isloggedIn" class="nav-item"> 
+                    <a class="nav-link waves-light" routerLink="/acceuil" (click)="logOut()" routerLinkActive="active">LogOut</a>
                 </li>
             </ul>
-        </div>
-    </mdb-navbar-brand>
-    <links>
-            <ul class="navbar-nav d-flex flex-row  ms-auto" >
-                <li *ngIf="authService.isloggedIn">
-                     <a  class="nav-link waves-light">{{authService.loggedUser}}</a>
-                 </li> 
-              
-                <li *ngIf="!authService.isloggedIn">
-                    <a  class="nav-link waves-light" routerLink="/acceuil">Acceuil</a>
-                </li>
-                <li *ngIf="!authService.isloggedIn">
-                    <a class="nav-link waves-light" routerLink="/login">Login</a>
-                </li>
-                <li *ngIf="authService.isloggedIn">
-                    <a class="nav-link waves-light" routerLink="/acceuil" (click)="logOut()">LogOut</a>
-                </li>
-            </ul>
-    </links> 
-  </mdb-navbar>
-  </div>
 
- 
+        </links>
+    </mdb-navbar>
+</div>
