@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Reservation } from '../../model/reservation';
 import { HotelsService } from 'src/service/hotels.service';
@@ -18,16 +18,17 @@ prixTotal:number;
   nbChambres: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
   nbAdultes: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
   nbEnfants: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  pension: string[] = ["petit_dejeuner", "demi_pension", "all_inclusive_soft"];
+  pension: string[] = ["breakfast", "half_pension", "all_inclusive_soft"];
   reservationForm: FormGroup = new FormGroup({});
   lesReservation: Reservation[] = [];
   reservationData: Reservation;
   reservationID: any;
-  constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private hotelsService: HotelsService, private _snackBar: MatSnackBar) { }
+  constructor(private activatedRoute: ActivatedRoute, private route: Router,private formBuilder: FormBuilder, private hotelsService: HotelsService, private _snackBar: MatSnackBar) { }
 
   //  getReservation() {
   hotelID: any;
   hotelData: Hotel;
+  prix:number=0;
 
 
   // }
@@ -36,11 +37,11 @@ prixTotal:number;
     this.visible = true;
 
   }
-  // public get dateArivee() { return this.reservationForm.get('dateArivee'); }
-  // public get nbNuit() { return this.reservationForm.get('nbNuits'); }
-  // public get nbChambre() { return this.reservationForm.get('nbChambres'); }
-  // public get nbAdulte() { return this.reservationForm.get('nbAdultes'); }
-  // public get pensions() { return this.reservationForm.get('pension'); }
+  
+  public get first_name() { return this.reservationForm.get('first_name'); }
+  public get last_name() { return this.reservationForm.get('last_name'); }
+  public get email() { return this.reservationForm.get('email'); }
+  public get phone_number() { return this.reservationForm.get('phone_number'); }
 
   calculerPRIX() {
     var today = new Date();
@@ -60,16 +61,16 @@ prixTotal:number;
     }
 
     else {
-      if (this.reservationForm.value['pension'] === "petit_dejeuner") {
-        this.prixTotal= (this.reservationForm.value['nbNuits'] * this.hotelData.prix * this.reservationForm.value['nbChambres'] * this.reservationForm.value['nbAdultes']) + 100;
+      if (this.reservationForm.value['pension'] === "breakfast") {
+        this.prixTotal= (this.reservationForm.value['nbNuits'] * this.prix * this.reservationForm.value['nbChambres'] ) + (100* this.reservationForm.value['nbAdultes']);
       }
-      else if (this.reservationForm.value['pension'] === "demi_pension") {
-        this.prixTotal= (this.reservationForm.value['nbNuits'] * this.hotelData.prix * this.reservationForm.value['nbChambres'] * this.reservationForm.value['nbAdultes']) + 300;
+      else if (this.reservationForm.value['pension'] === "half_pension") {
+        this.prixTotal= (this.reservationForm.value['nbNuits'] * this.prix * this.reservationForm.value['nbChambres'] ) + (200* this.reservationForm.value['nbAdultes']);
       }
       else if (this.reservationForm.value['pension'] === "all_inclusive_soft") {
-        this.prixTotal= (this.reservationForm.value['nbNuits'] * this.hotelData.prix * this.reservationForm.value['nbChambres'] * this.reservationForm.value['nbAdultes']) + 700;
+        this.prixTotal= (this.reservationForm.value['nbNuits'] * this.prix * this.reservationForm.value['nbChambres'] ) +(300* this.reservationForm.value['nbAdultes']);
       }
-      else{this.prixTotal= (this.reservationForm.value['nbNuits'] * this.hotelData.prix * this.reservationForm.value['nbChambres'] * this.reservationForm.value['nbAdultes'])}
+      else{this.prixTotal= (this.reservationForm.value['nbNuits'] * this.prix * this.reservationForm.value['nbChambres'] )}
     
    this.afficherPrix()
     }
@@ -78,29 +79,52 @@ prixTotal:number;
 
     this.reservationForm = this.formBuilder.group(
       {
-        dateArivee: [null, Validators.required],
-        nbNuits: [null, Validators.required],
-        nbChambres: [null, Validators.required],
-        nbAdultes: [null, Validators.required],
+        dateArivee: [null],
+        nbNuits: [null],
+        nbChambres: [null],
+        nbAdultes: [null],
         nbEnfants: [0],
-        pension: [null, Validators.required],
-        
+        pension: [null],
+        first_name:['',[Validators.required, Validators.pattern('[A-Z][a-z]+')]],
+        last_name:['',Validators.required],
+        email:['',[Validators.required,,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+        phone_number:[0,[Validators.required,Validators.pattern('[0-9]{8}')]],
+
+
       }
     )
     
     this.hotelID = this.activatedRoute.snapshot.params['id'];
 
     this.loadHotelDetails(this.hotelID);
+    if(this.hotelData.promotion)
+    this.prix=this.hotelData.prix-(this.hotelData.prix*this.hotelData.pourcentage/100);
+    else
+    this.prix=this.hotelData.prix;
 
   }
-
-
+ retourAcceuil()
+ {
+  this.route.navigate(['/acceuil']); 
+    this.SuccessSnackBar("Reservation confirmed");
+}
+ 
+  reset() {
+    this.reservationForm.reset({
+    
+    });
+  }
 
 
 
   reserver() {
     this.hotelsService.addReservation(this.reservationForm.value)
-      .subscribe(data => this.lesReservation.push(data));
+      .subscribe(data =>{
+         this.lesReservation.push(data);
+       
+        this.retourAcceuil();
+      });
+
   }
 
 
@@ -119,6 +143,9 @@ prixTotal:number;
     });
   }
 
+  SuccessSnackBar(message: string) {
+    this._snackBar.open(message, 'SUCCEEDED', { duration: 3000});
+  }
   ErrorSnackBar(message: string) {
     this._snackBar.open(message, 'ERROR', { duration: 3000 });
   }

@@ -1,16 +1,18 @@
-<div [hidden]="visible">
-    <form [formGroup]="reservationForm" (ngSubmit)="reserver()">
+<form [formGroup]="reservationForm">
+
+    <div [hidden]="visible">
+
         <div class="modal-body ">
             <div class="row mt-2 d-flex justify-content-center ">
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/hotel-check-in.png" /></label> <label>date arivée:</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/hotel-check-in.png" /></label> <label>Arrival date:</label>
                     <div class="md-form md-outline input-with-post-icon datepicker">
                         <input placeholder="Select date" type="date" formControlName="dateArivee" class="form-control">
                     </div>
                 </div>
 
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/sleeping-in-bed.png"/></label> <label>nombre de nuits :</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/sleeping-in-bed.png"/></label> <label>Number of nights :</label>
                     <select class="form-select" formControlName="nbNuits">
                     <option selected value="none"></option>
                     <option *ngFor="let t of nbNuits " [value]="t">
@@ -71,7 +73,7 @@
             <div class="row mt-2 d-flex justify-content-center ">
 
 
-                <button type="submit" class="btn btn-primary " (click)="calculerPRIX()">
+                <button class="btn btn-primary " (click)="calculerPRIX()">
                         tarifs
                    
                    
@@ -85,7 +87,7 @@
                 <div *ngIf="affiche">
                     <span>Prix total :{{prixTotal}} dt</span>
                     <br>
-                    <div class=" d-flex justify-content-center"> <button type=" submit " class="btn btn-success " (click)=" hiddenT()">
+                    <div class=" d-flex justify-content-center"> <button class="btn btn-primary " (click)=" hiddenT()">
                         reserver
                         </button>
                     </div>
@@ -94,42 +96,65 @@
             </div>
 
         </div>
-    </form>
-</div>
-<!-- model de cart  -->
-<div [hidden]="hidden">
 
+    </div>
+    <!-- model de cart  -->
+    <div [hidden]="hidden">
 
-    <form>
         <h3 class="text-center pink-text font-bold py-4"><strong></strong></h3>
         <div class="md-form">
-            <i class="fa fa-user prefix grey-text"></i>
-            <input type="text" id="orangeForm-name37" class="form-control">
-            <label for="orangeForm-name37"> first name</label>
+            <i> <img src="https://img.icons8.com/ios/32/000000/name--v1.png" /></i> <label> first name</label>
+            <input type="text" class="form-control" formControlName="first_name">
+        </div>
+        <div *ngIf="first_name.errors?.required && first_name.touched" class="alert alert-danger">
+            first name is required
+        </div>
+        <div *ngIf="first_name.errors?.pattern &&first_name.dirty" class="alert alert-warning">
+            first name must start with uppercase
         </div>
         <div class="md-form">
-            <i class="fa fa-envelope prefix grey-text"></i>
-            <input type="text" id="orangeForm-email37" class="form-control">
-            <label for="orangeForm-email37">last name </label>
+            <i><img src="https://img.icons8.com/ios/32/000000/name--v1.png" /></i>
+            <label>last name </label>
+            <input type="text" class="form-control" formControlName="last_name">
+        </div>
+        <div *ngIf="last_name.errors?.required && last_name.touched" class="alert alert-danger">
+            last name is required
+
         </div>
         <div class="md-form">
-            <i class="fa fa-envelope prefix grey-text"></i>
-            <input type="text" id="orangeForm-email37" class="form-control">
-            <label for="orangeForm-email37"> email</label>
+            <i class="fa fa-envelope prefix grey-text"></i> <label> email</label>
+            <input type="text" class="form-control" formControlName="email">
         </div>
-        <div class="md-form">
-            <i class="fa fa-envelope prefix grey-text"></i>
-            <input type="text" id="orangeForm-email37" class="form-control">
-            <label for="orangeForm-email37"> number</label>
+        <div *ngIf="email.errors?.required && email.touched" class="alert alert-danger">
+            email is required
+        </div>
+        <div *ngIf="email.errors?.pattern && email.dirty" class="alert alert-warning">
+            email must be formatted correctly
         </div>
 
+        <div class="md-form">
+            <i><img src="https://img.icons8.com/ios/30/000000/phone.png" /></i> <label>phone number</label>
+            <input type="number" class="form-control" formControlName="phone_number">
+        </div>
+        <div *ngIf="phone_number.errors?.required && phone_number.touched" class="alert alert-danger">
+            phone number is required
+        </div>
+        <div *ngIf="phone_number.errors?.pattern && phone_number.dirty" class="alert alert-warning">
+            phone number must contain 8 digits
+        </div>
 
         <!--Footer-->
         <div class="modal-footer">
             <div class="text-center py-4">
-                <button class="btn btn-outline-pink">confirm reservation<i class="fa fa-paper-plane-o ml-1"></i></button>
+                <button type="submit" (click)="reserver()" class=" btn btn-outline-pink ">confirm reservation<i class="fa fa-paper-plane-o ml-1 "></i></button>
             </div>
         </div>
-    </form>
 
-</div>
+
+    </div>
+    <!-- <div [hidden]="!reservationForm.submitted ">
+        <div [hidden]="!reservationForm.submitted ">
+            Votre nouveau produit a bien été ajouté
+        </div>
+    </div> -->
+</form>

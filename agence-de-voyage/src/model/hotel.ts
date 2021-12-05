@@ -7,6 +7,7 @@ export class Hotel {
         public prix: number,
         public nbEtoiles: number,
         public promotion: boolean,
+        public pourcentage:number,
         public description?: string,
         public telephone?: number,
         public adresse?: string,

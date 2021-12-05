@@ -9,11 +9,12 @@ import { HotelsService } from 'src/service/hotels.service';
   styleUrls: ['./ajouter-hotel.component.css']
 })
 export class AjouterHotelComponent implements OnInit {
-  newHotel = new Hotel(10, '', '', '', 0, 0, false, "", 0, "", false, false, false,[]);
+  newHotel = new Hotel(10, '', '', '', 0, 0, false, 0,"", 0, "", false, false, false,[]);
   listHotel:Hotel[]=[];
   hotelForm:FormGroup=new FormGroup({});
   message: string = "Votre nouveau Hotel a bien été ajouté";
   galerie:number=0;
+  Discount:boolean=true;
  
   counter(i:number)
   {
@@ -41,6 +42,7 @@ export class AjouterHotelComponent implements OnInit {
       telephone:['',[Validators.required, Validators.pattern('[1-9][0-9]{7}')]],
       nbEtoiles:[0,[Validators.required, Validators.pattern('[0-5]')]],
       promotion:[false],
+      pourcentage:[0,Validators.pattern('[1-8][0-9]')],
       internet:[false],
       piscine:[false],
       Parking:[false],
@@ -51,6 +53,10 @@ export class AjouterHotelComponent implements OnInit {
  
     this.hotelService.getHotels().subscribe(data=>this.listHotel=data);
     
+  }
+  discount()
+  {this.Discount=false;
+
   }
   isValidTel():boolean
   { return this.hotelForm.controls['telephone'].errors?.pattern
@@ -84,6 +90,14 @@ export class AjouterHotelComponent implements OnInit {
   public get nbEtoiles()
   {
     return this.hotelForm.get('nbEtoiles');
+  }
+  public get promotion()
+  {
+    return this.hotelForm.get('promotion');
+  }
+  public get pourcentage()
+  {
+    return this.hotelForm.get('pourcentage');
   }
 
 

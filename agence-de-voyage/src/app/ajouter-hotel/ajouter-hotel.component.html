@@ -56,7 +56,7 @@
             </label>
             <input type="number" max="5" formControlName="nbEtoiles" name="nbEtoiles" class="form-control"
                 required>
-                <div *ngIf="nbEtoiles.errors?.requirednbEtoiles.touched " class="alert alert-danger">
+                <div *ngIf="nbEtoiles.errors?.required && nbEtoiles.touched " class="alert alert-danger">
                     Le nombre d'etoiles est obligatoire
                 </div>
                 <div *ngIf="isValidEtoile()" class="alert alert-warning"> 
@@ -66,9 +66,20 @@
         <div>
             <label>
                 Discount<input type="checkbox" name="promotion" formControlName="promotion"
-                    value="promoHotel" >
+                    value="promoHotel" (click)="discount()" >
             </label>
+           
         </div>
+        <div [hidden]="Discount">
+            <input type="number" formControlName="pourcentage" name="pourcentage" required>
+            <div *ngIf="pourcentage.errors?.required && pourcentage.touched " class="alert alert-danger">
+                Le pourcentage est obligatoire
+            </div>
+            <div *ngIf="pourcentage.errors?.pattern && pourcentage.dirty" class="alert alert-warning">
+                Le pourcentage est entre 10 et 89
+            </div>
+        </div>
+
         <div>
             <label>
                 Internet   <input type="checkbox" name="internet" formControlName="internet"

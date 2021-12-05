@@ -1,31 +1,30 @@
-                                                .decalage {
-                                                    padding-top: 50px;
-                                                }
+   .decalage {
+   padding-top: 50px;
+   margin-bottom: 20px;
+   }
                                                 
-                                                strong {
-                                                    font-size: 20px;
-                                                }
+ strong {
+font-size: 20px;
+}
+ .design {
+  background-color: rgba(240, 240, 240, 0.1);
+  box-shadow: 5px -5px 5px 5px rgba(226, 218, 218, 0.938);
+}
+  .card-title {
+ font-size: 30px;
+font-family: 'Courier New', Courier, monospace;
+font-weight: bold;
+color: rgb(47, 139, 167);
+ }
                                                 
-                                                .design {
-                                                    background-color: rgba(240, 240, 240, 0.1);
-                                                    box-shadow: 5px -5px 5px 5px rgba(226, 218, 218, 0.938);
-                                                }
+ span {
+color: #0b8eab;
+font-weight: bold;
+ font-size: 50px;
+font-family: serif;
+}
                                                 
-                                                .card-title {
-                                                    font-size: 30px;
-                                                    font-family: 'Courier New', Courier, monospace;
-                                                    font-weight: bold;
-                                                    color: rgb(47, 139, 167);
-                                                }
-                                                
-                                                span {
-                                                    color: #0b8eab;
-                                                    font-weight: bold;
-                                                    font-size: 50px;
-                                                    font-family: serif;
-                                                }
-                                                
-                                                .reservation {
-                                                    background-image: url('https://images.pexels.com/photos/1974856/pexels-photo-1974856.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
-                                                    background-size: cover;
-                                                }
+ .reservation {
+ background-image: url('https://images.pexels.com/photos/1974856/pexels-photo-1974856.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+ background-size: cover;
+ }
