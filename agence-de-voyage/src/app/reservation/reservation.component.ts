@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Reservation } from '../reservation';
+import { Reservation } from '../../model/reservation';
 import { HotelsService } from 'src/service/hotels.service';
 import { Hotel } from 'src/model/hotel';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -36,11 +36,11 @@ prixTotal:number;
     this.visible = true;
 
   }
-  // public get dateArivee() { return this.reservationForm.get('dateArivee'); }
-  // public get nbNuit() { return this.reservationForm.get('nbNuits'); }
-  // public get nbChambre() { return this.reservationForm.get('nbChambres'); }
-  // public get nbAdulte() { return this.reservationForm.get('nbAdultes'); }
-  // public get pensions() { return this.reservationForm.get('pension'); }
+  
+  public get first_name() { return this.reservationForm.get('first_name'); }
+  public get last_name() { return this.reservationForm.get('last_name'); }
+  public get email() { return this.reservationForm.get('email'); }
+  public get phone_number() { return this.reservationForm.get('phone_number'); }
 
   calculerPRIX() {
     var today = new Date();
@@ -78,13 +78,18 @@ prixTotal:number;
 
     this.reservationForm = this.formBuilder.group(
       {
-        dateArivee: [null, Validators.required],
-        nbNuits: [null, Validators.required],
-        nbChambres: [null, Validators.required],
-        nbAdultes: [null, Validators.required],
+        dateArivee: [null],
+        nbNuits: [null],
+        nbChambres: [null],
+        nbAdultes: [null],
         nbEnfants: [0],
-        pension: [null, Validators.required],
-        
+        pension: [null],
+        first_name:["",Validators.required],
+        last_name:["",Validators.required],
+        email:["",Validators.required],
+        phone_number:[null,Validators.required],
+
+
       }
     )
     
@@ -100,7 +105,10 @@ prixTotal:number;
 
   reserver() {
     this.hotelsService.addReservation(this.reservationForm.value)
-      .subscribe(data => this.lesReservation.push(data));
+      .subscribe(data =>{
+         this.lesReservation.push(data);
+         this.SuccessSnackBar("Reservation confirmed");
+      });
   }
 
 
@@ -119,6 +127,9 @@ prixTotal:number;
     });
   }
 
+  SuccessSnackBar(message: string) {
+    this._snackBar.open(message, 'SUCCEEDED', { duration: 3000});
+  }
   ErrorSnackBar(message: string) {
     this._snackBar.open(message, 'ERROR', { duration: 3000 });
   }
