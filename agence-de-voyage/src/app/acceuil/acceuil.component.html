@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!--<app-navbar></app-navbar>-->
 <app-caroussel></app-caroussel>
 
 
@@ -17,10 +17,11 @@
             <div class="form-outline-sm ">
                 <input type="search" placeholder="votre destination" class="form-control w-1 p-3 h-3 mt-2" #input
                     height="10px" />
-            </div>
-            <button type="button" class="btn btn-primary mw-8 search" (click)="search(input.value)">
+
+            </div><button type="button" class="btn btn-primary mw-8 search" (click)="search(input.value)">
                 <i class="fas fa-search "></i>
             </button>
+
 
 
         </div>
@@ -34,14 +35,15 @@
 
 
     <div class="row">
-        <div class="col-md-2">
-            <h1>List of Hotels</h1>
-        </div>
-        <div class="col-md-10 text-right">
+       
+        <div class="col-md-2 text-right">
             <button type="button" mdbBtn class="relative waves-light btn btn-dark btn-sm" (click)="basicModal.show()"
                 mdbWavesEffect>
                 <i class="fa fa-plus"></i>
                 New Hotel</button>
+        </div>
+        <div class="col-md-12 text-center">
+            <h1>List of Hotels</h1>
         </div>
     </div>
 
@@ -115,7 +117,7 @@
                         </a>
 
                         <button type="button" mdbBtn class="relative waves-lightbtn btn-warning btn-sm"
-                            (click)="basicModal2.show()" mdbWavesEffect (click)="onModifier(t)">
+                            (click)="basicModal2.show()" mdbWavesEffect (click)="onModifier(t.id,t)">
 
                             <i class="fa fa-pencil"></i>
                         </button>
@@ -128,7 +130,7 @@
                         <!--Confirmer supprimer-->
                         <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1"
                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                            <div class="modal-dialog modal-sm modal-notify modal-primary" role="document">
                                 <!--Content-->
                                 <div class="modal-content text-center">
                                     <!--Header-->
@@ -138,15 +140,15 @@
 
                                     <!--Body-->
                                     <div class="modal-body">
-                                        <mdb-icon fas icon="times" size="4x" class="animated rotateIn"></mdb-icon>
+                                        <mdb-icon fas icon="bell" size="4x" class="animated rotateIn"></mdb-icon>
                                     </div>
 
                                     <!--Footer-->
                                     <div class="modal-footer justify-content-center">
-                                        <button mdbBtn color="danger" class="waves-effect" mdbWavesEffect
+                                        <button mdbBtn color="primary" class="waves-effect" mdbWavesEffect
                                             (click)="onSupprimer(t.id)">Yes</button>
-                                        <a type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect
-                                            data-dismiss="modal" (click)="frame.hide()">No</a>
+                                        <a type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect
+                                            data-dismiss="modal" (click)="frame.hide()" (click)="nePasSupprimer()">No</a>
                                     </div>
                                 </div>
                                 <!--/.Content-->
@@ -177,12 +179,16 @@
                 </h1>
             </div>
             <div class="modal-body">
-                <form>
+                <form >
                     <div>
-                        <label>
+                        <label >
                             Hotel name:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control" #nom>
+                        <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control" #nom="ngModel">
+                        <div *ngIf="nom.errors?.required && nom.dirty" class="alert alert-danger">
+                            Le nom d'hotel est obligatoire
+                        </div>
+
                     </div>
                     <div>
                         <label>
@@ -220,7 +226,7 @@
                     <div>
                         <label>
                             Discount:<input type="checkbox" name="promotion" [(ngModel)]="newHotel.promotion"
-                                value="promoHotel" checked >
+                                value="promoHotel" checked>
                         </label>
 
                     </div>
@@ -240,7 +246,7 @@
                     </div>
                     <div>
                         <label>
-                            Parking:<input type="checkbox" name="parking" [(ngModel)]="newHotel.parking"
+                            Parking:<input type="checkbox" name="parking" [(ngModel)]="newHotel.Parking"
                                 value="promoHotel" checked #promotion>
                         </label>
 
@@ -251,15 +257,19 @@
                         </label>
                         <input type="text" [(ngModel)]="newHotel.image" name="imageHotel" class="form-control" #image>
                     </div>
-                    <!--<div>
+                    <div>
                         <label>
                             Image Galerie:
                         </label>
-                        <div *ngFor=" let t of newHotel.images">
+                        <!--<div *ngFor=" let t of newHotel.image">
                             <input type="text" [(ngModel)]="t" name="imageHotel" class="form-control" [value]=t>
 
+                        </div>-->
+                        <div *ngFor=" let g of galerie">
+                            <input type="text" [value]="galerie[0]" class="form-control" >
                         </div>
-                    </div>-->
+                        
+                    </div>
                     <div lass="text-center">
 
 
@@ -277,9 +287,9 @@
                 </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" mdbBtn color="indigo"
-                        mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()">Close</button>
+                        mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()" (click)="annuler()">Close</button>
                     <button type="button" class="btn btn-primary" (click)="upDate()" aria-label="Close"
-                        (click)="basicModal2.hide()" mdbBtn mdbWavesEffect>Save Change</button>
+                        (click)="basicModal2.hide()" mdbBtn mdbWavesEffect >Save Change</button>
                 </div>
 
             </div>
@@ -288,5 +298,5 @@
     </div>
 </div>
 
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->
 <!-- nour -->

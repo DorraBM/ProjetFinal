@@ -1,1 +1,55 @@
-<p>about-us works!</p>
+<div class="text-center decalage">
+
+    <img src="../assets/pexels.jpeg" class="carousselImage"
+        style="height: 90vh; ">
+</div>
+<br><br>
+<div class="text-center ">
+    <h1 class="tailleTitre" style="font-family: Brush Script MT;">Best Tunisia Travel</h1>
+    <p class="tailleText">"Travel is the main thing you purchase that makes you more extravagant."
+        <br> <br>
+        We, at Best Tunisia Travel, swear by this and put stock in satisfying travel <br><br> dreams that make you
+        perpertually rich constantly.
+    </p>
+</div>
+<br><br><br><br>
+
+<section>
+    
+        <img src="../assets/palm.jpeg" class="IMAGE">
+    
+    <div class="container">
+        <h1 style="font-family: Georgia;">Company Profile</h1>
+        <pre style="font-family: Georgia, serif;">Best Tunisia Travel is the largest independently owned 
+travel agency headquartered in Tunisia,
+and consistently ranked among the top 50 
+largest in Tunisia. </pre>
+
+        <pre style="font-family:Georgia; font-size: 20px;">Informations                                                 <span (click)="Afficherlocal()" [hidden]="!local" style="font-size: 25px;">+</span><span style="font-size: 25px;" (click)="Cacherlocal()" [hidden]="local">-</span></pre>
+        <div [hidden]="local">
+            <pre>Best Tunisia Travel is headquartered in Tunisia,Tunis    
+       <i class="  fas fa-map-marker-alt"></i> 47,Rue des Etrepreneurs Charguia II   
+          2035 Tunisia
+       <i class="fas fa-phone"></i> Telefon: 25 666 829
+       <i class="fas fa-at   "></i><strong style="font-size: 13px;">Email :</strong> example@gmail.com</pre>
+        </div>
+        <pre  style="font-family:Georgia;font-size: 20px;">Executive Team                                            <span (click)="Afficherteam()" [hidden]="!team" style="font-size: 25px;">+</span><span (click)="Cacherteam()" [hidden]="team" style="font-size: 25px;">-</span></pre>
+
+        <div [hidden]="team">
+         <div>
+            <pre><img src="../assets/dorra.jpg" class="profil">        Dorra Ben Mimoun 
+        <i class="fas fa-at   "></i><strong style="font-size: 13px;">Email :</strong> benmimounkarima77@gmail.com</pre>
+         </div>
+         <div>
+            <pre><img src="../assets/nour.png" class="profil">        Nour El Houda Jandoubi 
+        <i class="fas fa-at   "></i><strong style="font-size: 13px;">Email :</strong> jandoubi.nourelhouda@gmail.com</pre>
+       </div>
+
+        </div>
+
+
+
+
+    </div>
+
+</section>

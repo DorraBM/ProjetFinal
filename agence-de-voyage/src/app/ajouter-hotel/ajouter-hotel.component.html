@@ -1,101 +1,118 @@
-
- 
-    <form #f="ngForm">
-       
-            
-            <div>
-                <label>
-                     Hotel Name:
-                </label>
-                <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control" #nom>
+    <form [formGroup]="hotelForm" #f="ngForm" novalidate>
+                
+        <div>
+            <label>
+                 Hotel Name:
+            </label>
+            <input type="text" formControlName="nom" name="nom" class="form-control"  required>
+            <div *ngIf="nom.errors?.required && nom.touched" class="alert alert-danger">
+                Le nom d'hotel est obligatoire
             </div>
-            <div>
-                <label>
-                    Price:
-                </label>
-                <input type="number" [(ngModel)]="newHotel.prix" name="prixHotel" class="form-control" #prix>
+        </div>
+        <div>
+            <label>
+                Price:
+            </label>
+            <input type="number" formControlName="prix" name="prix" class="form-control"  required>
+            <div *ngIf="prix.errors?.required && prix.touched" class="alert alert-danger">
+                Le prix d'hotel est obligatoire
             </div>
-            <div>
-                <label>
-                    Location:
-                </label>
-                <input type="text" [(ngModel)]="newHotel.lieu" name="lieuHotel" class="form-control" #lieu>
+        </div>
+        <div>
+            <label>
+                Location:
+            </label>
+            <input type="text" formControlName="lieu" name="lieuHotel" class="form-control" required>
+            <div *ngIf="lieu.errors?.required &&  lieu.touched" class="alert alert-danger">
+                La localisation d'hotel est obligatoire
             </div>
-            <div>
-                <label>
-                    Adresse:
-                </label>
-                <input type="text" [(ngModel)]="newHotel.adresse" name="adresseHotel" class="form-control"
-                    #adresse>
-            </div>
-            <div>
-                <label>
-                    telephone:
-                </label>
-                <input type="text" [(ngModel)]="newHotel.telephone" name="telephoneHotel" class="form-control"
-                    #telephone>
-            </div>
-            <div>
-                <label>
-              
-                   Stars number:
-                </label>
-                <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel" class="form-control"
-                    #nbEtoiles>
-            </div>
-            <div>
-                <label>
-                    Discount<input type="checkbox" name="promotion" [(ngModel)]="newHotel.promotion"
-                        value="promoHotel" >
-                </label>
-
-            </div>
-            <div>
-                <label>
-                    Internet   <input type="checkbox" name="internet" [(ngModel)]="newHotel.internet"
-                        value="internetHotel" >
-                </label>
-
-            </div>
-            <div>
-                <label>
-                    piscine   <input type="checkbox" name="piscine" [(ngModel)]="newHotel.piscine"
-                        value="piscineHotel" >
-                </label>
-
-            </div>
-            <div>
-                <label>
-                    Parking   <input type="checkbox" name="parking" [(ngModel)]="newHotel.parking"
-                        value="parkingHotel" >
-                </label>
-
-            </div>
-            <div>
-                <label>
-                  
-                    image:
-                </label>
-                <input type="text" [(ngModel)]="newHotel.image" name="imageHotel" class="form-control" #image>
-            </div>
-          
-            <div class="text-center">
-                <div>
-                    <button type="submit" (click)="onAjouter()" class="btn btn-success">
-                        Add
-                    </button>
-                    <button class="btn btn-secondary" type="reset" (click)="onReset(f)">
-                        Clean
-                    </button>
+        </div>
+        <div>
+            <label>
+                Adresse:
+            </label>
+            <input type="text" formControlName="adresse" name="adresseHotel" class="form-control"
+               required >
+                <div *ngIf="adresse.errors?.required && adresse.touched" class="alert alert-danger">
+                    L'adresse d'hotel est obligatoire
                 </div>
-            </div>
-            <div [hidden]="!f.submitted" class="alert alert-success">
-                {{message}}
-            </div>
-
+        </div>
+        <div>
+            <label>
+                telephone:
+            </label>
+            <input type="text" formControlName="telephone" name="telephoneHotel" class="form-control"
+                >
+                <div *ngIf="telephone.errors?.required && telephone.touched" class="alert alert-danger">
+                    Le numero de telephone d'hotel est obligatoire
+                </div>
+                <div *ngIf="isValidTel()" class="alert alert-warning"> 
+                    Le  numero de telephone doit avoir 8 chiffres
+                </div> 
+        </div>
+        <div>
+            <label>
+               Stars number:
+            </label>
+            <input type="number" max="5" formControlName="nbEtoiles" name="nbEtoiles" class="form-control"
+                required>
+                <div *ngIf="nbEtoiles.errors?.requirednbEtoiles.touched " class="alert alert-danger">
+                    Le nombre d'etoiles est obligatoire
+                </div>
+                <div *ngIf="isValidEtoile()" class="alert alert-warning"> 
+                    Le nombre d'etoiles doit être entre 0 et 5
+                </div> 
+        </div>
+        <div>
+            <label>
+                Discount<input type="checkbox" name="promotion" formControlName="promotion"
+                    value="promoHotel" >
+            </label>
+        </div>
+        <div>
+            <label>
+                Internet   <input type="checkbox" name="internet" formControlName="internet"
+                    value="internetHotel" >
+            </label>
+        </div>
+        <div>
+            <label>
+                piscine   <input type="checkbox" name="piscine" formContolName="piscine"
+                    value="piscineHotel" >
+            </label>
+        </div>
+        <div>
+            <label>
+                Parking   <input type="checkbox" name="parking" formControlName="Parking"
+                    value="parkingHotel" >
+            </label>
+        </div>
+        <div>
+            <label>
+              
+                image:
+            </label>
+            <input type="text" formControlName="image" name="imageHotel" class="form-control" #image>
+        </div>
+        <!--<div>
+            <label> Galerie size:</label>
+            <input type="number" formControlName="galerie" >
+             <div *ngFor="let g of counter(galerie);let i as index">
+                 <input type="text" name="" id="">
+             </div>
+        </div>-->
       
-        
-
-   
-    </form>
-
+        <div class="text-center">
+            <div>
+                <button type="submit" (click)="onAjouter()" class="btn btn-success" [disabled]=f.invalid>
+                    Add
+                </button>
+                <button class="btn btn-secondary" type="reset"  (click)="onReset()">
+                    Clean
+                </button>
+            </div>
+        </div>
+       <div [hidden]="!f.submitted" class="alert alert-success">
+            {{message}}
+        </div>
+</form>

@@ -1,1 +1,6 @@
-.decalage{padding-bottom: 48px;}
+.decalage{padding-bottom: 20px;}
+.active {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.616);
+    
+  }
