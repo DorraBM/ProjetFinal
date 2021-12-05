@@ -18,11 +18,11 @@
               <mat-hint align="end"> {{message.value?.length || 0}}/256</mat-hint>
               <mat-error *ngIf="message.invalid">Please enter a message</mat-error>
             </mat-form-field>
-            <button [disabled]="isLoading" class="submit" type="submit"   mdbBtn
+            <button  class="submit" type="submit"   mdbBtn
             color="indigo"
             mdbWavesEffect>Submit</button>
             <input [formControl]="honeypot" class="hidden" type="text" />
-            <div [hidden]="afficher" class="center-text">
+            <div  class="center-text">
               <span>{{responseMessage}}</span>
             </div>
           </form>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Reservation } from '../reservation';
+import { Reservation } from '../../model/reservation';
 import { HotelsService } from 'src/service/hotels.service';
 import { Hotel } from 'src/model/hotel';
 import { MatSnackBar } from '@angular/material/snack-bar';

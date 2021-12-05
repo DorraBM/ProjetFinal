@@ -26,7 +26,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
-import { TelephonePipe } from './telephone.pipe';
+import { TelephonePipe } from '../pipe/telephone.pipe';
 import { ReservationComponent } from './reservation/reservation.component';
 
 

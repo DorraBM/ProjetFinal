@@ -25,7 +25,7 @@
 
             <div class="row mt-2 d-flex justify-content-center ">
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/interior.png"/></label> <label> nombre de chambre :</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/interior.png"/></label> <label> Number of rooms :</label>
                     <select class="form-select" formControlName="nbChambres">
                 <option selected value="none"></option>
                 <option *ngFor="let t of nbChambres "  [value]="t">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/standing-man.png"/></label> <label>nombre d'adultes :</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/standing-man.png"/></label> <label>Adults number :</label>
                     <select class="form-select" formControlName="nbAdultes">
                 <option selected value="none"></option>
                 <option *ngFor="let t of nbAdultes " [value]="t" id="nbAdultes">
@@ -49,7 +49,7 @@
 
             <div class="row mt-2 d-flex justify-content-center ">
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/baby.png"/></label> <label>nombre d'enfant :</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/baby.png"/></label> <label>Children number :</label>
                     <select class="form-select" formControlName="nbEnfants">
                 <option selected value="none"></option>
                 <option *ngFor="let t of nbEnfants " [value]="t">
@@ -58,7 +58,7 @@
                </select>
                 </div>
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/food-bar.png" /></label> <label> pension:</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/food-bar.png" /></label> <label>Pension:</label>
                     <select class="form-select" formControlName="pension">
                     <option *ngFor="let t of pension index as i " [value]="t">
                         {{t}}

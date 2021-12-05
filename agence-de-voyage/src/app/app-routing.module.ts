@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AcceuilComponent } from './acceuil/acceuil.component';
-import { ProduitGuard } from './admin.guard';
+import { ProduitGuard } from '../guards/admin.guard';
 import { AjouterHotelComponent } from './ajouter-hotel/ajouter-hotel.component';
 import { ContactComponent } from './contact/contact.component';
 

@@ -4,7 +4,7 @@
     text-align: center;
     padding: 20vh;
     margin-top: -10vh;
-    background-image: url('https://exp.cdn-hotels.com/hotels/2000000/1270000/1268000/1267926/3f6d3942_y.jpg?impolicy=fcrop&w=500&h=333&q=high')
+    background-image: url('https://images.pexels.com/photos/262325/pexels-photo-262325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')
     /*background: linear-gradient(90deg, rgba(213,217,222,1) 0%, rgba(174,181,186,1) 29%, rgba(177,217,244,1) 64%, rgba(83,131,140,1) 100%);*/
   }
 .cards{
@@ -15,7 +15,8 @@
   width: 430px; 
   height: 500px;  
   margin-top: -70px; 
-  background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg')
+  /*background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg')*/
+  
 
 }
 .field-icon {

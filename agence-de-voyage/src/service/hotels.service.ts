@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Reservation } from 'src/app/reservation';
+import { Reservation } from 'src/model/reservation';
 import { Hotel } from '../model/hotel';
-const URL = " http://localhost:3000/hotels";
-const url = " http://localhost:3000/reservations"
+const URL = " http://localhost:4000/hotels";
+const url = " http://localhost:4000/reservations"
 @Injectable({
   providedIn: 'root'
 })

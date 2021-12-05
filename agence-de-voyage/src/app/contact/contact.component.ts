@@ -14,10 +14,10 @@ export class ContactComponent implements OnInit {
   email: FormControl = new FormControl("", [Validators.required, Validators.email]);
   message: FormControl = new FormControl("", [Validators.required, Validators.maxLength(256)]);
   honeypot: FormControl = new FormControl(""); // we will use this to prevent spam
-  submitted: boolean = false; // show and hide the success message
-  isLoading: boolean = false; // disable the submit button if we're loading
+  //submitted: boolean = false; // show and hide the success message
+  //isLoading: boolean = false; // disable the submit button if we're loading
   responseMessage: string=""; // the response message to show to the user
-  afficher:boolean=false;
+ 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,public authService: AuthService) {
     this.form = this.formBuilder.group({
       name: this.name,
@@ -70,11 +70,11 @@ export class ContactComponent implements OnInit {
                
                 this.data['message']= this.form.get("message")?.value;
 
-           
+               
               
                 if (this.data['name'] == '' ||  this.data['email'] == '' ||  this.data['message']== '' ) {
                   this.responseMessage='Veillez remplir tous les champs';
-                } else if (!this.data['email'].match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
+                } else if (!this.data['email']. match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
                   this.responseMessage='Veillez saisir une adresse valide';
                 } else {
                 this.http.put<any>("YOUR GOOGLE WEB APP URL HERE", this.data).subscribe(
