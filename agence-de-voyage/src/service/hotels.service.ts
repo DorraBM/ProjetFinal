@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Reservation } from 'src/app/reservation';
 import { Hotel } from '../model/hotel';
-const URL = " http://localhost:3000/hotels"
+const URL = " http://localhost:3000/hotels";
+const url = " http://localhost:3000/reservations"
 @Injectable({
   providedIn: 'root'
 })
 export class HotelsService {
   private hotels: Hotel[]
+  private reservation:Reservation[];
   //   new Hotel(1, 'El mouradi Africa', '../assets/hotels/africa/africa1.jfif', 'Tunis', 120,3,true),
   //   new Hotel(2, 'Hasdrabal Thalasso Djerba', '../assets/hotels/hasdrabal/hasdrubal1.jfif', 'Djerba', 210,3,false),
   //   new Hotel(3, ' Bel Azur Thalasson&bangaloas', '../assets/hotels/thalasson/thalasso1.jpg', 'Hamamet', 200,4,false),
@@ -37,6 +40,17 @@ export class HotelsService {
   modifierHotel(id: number, hotel: Hotel) {
     return this.http.put<Hotel[]>(URL + "/" + id, hotel);
   }
+
+  addReservation(reservation:Reservation):Observable<Reservation>
+  {
+    return this.http.post<Reservation>(url,reservation);
+  }
+  //  getReservationdetails():Observable<Reservation[]>{
+  //   return this.http.get<Reservation[]>(url);
+  //  }
+  
+
+  
 
   constructor(private http: HttpClient) { }
 }

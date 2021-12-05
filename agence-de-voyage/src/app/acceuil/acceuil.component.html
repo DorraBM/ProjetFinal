@@ -108,7 +108,7 @@
 
 
                     <div *ngIf="!authService.isloggedIn">
-                        <a class="btn btn-primary" routerLink="/detail" (click)="getNavigation('detail', t.id)"> <i class="fas fa-info-circle"></i>Details</a>
+                        <a class="btn btn-primary" (click)="getNavigation('detail', t.id)"> <i class="fas fa-info-circle"></i>Details</a>
                     </div>
                     <div *ngIf="authService.isloggedIn">
                         <!--<button class="btn btn-warning btn-sm" (click)="onModifier(t.id)">

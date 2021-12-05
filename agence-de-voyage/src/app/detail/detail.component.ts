@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
     this.hotelID = this.activeRoute.snapshot.params['id'];
     
     this.loadHotelDetails(this.hotelID);
-    console.log(this.hotelID.images);
+    
   }
   constructor(public authService: AuthService, private hotelService: HotelsService, private route: Router, private activeRoute: ActivatedRoute) { }
   loadHotelDetails(productID) {

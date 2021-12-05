@@ -1,4 +1,11 @@
 label {
+    font-weight: bold;
     font-size: 20px;
-    color: cadetblue;
+    color: #0b8eab;
+}
+
+span {
+    color: #573625;
+    font-weight: bold;
+    font-size: 50px;
 }

@@ -28,7 +28,7 @@ export class AcceuilComponent implements OnInit {
    constructor( private hotelService:HotelsService,private _snackBar: MatSnackBar, config: NgbRatingConfig,public authService: AuthService,private route: ActivatedRoute,private router: Router)
     {config.max = 5;
      config.readonly = true;
-    hotelService.getHotels().subscribe(data=>this.listHotel=data);
+   
     }
  
    ngOnInit(): void {

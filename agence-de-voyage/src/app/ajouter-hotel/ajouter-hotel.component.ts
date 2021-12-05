@@ -9,6 +9,7 @@ import { HotelsService } from 'src/service/hotels.service';
   styleUrls: ['./ajouter-hotel.component.css']
 })
 export class AjouterHotelComponent implements OnInit {
+  listHotel: Hotel[] = [];
   newHotel = new Hotel(10, '', '', '', 0, 0, true, "", 0, "", true, true, true);
   message: string = "Votre nouveau Hotel a bien été ajouté";
   ajouterHotels(id: string, nom: string, prix: string, lieu: string, nbEtoiles: string, promotion: string, image: string) {
@@ -21,7 +22,8 @@ export class AjouterHotelComponent implements OnInit {
   }
   onAjouter() {
     this.hotelService.ajouterHotel(this.newHotel).subscribe(data => {
-      console.log(data);
+      this.listHotel.push();
+
 
 
     });
