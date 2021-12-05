@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Reservation } from '../../model/reservation';
 import { HotelsService } from 'src/service/hotels.service';
@@ -23,7 +23,7 @@ prixTotal:number;
   lesReservation: Reservation[] = [];
   reservationData: Reservation;
   reservationID: any;
-  constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private hotelsService: HotelsService, private _snackBar: MatSnackBar) { }
+  constructor(private activatedRoute: ActivatedRoute, private route: Router,private formBuilder: FormBuilder, private hotelsService: HotelsService, private _snackBar: MatSnackBar) { }
 
   //  getReservation() {
   hotelID: any;
@@ -84,10 +84,10 @@ prixTotal:number;
         nbAdultes: [null],
         nbEnfants: [0],
         pension: [null],
-        first_name:["",Validators.required],
-        last_name:["",Validators.required],
-        email:["",Validators.required],
-        phone_number:[null,Validators.required],
+        first_name:['',[Validators.required, Validators.pattern('[A-Z][a-z]+')]],
+        last_name:['',Validators.required],
+        email:['',[Validators.required,,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+        phone_number:[0,[Validators.required,Validators.pattern('[0-9]{8}')]],
 
 
       }
@@ -98,8 +98,17 @@ prixTotal:number;
     this.loadHotelDetails(this.hotelID);
 
   }
-
-
+ retourAcceuil()
+ {
+  this.route.navigate(['/acceuil']); 
+    this.SuccessSnackBar("Reservation confirmed");
+}
+ 
+  reset() {
+    this.reservationForm.reset({
+    
+    });
+  }
 
 
 
@@ -107,8 +116,10 @@ prixTotal:number;
     this.hotelsService.addReservation(this.reservationForm.value)
       .subscribe(data =>{
          this.lesReservation.push(data);
-         this.SuccessSnackBar("Reservation confirmed");
+       
+        this.retourAcceuil();
       });
+
   }
 
 
