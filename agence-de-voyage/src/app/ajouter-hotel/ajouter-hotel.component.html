@@ -71,11 +71,8 @@
            
         </div>
         <div [hidden]="Discount">
-            <input type="number" formControlName="pourcentage" name="pourcentage" required>
-            <div *ngIf="pourcentage.errors?.required && pourcentage.touched " class="alert alert-danger">
-                Le pourcentage est obligatoire
-            </div>
-            <div *ngIf="pourcentage.errors?.pattern && pourcentage.dirty" class="alert alert-warning">
+            <input type="number" formControlName="pourcentage" name="pourcentage" >
+            <div *ngIf="pourcentage.errors?.pattern && pourcentage.dirty" class="alert alert-warning" >
                 Le pourcentage est entre 10 et 89
             </div>
         </div>
@@ -112,10 +109,22 @@
                  <input type="text" name="" id="">
              </div>
         </div>-->
-      
+        
+        <!--<div formArrayName="galerie">
+            <label > Galerie</label>
+            <div *ngFor="let g of laGalerie.controls;let i=index ">
+                <input type="text" [formControlName]="i" #images class="form-control">
+
+            </div>
+
+        </div>
+        <input type="button" value="Ajouter Une image au galerie" class="btn btn-secondary 
+        btn-sm" (click)="onAjouterGalerie()"> <br> 
+      -->
         <div class="text-center">
             <div>
-                <button type="submit" (click)="onAjouter()" class="btn btn-success" [disabled]=f.invalid>
+                <!--<button type="submit" (click)="onAjouter()" class="btn btn-success" [disabled]=f.invalid>-->
+                    <button type="submit" (click)="onAjouter()" class="btn btn-success" >
                     Add
                 </button>
                 <button class="btn btn-secondary" type="reset"  (click)="onReset()">

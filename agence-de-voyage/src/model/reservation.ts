@@ -1,5 +1,6 @@
 export class Reservation {
   constructor(  
+    public id:number,
       public dateArivee:Date,
     public nbNuits:number,
     public nbChambre:number,
@@ -10,6 +11,7 @@ export class Reservation {
     public last_name:string,
     public email:string,
     public phone_number:number
+
 
   ){}
 

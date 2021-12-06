@@ -1,3 +1,4 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -27,6 +28,9 @@ export class HotelsService {
   getHotels(): Observable<Hotel[]> {
     return this.http.get<Hotel[]>(URL);
   }
+  getReservations(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(url);
+  }
   getProductDetails(id): Observable<Hotel> {
     return this.http.get<Hotel>(URL +"/"+ id);
   }
@@ -36,6 +40,10 @@ export class HotelsService {
   }
   supprimerHotel(id: number) {
     return this.http.delete(URL + "/" + id);
+  }
+  supprimerReservation(id:number)
+  {
+    return this.http.delete(url + "/" + id);
   }
   modifierHotel(id: number, hotel: Hotel):Observable<Hotel> {
     return this.http.put<Hotel>(URL + "/" + id, hotel);

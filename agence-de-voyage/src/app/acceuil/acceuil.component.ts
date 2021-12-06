@@ -1,3 +1,4 @@
+import { Reservation } from '../../model/reservation';
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from '../../model/hotel';
@@ -27,6 +28,7 @@ export class AcceuilComponent implements OnInit {
     }
     hotelForm:FormGroup=new FormGroup({});
   listHotel: Hotel[] = [];
+  listReservation:Reservation[]=[];
   allHotels: Hotel[] = [];
   rating = 0;
   hotelID: any;
@@ -39,6 +41,9 @@ export class AcceuilComponent implements OnInit {
     this.loadHotelDetails(this.hotelID);
     this.hotelService.getHotels().subscribe(data => this.listHotel = data);
     this.hotelService.getHotels().subscribe(data => this.allHotels = data);
+    this.hotelService.getReservations().subscribe(data=>{this.listReservation=data;
+    console.log("list"+data)});
+    console.log("reservations"+this.listReservation);
   }
   loadHotelDetails(productID) {
     this.hotelService.getProductDetails(productID).subscribe(data => {
@@ -144,6 +149,13 @@ export class AcceuilComponent implements OnInit {
   isValidEtoile():boolean
   { return this.hotelForm.controls['nbEtoiles'].errors?.pattern('[0-5]')
 
+  }
+  SupprimerReservation(id:number)
+  {
+    this.hotelService.supprimerReservation(id).subscribe(data => {
+      this.listReservation = this.listReservation.filter(elet => elet.id != id);
+      this.SuccessSnackBar("Reservation Deleted");
+    });
   }
 
 
