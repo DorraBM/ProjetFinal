@@ -11,7 +11,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
  user=new User();
-
+motdepasse:string="password";
+eye:boolean=true;
  constructor(private authService : AuthService,private _snackBar: MatSnackBar, 
   private  router: Router) { } 
  onLoggedin(){ 
@@ -35,6 +36,18 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.motdepasse);
   }
 
+eyes()
+{
+  this.eye=!this.eye;
+  if(this.eye)
+  {this.motdepasse="password";}
+  else
+  {this.motdepasse="text";}
+  console.log(this.motdepasse);
+  console.log(this.eye);
+  
+}
 }

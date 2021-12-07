@@ -8,30 +8,49 @@
         <div style="margin-top: 10px;">
           <div class="text-center">
             <br>
-            <img src="https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style="width: 350px; " class="rounded-1" alt="logo">
+            <img
+              src="https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              style="width: 350px; " class="rounded-1" alt="logo">
             <h4 class="mt-1 mb-5 pb-1">Best Tunisia Travel</h4>
 
           </div>
 
           <div class="container center ">
-            <div class="row justify-content-md-center">
-              <div class="col-md-4 center">
-                <form class="form-group center">
-                  <div class="d-flex justify-content-center">
-                    <label> Adress:</label>
-                    <input type="text" name="username" class="form-control" placeholder="admin" style="width: 200px; height: 30px;"
-                      [(ngModel)]="user.username">
+            <div class="row ">
+              <div class=" ">
+
+                <form class=" center row">
+
+                  <div class="d-flex  col mb-3 justify-content-center" style=" width: 200px;">
+
+                    <label class=""> Adress:</label>
+                    <input type="text" name="username" class="form-control-sm ms-3" placeholder="admin"
+                      [(ngModel)]="user.username" style="width:200px">
+                  </div>
+
+                  <div class="d-flex justify-content-center col">
+
+                    <label class="mr-1">Password:</label>
+
+                    <div class=" " style="padding: 0px;width: 200px;position: relative; ">
+
+                      <input [type]=motdepasse name="password" class="  form-control-sm" placeholder="admin"
+                        style="width: 200px;" [(ngModel)]="user.password">
+
+                      <div class="" style="display: inline-block; position:absolute; top: 10%; padding: 2px; right: 3px;z-index: 999; color: #000;">
+                        <i class="fa fa-eye-slash  " style=" cursor: pointer;" [hidden]="!eye" (click)="eyes()"></i>
+
+                        <i class="fa fa-eye" style="cursor: pointer;" [hidden]="eye" (click)="eyes()"></i>
+                      </div>
+                    </div>
+                    <br> <br>
                   </div>
                   <br>
-                  <div class="d-flex justify-content-center">
-                    <label>Password:</label>
-                    <input type="password" name="password" class="form-control" placeholder="admin"
-                      style="width: 200px; height: 30px;" [(ngModel)]="user.password">
-                    <!--<i class="fa fa-eye-slash"></i>--> <br> <br>
-                  </div>
-                  <br>
-                  <div >
-                    <button (click)="onLoggedin()" style="width: 150px; " class="btn btn-primary rounded btn-sm text-center">Connexion</button>
+                  <div class=" ">
+                    <button (click)="onLoggedin()" style="width: 150px;
+                    margin-left: 55px;" class="btn btn-primary rounded btn-sm text-center ">
+                    Connexion
+                  </button>
                   </div>
 
                 </form>

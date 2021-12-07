@@ -1,4 +1,7 @@
 <app-caroussel></app-caroussel>
+<div *ngIf="authService.isloggedIn" class="mt-4">
+
+</div>
 <div class="input-group">
     <input type="search" class="form-control rounded" placeholder="Found your destination" aria-label="Search"
         aria-describedby="search-addon" class="form-control" #input style="height: 52px;" />
@@ -8,7 +11,7 @@
 
 
 <!--Boutton ajouter  hotel-->
-<div *ngIf="authService.isloggedIn">
+<div *ngIf="authService.isloggedIn" >
     <div class="row">
         <div class="col-md-2 text-right">
             <button type="button" mdbBtn color="primary" class="waves-light" (click)="basicModal.show()" mdbWavesEffect>
@@ -99,9 +102,9 @@
 
 <!--Hotels Cards-->
 
-<div class="row  " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
-    <div class="col mb-4 " style="margin-left: 20px;" *ngFor=" let t of listHotel; let i=index;">
-        <div class="card  rounded-3 height " style="width: 25rem;">
+<div class="row px-3 justify-content-between " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
+    <div class="col-4 mb-4 "  *ngFor=" let t of listHotel; let i=index;">
+        <div class="card  rounded-3 height  mb-3" >
             <img class="card-img-top p-0 d-flex justify-content-center " [src]="t.image" alt="Card image cap">
             <div class="ribbons-wrapper" *ngIf="t.promotion">
                 <div class="ribbon">
@@ -110,13 +113,15 @@
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h5 class="card-title fw-bold fs-4 text-muted ff-oswald">{{t.nom|titlecase}}</h5>
+                    <h5 class="card-title fw-bold fs-5 text-muted ff-oswald" style="height: 50px;" >{{t.nom|titlecase}}</h5>
                     <ngb-rating id="star" [rate]="t.nbEtoiles">
                     </ngb-rating>
                 </div>
-                <p class="card-text fas fa-map-marker-alt">{{t.lieu|titlecase}}</p>
-                <br>
-                <div class="d-flex justify-content-between">
+
+                <p class="mb-3 card-text fas fa-map-marker-alt">{{t.lieu|titlecase}}</p>
+
+               
+                <div class="d-flex justify-content-between mb-2">
                     <div class="font-weight-bold">
 
 
@@ -138,8 +143,8 @@
                         </div>
                         <br>
                     </div>
-                    <div *ngIf="!authService.isloggedIn">
-                        <a class="btn btn-primary" (click)="getNavigation('detail', t.id)"> <i
+                    <div *ngIf="!authService.isloggedIn" class="mb-3">
+                        <a class="btn btn-primary " (click)="getNavigation('detail', t.id)"> <i
                                 class="fas fa-info-circle"></i>Details</a>
                     </div>
 
@@ -321,6 +326,14 @@
                         <!--<div *ngFor=" let g of galerie">
                             <input type="text" [value]="galerie[0]" class="form-control">
                         </div>-->
+                        <div *ngFor="let g of newHotel.images">
+                            
+                            <input type="text" [value]="g" name="" id="" style="width: 300px;">
+
+                        </div>
+                        
+
+
                     </div>
                 </form>
                 <div class="modal-footer">

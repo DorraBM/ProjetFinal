@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:'search/:searchTerm', component:AcceuilComponent},
   {path: 'detail/:id', component:DetailComponent},
   {path: 'detail', component:DetailComponent}, 
-  {path : 'Ajouter', component :AjouterHotelComponent, canActivate:[ProduitGuard]}, 
+  {path : 'ajouter', component :AjouterHotelComponent, canActivate:[ProduitGuard]}, 
  { path: 'login', component: LoginComponent },
  { path: 'reserver/:id', component: ReservationComponent },
  {path:'',redirectTo:'acceuil', pathMatch:'full'},

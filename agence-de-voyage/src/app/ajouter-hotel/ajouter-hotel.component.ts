@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { Hotel } from 'src/model/hotel';
@@ -23,20 +25,23 @@ export class AjouterHotelComponent implements OnInit {
     this.hotelService.ajouterHotel(this.hotelForm.value).subscribe(data => {
       console.log(data);
       //this.hotelForm.value.push(data);
-
+      this.SuccessSnackBar("The new Hotel is added");
+      this.hotelForm.reset();
+      this.laGalerie.clear();
+     
     }
     );
 
   }
-  /*onAjouterGalerie()
+  onAjouterGalerie()
   {
     this.laGalerie.push(this.hotelForm);
-  }*/
+  }
   onReset() {
     this.hotelForm.reset();
     this.laGalerie.clear();
   }
-  constructor(private hotelService: HotelsService, private fb: FormBuilder) { }
+  constructor(private hotelService: HotelsService, private fb: FormBuilder, private route: Router, private _snackBar: MatSnackBar ) { }
 
   ngOnInit(): void {
     this.hotelForm = this.fb.group({
@@ -52,7 +57,7 @@ export class AjouterHotelComponent implements OnInit {
       internet: [false],
       piscine: [false],
       Parking: [false],
-      // images:this.fb.array([])
+       images:this.fb.array([])
 
 
     });
@@ -72,6 +77,7 @@ export class AjouterHotelComponent implements OnInit {
     return this.hotelForm.controls['nbEtoiles'].errors?.pattern
 
   }
+ 
   public get laGalerie() {
     return this.hotelForm.get('images') as FormArray;
   }
@@ -100,7 +106,9 @@ export class AjouterHotelComponent implements OnInit {
   public get pourcentage() {
     return this.hotelForm.get('pourcentage');
   }
-
+  SuccessSnackBar(message: string) {
+    this._snackBar.open(message, 'SUCCEEDED', { duration: 3000 });
+  }
 
 }
 function adresse(adresse: any): number {

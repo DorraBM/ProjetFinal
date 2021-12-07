@@ -102,6 +102,7 @@
             </label>
             <input type="text" formControlName="image" name="imageHotel" class="form-control" #image>
         </div>
+       
         <!--<div>
             <label> Galerie size:</label>
             <input type="number" formControlName="galerie" >
@@ -110,17 +111,18 @@
              </div>
         </div>-->
         
-        <!--<div formArrayName="galerie">
+    <div formArrayName="galerie">
             <label > Galerie</label>
             <div *ngFor="let g of laGalerie.controls;let i=index ">
-                <input type="text" [formControlName]="i" #images class="form-control">
+                <input type="text" [formControlName]="i" id="images[i]" name="laGalerie" class="form-control">
 
             </div>
 
         </div>
         <input type="button" value="Ajouter Une image au galerie" class="btn btn-secondary 
         btn-sm" (click)="onAjouterGalerie()"> <br> 
-      -->
+    
+
         <div class="text-center">
             <div>
                 <!--<button type="submit" (click)="onAjouter()" class="btn btn-success" [disabled]=f.invalid>-->
