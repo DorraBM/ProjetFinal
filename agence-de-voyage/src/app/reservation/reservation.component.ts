@@ -131,7 +131,21 @@ export class ReservationComponent implements OnInit {
     }
 
   }
-  
+  // dateArivee: [null],
+  //       nbNuits: [null],
+  //       nbChambres: [null],
+  //       nbAdultes: [null],
+  //       nbEnfants: [0],
+  //       pension: [null],
+  //       first_name: ['', [Validators.required, Validators.pattern('[A-Z][a-z]+')]],
+  //       last_name: ['', Validators.required],
+  //       email: ['', [Validators.required, , Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+  //       phone_number: [0, [Validators.required, Validators.pattern('[0-9]{8}')]],
+
+
+
+  //  this.reservationID = this.activatedRoute.snapshot.params['id'];
+  // console.log(this.reservationID);
 
 
   loadHotelDetails(productID) {
