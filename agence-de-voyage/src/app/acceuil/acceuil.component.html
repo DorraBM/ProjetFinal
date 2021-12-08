@@ -1,174 +1,208 @@
-<!--<app-navbar></app-navbar>-->
 <app-caroussel></app-caroussel>
-
-
-
-<div *ngIf="!authService.isloggedIn">
-    <h1>Discover our Hotels in Tunisie
-    </h1>
-    <h2> Find The Best Hotel</h2>
+<div *ngIf="authService.isloggedIn" class="mt-4">
 
 </div>
-<!-- search -->
-<div *ngIf="authService.isloggedIn"><br><br></div>
-<div class="mask">
-    <div class="d-flex flex-row">
-
-        <div class="input-group mb-5 ">
-            <div class="form-outline-sm ">
-                <input type="search" placeholder="votre destination" class="form-control w-1 p-3 h-3 mt-2" #input height="10px" />
-
-            </div><button type="button" class="btn btn-primary mw-8 search" (click)="search(input.value)">
-                <i class="fas fa-search "></i>
-            </button>
-
-
-
-        </div>
-    </div>
+<div class="input-group">
+    <input type="search" class="form-control rounded" placeholder="Found your destination" aria-label="Search"
+        aria-describedby="search-addon" class="form-control" #input style="height: 52px;" />
+    <button type="button" class="btn btn-outline-primary" (click)="search(input.value)"
+        style="height: 46px;">search</button>
 </div>
 
-<!-- se rchfin -->
 
-<div *ngIf="authService.isloggedIn">
-
-
-
+<!--Boutton ajouter  hotel-->
+<div *ngIf="authService.isloggedIn" >
     <div class="row">
-
         <div class="col-md-2 text-right">
-            <button type="button" mdbBtn class="relative waves-light btn btn-dark btn-sm" (click)="basicModal.show()" mdbWavesEffect>
+            <button type="button" mdbBtn color="primary" class="waves-light" (click)="basicModal.show()" mdbWavesEffect>
                 <i class="fa fa-plus"></i>
                 New Hotel</button>
+        </div>
+        <div class="col-md-10 text-right ">
+            <button type="button" mdbBtn color="primary" class="waves-light bouton" data-toggle="modal"
+                data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>
+                <i class="fa fa-plus"></i>
+                View Reservations</button>
         </div>
         <div class="col-md-12 text-center">
             <h1>List of Hotels</h1>
         </div>
     </div>
+</div>
 
-
+<!--List Reservation-->
+<div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-primary modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="dark-grey-text text-center modal-title w-100 couleur" id="myModalLabel">
+                    Reservation List
+                </h1>
+                <button type="button" class="close" data-dismiss="modal" mdbBtn color="primary" aria-label="Close"
+                    (click)="frame.hide()">
+                    <span aria-hidden="true" style="font-size: 20px;">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Client name</th>
+                            <th>Phone</th>
+                            <th>Hotel</th>
+                            <th>Arriv Date</th>
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let l of listReservation; index as i">
+                        <tr>
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{l.first_name}} {{l.last_name}}</td>
+                            <td>{{l.phone_number}}</td>
+                            <td></td>
+                            <td>{{l.dateArivee}}</td>
+                            <td></td>
+                            <td>
+                                <a (click)="SupprimerReservation(l.id)">
+                                    <mdb-icon fas icon="times"></mdb-icon>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--Ajouter Hotel-->
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-notify modal-primary " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <!--<button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-                    <span aria-hidden="true">Close</span>
-                </button>-->
+                <button type="button" class="close pull-right" mdbBtn color="primary" aria-label="Close"
+                    (click)="basicModal.hide()">
+                    <span aria-hidden="true" style="font-size: 20px;">×</span>
+                </button>
+
                 <h1 class="dark-grey-text text-center modal-title w-100 couleur" id="myModalLabel">
                     <span> Add new Hotel</span>
                 </h1>
             </div>
             <div class="modal-body">
-
                 <app-ajouter-hotel></app-ajouter-hotel>
-
-
             </div>
-
         </div>
     </div>
 </div>
-<br>
-<div class="row  " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
-    <div *ngIf="count==0"><img src="https://www.shbfinancialservices.com/images/nodatafound.png" alt="hi"></div>
-    <div class="col mb-4 " style="margin-left: 20px;" *ngFor=" let t of listHotel; let i=index;">
 
+<!--Hotels Cards-->
 
-
-        <div class="card  rounded-3 height " style="width: 25rem;">
+<div class="row px-3 justify-content-between " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
+    <div class="col-4 mb-4 "  *ngFor=" let t of listHotel; let i=index;">
+        <div class="card  rounded-3 height  mb-3" >
             <img class="card-img-top p-0 d-flex justify-content-center " [src]="t.image" alt="Card image cap">
-
             <div class="ribbons-wrapper" *ngIf="t.promotion">
                 <div class="ribbon">
-                    <span class="ribbon1"><span>Discount</span></span>
-
+                    <span class="ribbon1"><span>Discount {{t.pourcentage}}%</span></span>
                 </div>
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h5 class="card-title fw-bold fs-4 text-muted ff-oswald">{{t.nom|titlecase}}</h5>
+                    <h5 class="card-title fw-bold fs-5 text-muted ff-oswald" style="height: 50px;" >{{t.nom|titlecase}}</h5>
                     <ngb-rating id="star" [rate]="t.nbEtoiles">
                     </ngb-rating>
                 </div>
-                <p class="card-text fas fa-map-marker-alt">{{t.lieu|titlecase}}</p>
-                <br>
-                <div class="d-flex justify-content-between">
 
+                <p class="mb-3 card-text fas fa-map-marker-alt">{{t.lieu|titlecase}}</p>
+
+               
+                <div class="d-flex justify-content-between mb-2">
                     <div class="font-weight-bold">
-                        <span class="fw-bold fs-4 text-dark me-1 "> Price:</span>
-                        <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix}}</span>
-                        <span class="text-dark ms-1 fs-7 ">TND</span><br>
 
+
+                        <div [hidden]="!t.promotion">
+                            <span class="fw-bold fs-4 text-dark me-1 "> Price:</span>
+                            <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix-(t.prix*t.pourcentage/100)}}</span>
+                            <span class="text-dark ms-1 fs-7 ">TND</span>
+                            <br>
+                            <span class="fw-bold fs-5 ff-oswald text-dark"
+                                style="text-decoration:line-through; ">{{t.prix}}</span>
+                            <span class="text-dark ms-1 fs-7 ">TND</span>
+
+                        </div>
+                        <div [hidden]="t.promotion">
+                            <span class="fw-bold fs-4 text-dark me-1 "> Price:</span>
+                            <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix}}</span>
+                            <span class="text-dark ms-1 fs-7 ">TND</span>
+
+                        </div>
+                        <br>
+                    </div>
+                    <div *ngIf="!authService.isloggedIn" class="mb-3">
+                        <a class="btn btn-primary " (click)="getNavigation('detail', t.id)"> <i
+                                class="fas fa-info-circle"></i>Details</a>
                     </div>
 
-
-
-
-
-                    <div *ngIf="!authService.isloggedIn">
-                        <a class="btn btn-primary" (click)="getNavigation('detail', t.id)"> <i class="fas fa-info-circle"></i>Details</a>
-                    </div>
-
+                    <!--Page Admin-->
                     <div *ngIf="authService.isloggedIn">
+                        <!--Boutton details-->
                         <a class="btn btn-primary btn-sm" routerLink="/detail" (click)="getNavigation('detail', t.id)">
                             <i class="fas fa-info-circle"></i>
                         </a>
-
-                        <button type="button" mdbBtn class="relative waves-lightbtn btn-warning btn-sm" (click)="basicModal2.show()" mdbWavesEffect (click)="onModifier(t.id,t)">
+                        <!--Boutton Modifier-->
+                        <button type="button" mdbBtn class="relative waves-lightbtn btn-warning btn-sm"
+                            (click)="basicModal2.show()" mdbWavesEffect (click)="onModifier(t.id,t)">
 
                             <i class="fa fa-pencil"></i>
                         </button>
-
-                        <button type="button" mdbBtn class="waves-light btn btn-sm btn-danger" data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect> <i
+                        <!--Boutton Supprimer-->
+                        <button type="button" mdbBtn class="waves-light btn btn-sm btn-danger" data-toggle="modal"
+                            data-target="#basicExample" (click)="frame.show()" mdbWavesEffect> <i
                                 class="fa fa-trash"></i>
                         </button>
 
                         <!--Confirmer supprimer-->
-                        <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1"
+                            role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-sm modal-notify modal-primary" role="document">
-                                <!--Content-->
                                 <div class="modal-content text-center">
-                                    <!--Header-->
                                     <div class="modal-header d-flex justify-content-center">
                                         <p class="heading">Are you sure?</p>
                                     </div>
-
-                                    <!--Body-->
                                     <div class="modal-body">
                                         <mdb-icon fas icon="bell" size="4x" class="animated rotateIn"></mdb-icon>
                                     </div>
-
-                                    <!--Footer-->
                                     <div class="modal-footer justify-content-center">
-                                        <button mdbBtn color="primary" class="waves-effect" mdbWavesEffect (click)="onSupprimer(t.id)">Yes</button>
-                                        <a type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()" (click)="nePasSupprimer()">No</a>
+                                        <button mdbBtn color="primary" class="waves-effect" mdbWavesEffect
+                                            (click)="onSupprimer(t.id)">Yes</button>
+                                        <a type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect
+                                            data-dismiss="modal" (click)="frame.hide()"
+                                            (click)="nePasSupprimer()">No</a>
                                     </div>
                                 </div>
-                                <!--/.Content-->
                             </div>
                         </div>
-
-
                     </div>
-
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!--Modifier Hotel-->
-<div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" style="height: 520px;">
+<div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true" style="height: 520px;">
     <div class="modal-dialog modal-dialog-scrollable  modal-notify modal-primary xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <!--<button type="button" class="close pull-right submit"   mdbBtn color="indigo" mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()">
+                <button type="button" class="close pull-right submit" mdbBtn color="indigo" mdbWavesEffect
+                    aria-label="Close" (click)="basicModal2.hide()">
                     <span aria-hidden="true">Close</span>
-                </button>-->
+                </button>
                 <h1 class="dark-grey-text text-center modal-title w-100 couleur" id="myModalLabel">
                     <span> Modify Hotel</span>
                 </h1>
@@ -179,75 +213,107 @@
                         <label>
                             Hotel name:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control" #nom="ngModel">
-                        <div *ngIf="nom.errors?.required && nom.dirty" class="alert alert-danger">
+                        <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control"
+                            #nom="ngModel" required>
+                        <div *ngIf="nom.errors?.required && nom.touched" class="alert alert-danger">
                             Le nom d'hotel est obligatoire
                         </div>
-
                     </div>
                     <div>
                         <label>
                             Price:
                         </label>
-                        <input type="number" [(ngModel)]="newHotel.prix" name="prixHotel" class="form-control" #prix>
+                        <input type="number" [(ngModel)]="newHotel.prix" name="prixHotel" class="form-control"
+                            #prix="ngModel" required>
+                        <div *ngIf="prix.errors?.required && prix.touched" class="alert alert-danger">
+                            Le prix d'hotel est obligatoire
+                        </div>
                     </div>
                     <div>
                         <label>
                             Location:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.lieu" name="lieuHotel" class="form-control" #lieu>
+                        <input type="text" [(ngModel)]="newHotel.lieu" name="lieuHotel" class="form-control"
+                            #lieu="ngModel" required>
+                        <div *ngIf="lieu.errors?.required &&  lieu.touched" class="alert alert-danger">
+                            La localisation d'hotel est obligatoire
+                        </div>
                     </div>
                     <div>
                         <label>
                             Adresse:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.adresse" name="adresseHotel" class="form-control" #adresse>
+                        <input type="text" [(ngModel)]="newHotel.adresse" name="adresseHotel" class="form-control"
+                            #adresse="ngModel" required>
+                        <div *ngIf="adresse.errors?.required && adresse.touched" class="alert alert-danger">
+                            L'adresse d'hotel est obligatoire
+                        </div>
                     </div>
                     <div>
                         <label>
                             telephone:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.telephone" name="telephoneHotel" class="form-control" #telephone>
+                        <input type="text" [(ngModel)]="newHotel.telephone" name="telephoneHotel" class="form-control"
+                            #telephone="ngModel" pattern="[1-9][0-9]{7}" required>
+                        <div *ngIf="telephone.errors?.required && telephone.touched" class="alert alert-danger">
+                            Le numero de telephone d'hotel est obligatoire
+                        </div>
+                        <div *ngIf="telephone.errors?.pattern" class="alert alert-warning">
+                            Le numero de telephone doit avoir 8 chiffres
+                        </div>
                     </div>
                     <div>
                         <label>
                             Stars number:
                         </label>
-                        <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel" class="form-control" #nbEtoiles>
+                        <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel"
+                            class="form-control" pattern="[0-5]" #nbEtoiles="ngModel" required>
+                        <div *ngIf="nbEtoiles.errors?.required && nbEtoiles.touched " class="alert alert-danger">
+                            Le nombre d'etoiles est obligatoire
+                        </div>
+                        <div *ngIf="nbEtoiles.errors?.pattern" class="alert alert-warning">
+                            Le nombre d'etoiles doit être entre 0 et 5
+                        </div>
                     </div>
                     <div>
                         <label>
                             Discount:<input type="checkbox" name="promotion" [(ngModel)]="newHotel.promotion"
-                                value="promoHotel" checked>
+                                value="promoHotel">
                         </label>
-
+                    </div>
+                    <div [hidden]="!newHotel.promotion">
+                        <input type="number" [(ngModel)]="newHotel.pourcentage" class="form-control"
+                            pattern="[1-8][0-9]" #pourcentage="ngModel" name="pourcentage" value="pourcentage" required>
+                        <div *ngIf="pourcentage.errors?.required && pourcentage.touched " class="alert alert-danger">
+                            Le pourcentage est obligatoire
+                        </div>
+                        <div *ngIf="pourcentage.errors?.pattern && pourcentage.dirty" class="alert alert-warning">
+                            Le pourcentage est entre 10 et 89
+                        </div>
                     </div>
                     <div>
                         <label>
                             Internet:<input type="checkbox" name="internet" [(ngModel)]="newHotel.internet"
-                                value="promoHotel" checked #promotion>
+                                value="promoHotel" checked>
                         </label>
-
                     </div>
                     <div>
                         <label>
                             piscine:<input type="checkbox" name="piscine" [(ngModel)]="newHotel.piscine"
-                                value="promoHotel" checked #promotion>
+                                value="promoHotel" checked>
                         </label>
-
                     </div>
                     <div>
                         <label>
                             Parking:<input type="checkbox" name="parking" [(ngModel)]="newHotel.Parking"
-                                value="promoHotel" checked #promotion>
+                                value="promoHotel" checked>
                         </label>
-
                     </div>
                     <div>
                         <label>
                             Image:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.image" name="imageHotel" class="form-control" #image>
+                        <input type="text" [(ngModel)]="newHotel.image" name="imageHotel" class="form-control">
                     </div>
                     <div>
                         <label>
@@ -257,36 +323,28 @@
                             <input type="text" [(ngModel)]="t" name="imageHotel" class="form-control" [value]=t>
 
                         </div>-->
-                        <div *ngFor=" let g of galerie">
+                        <!--<div *ngFor=" let g of galerie">
                             <input type="text" [value]="galerie[0]" class="form-control">
+                        </div>-->
+                        <div *ngFor="let g of newHotel.images">
+                            
+                            <input type="text" [value]="g" name="" id="" style="width: 300px;">
+
                         </div>
+                        
+
 
                     </div>
-                    <div lass="text-center">
-
-
-                        <!--<div>
-                                <button (click)="upDate()" aria-label="Close" class="close submit bg-primary" (click)="basicModal2.hide()"
-                                    mdbBtn  mdbWavesEffect>
-                                    <span aria-hidden="true" class="couleur">Save Change</span></button>
-                                    
-                                    <button type="button" class="close pull-right submit"   mdbBtn color="indigo" mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()">
-                                        <span aria-hidden="true">Close</span>
-                                    </button>
-                           </div>-->
-                    </div>
-
                 </form>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" mdbBtn color="indigo" mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()" (click)="annuler()">Close</button>
-                    <button type="button" class="btn btn-primary" (click)="upDate()" aria-label="Close" (click)="basicModal2.hide()" mdbBtn mdbWavesEffect>Save Change</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" mdbBtn color="indigo"
+                        mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()"
+                        (click)="annuler()">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="upDate()" aria-label="Close"
+                        (click)="basicModal2.hide()" mdbBtn mdbWavesEffect>Save Change</button>
                 </div>
-
             </div>
 
         </div>
     </div>
 </div>
-
-<!--<app-footer></app-footer>-->
-<!-- nour -->

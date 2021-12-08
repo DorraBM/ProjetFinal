@@ -11,6 +11,7 @@ import { HotelsService } from 'src/service/hotels.service';
   styleUrls: ['./ajouter-hotel.component.css']
 })
 export class AjouterHotelComponent implements OnInit {
+  constructor(private hotelService: HotelsService, private fb: FormBuilder, private route: Router, private _snackBar: MatSnackBar ) { }
   newHotel = new Hotel(10, '', '', '', 0, 0, false, 0, "", 0, "", false, false, false, []);
   listHotel: Hotel[] = [];
   hotelForm: FormGroup = new FormGroup({});
@@ -35,13 +36,15 @@ export class AjouterHotelComponent implements OnInit {
   }
   onAjouterGalerie()
   {
-    this.laGalerie.push(this.hotelForm);
+    this.laGalerie.push(new FormControl());
   }
   onReset() {
     this.hotelForm.reset();
     this.laGalerie.clear();
   }
-  constructor(private hotelService: HotelsService, private fb: FormBuilder, private route: Router, private _snackBar: MatSnackBar ) { }
+ 
+
+
 
   ngOnInit(): void {
     this.hotelForm = this.fb.group({
@@ -57,27 +60,11 @@ export class AjouterHotelComponent implements OnInit {
       internet: [false],
       piscine: [false],
       Parking: [false],
-       images:this.fb.array([])
-
-
+      images:this.fb.array([])
     });
-
     this.hotelService.getHotels().subscribe(data => this.listHotel = data);
 
   }
-  discount() {
-    this.Discount = false;
-
-  }
-  isValidTel(): boolean {
-    return this.hotelForm.controls['telephone'].errors?.pattern
-
-  }
-  isValidEtoile(): boolean {
-    return this.hotelForm.controls['nbEtoiles'].errors?.pattern
-
-  }
- 
   public get laGalerie() {
     return this.hotelForm.get('images') as FormArray;
   }
@@ -108,6 +95,18 @@ export class AjouterHotelComponent implements OnInit {
   }
   SuccessSnackBar(message: string) {
     this._snackBar.open(message, 'SUCCEEDED', { duration: 3000 });
+  }
+  discount() {
+    this.Discount = false;
+
+  }
+  isValidTel(): boolean {
+    return this.hotelForm.controls['telephone'].errors?.pattern
+
+  }
+  isValidEtoile(): boolean {
+    return this.hotelForm.controls['nbEtoiles'].errors?.pattern
+
   }
 
 }
