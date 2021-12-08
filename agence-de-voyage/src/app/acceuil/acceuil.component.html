@@ -104,6 +104,7 @@
 <!--Hotels Cards-->
 
 <div class="row px-3 justify-content-between " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
+    <div *ngIf="count==0"><img src="https://www.shbfinancialservices.com/images/nodatafound.png" alt="hi"></div>
     <div class="col-4 mb-4 "  *ngFor=" let t of listHotel; let i=index;">
         <div class="card  rounded-3 height  mb-3" >
             <img class="card-img-top p-0 d-flex justify-content-center " [src]="t.image" alt="Card image cap">
