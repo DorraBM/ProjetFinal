@@ -35,6 +35,8 @@ export class AcceuilComponent implements OnInit {
   hotelData: Hotel;
   newHotel = new Hotel(10, '', '', '', 0, 0, true,0, "", 0, "", true, true, true, []);
   galerie: string[] = this.newHotel.images;
+  count:number;
+
 
   ngOnInit(): void {
     this.hotelID = this.route.snapshot.params['id'];
@@ -100,15 +102,21 @@ export class AcceuilComponent implements OnInit {
     this._snackBar.open(message, 'ERROR', { duration: 3000 });
   }
   search(a: string) {
-
+  
     if (a != "") 
+  
     {
       this.listHotel = this.allHotels.filter(hotel =>
         hotel.lieu.toLowerCase().includes(a.toLowerCase()));
+        this.count=this.listHotel.length;
+       
     }
-    else
+    else{
       this.listHotel = this.allHotels;
+      this.count=this.listHotel.length;
   }
+  console.log(this.count);
+}
 
   public get nom()
   {
