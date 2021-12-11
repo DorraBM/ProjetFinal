@@ -34,10 +34,7 @@ eye:boolean=true;
     this._snackBar.open(message, 'ERROR', { duration: 2000 });
   }
 
-
-  ngOnInit(): void {
-    console.log(this.motdepasse);
-  }
+  ngOnInit(): void { }
 
 eyes()
 {
@@ -46,8 +43,7 @@ eyes()
   {this.motdepasse="password";}
   else
   {this.motdepasse="text";}
-  console.log(this.motdepasse);
-  console.log(this.eye);
+  
   
 }
 }

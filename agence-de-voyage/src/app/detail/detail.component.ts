@@ -15,19 +15,12 @@ export class DetailComponent implements OnInit {
   hotelData: Hotel;
   ngOnInit(): void {
     this.hotelID = this.activeRoute.snapshot.params['id'];
-    
     this.loadHotelDetails(this.hotelID);
-    
   }
   constructor(public authService: AuthService, private hotelService: HotelsService, private route: Router, private activeRoute: ActivatedRoute) { }
   loadHotelDetails(productID) {
     this.hotelService.getProductDetails(productID).subscribe(data => {
-     
-      
-      this.hotelData = data;
-     
-     
+    this.hotelData = data;
     });
   }
-  
 }

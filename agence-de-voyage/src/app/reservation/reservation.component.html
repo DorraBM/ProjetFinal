@@ -1,85 +1,75 @@
 <form [formGroup]="reservationForm">
-
     <div [hidden]="visible">
-
         <div class="modal-body ">
             <div class="row mt-2 d-flex justify-content-center ">
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/hotel-check-in.png" /></label> <label>Arrival date:</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/hotel-check-in.png" /></label> <label>Arrival
+                        date:</label>
                     <div class="md-form md-outline input-with-post-icon datepicker">
                         <input placeholder="Select date" type="date" formControlName="dateArivee" class="form-control">
                     </div>
                 </div>
-
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/sleeping-in-bed.png"/></label> <label>Number of nights :</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/sleeping-in-bed.png" /></label> <label>Number
+                        of nights :</label>
                     <select class="form-select" formControlName="nbNuits">
-                    <option selected value="none"></option>
-                    <option *ngFor="let t of nbNuits " [value]="t">
-                    {{t}}
-                     </option>
+                        <option selected value="none"></option>
+                        <option *ngFor="let t of nbNuits " [value]="t">
+                            {{t}}
+                        </option>
                     </select>
                 </div>
-
             </div>
-
-
-
             <div class="row mt-2 d-flex justify-content-center ">
                 <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/interior.png"/></label> <label> Number of rooms :</label>
+                    <label><img src="https://img.icons8.com/ios/40/000000/interior.png" /></label> <label> Number of
+                        rooms :</label>
                     <select class="form-select" formControlName="nbChambres">
-                <option selected value="none"></option>
-                <option *ngFor="let t of nbChambres "  [value]="t">
-                    {{t}}
-                </option>
-                 </select>
-                </div>
-
-                <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/standing-man.png"/></label> <label>Adults number :</label>
-                    <select class="form-select" formControlName="nbAdultes">
-                <option selected value="none"></option>
-                <option *ngFor="let t of nbAdultes " [value]="t" id="nbAdultes">
-                    {{t}}
-                </option>
-                  </select>
-                </div>
-
-            </div>
-
-
-            <div class="row mt-2 d-flex justify-content-center ">
-                <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/baby.png"/></label> <label>Children number :</label>
-                    <select class="form-select" formControlName="nbEnfants">
-                <option selected value="none"></option>
-                <option *ngFor="let t of nbEnfants " [value]="t">
-                    {{t}}
-                </option>
-               </select>
-                </div>
-                <div class="col-md-6">
-                    <label><img src="https://img.icons8.com/ios/40/000000/food-bar.png" /></label> <label>Pension:</label>
-                    <select class="form-select" formControlName="pension">
-                    <option *ngFor="let t of pension index as i " [value]="t">
-                        {{t}}
-                    </option>
+                        <option selected value="none"></option>
+                        <option *ngFor="let t of nbChambres " [value]="t">
+                            {{t}}
+                        </option>
                     </select>
                 </div>
+                <div class="col-md-6">
+                    <label><img src="https://img.icons8.com/ios/40/000000/standing-man.png" /></label> <label>Adults
+                        number :</label>
+                    <select class="form-select" formControlName="nbAdultes">
+                        <option selected value="none"></option>
+                        <option *ngFor="let t of nbAdultes " [value]="t" id="nbAdultes">
+                            {{t}}
+                        </option>
+                    </select>
+                </div>
+            </div>
 
+
+            <div class="row mt-2 d-flex justify-content-center ">
+                <div class="col-md-6">
+                    <label><img src="https://img.icons8.com/ios/40/000000/baby.png" /></label> <label>Children number
+                        :</label>
+                    <select class="form-select" formControlName="nbEnfants">
+                        <option selected value="none"></option>
+                        <option *ngFor="let t of nbEnfants " [value]="t">
+                            {{t}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label><img src="https://img.icons8.com/ios/40/000000/food-bar.png" /></label>
+                    <label>Pension:</label>
+                    <select class="form-select" formControlName="pension">
+                        <option *ngFor="let t of pension index as i " [value]="t">
+                            {{t}}
+                        </option>
+                    </select>
+                </div>
             </div>
 
             <div class="row mt-2 d-flex justify-content-center ">
-
-
                 <button class="btn btn-primary " (click)="calculerPRIX()">
-                        tarifs
-                   
-                   
-                    </button>
-
-
+                    tarifs
+                </button>
             </div>
 
             <div class="modal-footer d-flex justify-content-center ">
@@ -88,10 +78,9 @@
                     <span>Prix total :{{prixTotal}} dt</span>
                     <br>
                     <div class=" d-flex justify-content-center"> <button class="btn btn-primary " (click)=" hiddenT()">
-                        reserver
+                            reserver
                         </button>
                     </div>
-
                 </div>
             </div>
 
@@ -100,7 +89,6 @@
     </div>
     <!-- model de cart  -->
     <div [hidden]="hidden">
-
         <h3 class="text-center pink-text font-bold py-4"><strong></strong></h3>
         <div class="md-form">
             <i> <img src="https://img.icons8.com/ios/32/000000/name--v1.png" /></i> <label> first name</label>
@@ -146,15 +134,9 @@
         <!--Footer-->
         <div class="modal-footer">
             <div class="text-center py-4">
-                <button type="submit" (click)="reserver()" class=" btn btn-outline-pink ">confirm reservation<i class="fa fa-paper-plane-o ml-1 "></i></button>
+                <button type="submit" (click)="reserver()" class=" btn btn-outline-pink ">confirm reservation<i
+                        class="fa fa-paper-plane-o ml-1 "></i></button>
             </div>
         </div>
-
-
     </div>
-    <!-- <div [hidden]="!reservationForm.submitted ">
-        <div [hidden]="!reservationForm.submitted ">
-            Votre nouveau produit a bien été ajouté
-        </div>
-    </div> -->
 </form>

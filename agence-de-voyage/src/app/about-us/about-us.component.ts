@@ -10,22 +10,13 @@ export class AboutUsComponent implements OnInit {
   team:boolean=true;
   constructor() { }
   Afficherlocal()
-  {this.local=false;
-
-  }
+  {this.local=false; }
   Cacherlocal()
-  {
-    this.local=true;
-  }
+  {this.local=true; }
   Afficherteam()
-  {this.team=false;
-
-  }
+  {this.team=false;}
   Cacherteam()
-  {
-    this.team=true;
-  }
-
+  {this.team=true; }
   ngOnInit(): void {
   }
 

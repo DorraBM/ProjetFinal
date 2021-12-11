@@ -89,16 +89,10 @@ export class ReservationComponent implements OnInit {
         last_name: ['', Validators.required],
         email: ['', [Validators.required, , Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         phone_number: [0, [Validators.required, Validators.pattern('[0-9]{8}')]],
-
-
       }
     )
-
-
     this.hotelID = this.activatedRoute.snapshot.params['id'];
-
     this.loadHotelDetails(this.hotelID);
-
   }
   retourAcceuil() {
     this.route.navigate(['/acceuil']);
@@ -106,15 +100,11 @@ export class ReservationComponent implements OnInit {
   }
 
   reset() {
-    this.reservationForm.reset({
-
-    });
+    this.reservationForm.reset();
   }
 
 
-
   reserver() {
-
     if (this.reservationForm.value['first_name'] == ' ' || this.reservationForm.value['lastt_name'] == ' '
       || this.reservationForm.value['email'] == ' ' || this.reservationForm.value['phone_number'] == 0) { this.ErrorSnackBar("please fill all the fiels"); }
     else {
@@ -129,33 +119,12 @@ export class ReservationComponent implements OnInit {
           this.retourAcceuil();
         });
     }
-
   }
-  // dateArivee: [null],
-  //       nbNuits: [null],
-  //       nbChambres: [null],
-  //       nbAdultes: [null],
-  //       nbEnfants: [0],
-  //       pension: [null],
-  //       first_name: ['', [Validators.required, Validators.pattern('[A-Z][a-z]+')]],
-  //       last_name: ['', Validators.required],
-  //       email: ['', [Validators.required, , Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-  //       phone_number: [0, [Validators.required, Validators.pattern('[0-9]{8}')]],
-
-
-
-  //  this.reservationID = this.activatedRoute.snapshot.params['id'];
-  // console.log(this.reservationID);
-
 
   loadHotelDetails(productID) {
     this.hotelsService.getProductDetails(productID).subscribe(data => {
-
-
       this.hotelData = data;
-      console.log(this.hotelData.prix)
-
-
+      //console.log(this.hotelData.prix)
     });
   }
 
