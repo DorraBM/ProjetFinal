@@ -30,16 +30,20 @@ export class ContactComponent implements OnInit {
   onSubmit(): void {
     this.data['name'] = this.form.get("name")?.value;
     this.data['email'] = this.form.get("email")?.value;
-
-    this.data['message'] = this.form.get("message")?.value;
-
+    //this.data['message'] = this.form.get("message")?.value;
 
 
-    if (this.data['name'] == '' || this.data['email'] == '' || this.data['message'] == '') {
+
+    if (this.data['name'] == '' || this.data['email'] == '' || this.data['message'] == '') 
+    {
       this.responseMessage = 'Veillez remplir tous les champs';
-    } else if (!this.data['email'].match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
+    } else 
+    if (!this.data['email'].match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/))
+     {
       this.responseMessage = 'Veillez saisir une adresse valide';
-    } else {
+    } 
+    else 
+    {
       this.http.put<any>("YOUR GOOGLE WEB APP URL HERE", this.data).subscribe(
         res => {
           console.log(res);

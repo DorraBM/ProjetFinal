@@ -1,17 +1,12 @@
 <app-caroussel></app-caroussel>
-<!--Dorrrrraaaa-->
-<!--nawi ijik hedha wela mazel i7eblou-->
-<!-- nourrrrrr houdaaaaaa  -->
 <div *ngIf="authService.isloggedIn" class="mt-4">
-
 </div>
 <div class="input-group">
     <input type="search" class="form-control rounded" placeholder="Found your destination" aria-label="Search" aria-describedby="search-addon" class="form-control" #input style="height: 52px;" />
     <button type="button" class="btn btn-outline-primary" (click)="search(input.value)" style="height: 46px;">search</button>
 </div>
 
-<!--reservationnnnn-->
-<!--Boutton ajouter  hotel-->
+<!--Boutton ajouter hotel-->
 <div *ngIf="authService.isloggedIn">
     <div class="row">
         <div class="col-md-2 text-right">
@@ -62,9 +57,9 @@
                             <th scope="row">{{i+1}}</th>
                             <td>{{l.first_name}} {{l.last_name}}</td>
                             <td>{{l.phone_number}}</td>
-                            <td></td>
+                            <td>{{l.nomHotel}}</td>
                             <td>{{l.dateArivee}}</td>
-                            <td></td>
+                            <td>{{l.prixTotal}}</td>
                             <td>
                                 <a (click)="SupprimerReservation(l.id)">
                                     <mdb-icon fas icon="times"></mdb-icon>
@@ -77,7 +72,6 @@
         </div>
     </div>
 </div>
-
 <!--Ajouter Hotel-->
 <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-notify modal-primary " role="document">
@@ -86,7 +80,6 @@
                 <button type="button" class="close pull-right" mdbBtn color="primary" aria-label="Close" (click)="basicModal.hide()">
                     <span aria-hidden="true" style="font-size: 20px;">×</span>
                 </button>
-
                 <h1 class="dark-grey-text text-center modal-title w-100 couleur" id="myModalLabel">
                     <span> Add new Hotel</span>
                 </h1>
@@ -97,9 +90,7 @@
         </div>
     </div>
 </div>
-
 <!--Hotels Cards-->
-
 <div class="row px-3 justify-content-between " id="a" data-mdb-toggle="animation" data-mdb-animation="pulse">
     <div *ngIf="count==0"><img src="https://www.shbfinancialservices.com/images/nodatafound.png" alt="hi"></div>
     <div class="col-4 mb-4 " *ngFor=" let t of listHotel; let i=index;">
@@ -112,37 +103,36 @@
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h5 class="card-title fw-bold fs-5 text-muted ff-oswald" style="height: 50px;">{{t.nom|titlecase}}</h5>
+                    <h5 class="card-title fw-bold fs-5 text-muted ff-oswald" style="height: 50px;">{{t.nom|titlecase}}
+                    </h5>
                     <ngb-rating id="star" [rate]="t.nbEtoiles">
                     </ngb-rating>
                 </div>
-
                 <p class="mb-3 card-text fas fa-map-marker-alt">{{t.lieu|titlecase}}</p>
-
-
-                <div class="d-flex justify-content-between mb-2">
+                <div class="d-flex justify-content-between ">
                     <div class="font-weight-bold">
-
-
                         <div [hidden]="!t.promotion">
                             <span class="fw-bold fs-4 text-dark me-1 "> Price:</span>
-                            <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix -(t.prix * t.pourcentage/100)}}</span>
+                            <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix -(t.prix *
+                                t.pourcentage/100)}}</span>
                             <span class="text-dark ms-1 fs-7 ">TND</span>
                             <br>
                             <span class="fw-bold fs-5 ff-oswald text-dark" style="text-decoration:line-through; ">{{t.prix}}</span>
                             <span class="text-dark ms-1 fs-7 ">TND</span>
-
                         </div>
                         <div [hidden]="t.promotion">
                             <span class="fw-bold fs-4 text-dark me-1 "> Price:</span>
                             <span class="fw-bold fs-5 ff-oswald text-dark">{{t.prix}}</span>
                             <span class="text-dark ms-1 fs-7 ">TND</span>
-
+                            <<<<<<< HEAD=======>>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
                         </div>
                         <br>
                     </div>
                     <div *ngIf="!authService.isloggedIn" class="mb-3">
-                        <a class="btn btn-primary " (click)="getNavigation('detail', t.id)"> <i class="fas fa-info-circle"></i>Details</a>
+                        <<<<<<< HEAD <a class="btn btn-primary " (click)="getNavigation('detail', t.id)"> <i class="fas fa-info-circle"></i>Details</a>
+                            =======
+                            <a class="btn btn-primary " (click)="getNavigation('detail', t.id)"> <i class="fas fa-info-circle"></i>Details</a>
+                            >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
                     </div>
 
                     <!--Page Admin-->
@@ -152,32 +142,41 @@
                             <i class="fas fa-info-circle"></i>
                         </a>
                         <!--Boutton Modifier-->
-                        <button type="button" mdbBtn class="relative waves-lightbtn btn-warning btn-sm" (click)="basicModal2.show()" mdbWavesEffect (click)="onModifier(t.id,t)">
+                        <<<<<<< HEAD <button type="button" mdbBtn class="relative waves-lightbtn btn-warning btn-sm" (click)="basicModal2.show()" mdbWavesEffect (click)="onModifier(t.id,t)">
+                            =======
+                            <button type="button" mdbBtn class="relative waves-lightbtn btn-warning btn-sm" (click)="basicModal2.show()" mdbWavesEffect (click)="onModifier(t.id,t)">
+
 
                             <i class="fa fa-pencil"></i>
                         </button>
-                        <!--Boutton Supprimer-->
-                        <button type="button" mdbBtn class="waves-light btn btn-sm btn-danger" data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect> <i
+                            <!--Boutton Supprimer-->
+                            <<<<<<< HEAD <button type="button" mdbBtn class="waves-light btn btn-sm btn-danger" data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>
+                                <i=======< button type="button" mdbBtn class="waves-light btn btn-sm btn-danger" data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect> <i>>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
                                 class="fa fa-trash"></i>
-                        </button>
+                                    </button>
 
-                        <!--Confirmer supprimer-->
-                        <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-sm modal-notify modal-primary" role="document">
-                                <div class="modal-content text-center">
-                                    <div class="modal-header d-flex justify-content-center">
-                                        <p class="heading">Are you sure?</p>
-                                    </div>
-                                    <div class="modal-body">
-                                        <mdb-icon fas icon="bell" size="4x" class="animated rotateIn"></mdb-icon>
-                                    </div>
-                                    <div class="modal-footer justify-content-center">
-                                        <button mdbBtn color="primary" class="waves-effect" mdbWavesEffect (click)="onSupprimer(t.id)">Yes</button>
-                                        <a type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()" (click)="nePasSupprimer()">No</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <!--Confirmer supprimer-->
+                                    <<<<<<< HEAD <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        =======
+                                        <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+                                            <div class="modal-dialog modal-sm modal-notify modal-primary" role="document">
+                                                <div class="modal-content text-center">
+                                                    <div class="modal-header d-flex justify-content-center">
+                                                        <p class="heading">Are you sure?</p>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <mdb-icon fas icon="bell" size="4x" class="animated rotateIn"></mdb-icon>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <<<<<<< HEAD <button mdbBtn color="primary" class="waves-effect" mdbWavesEffect (click)="onSupprimer(t.id)">Yes</button>
+                                                            <a type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()" (click)="nePasSupprimer()">No</a> =======
+                                                            <button mdbBtn color="primary" class="waves-effect" mdbWavesEffect (click)="onSupprimer(t.id)">Yes</button>
+                                                            <a type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()" (click)="nePasSupprimer()">No</a> >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
             </div>
@@ -185,7 +184,7 @@
     </div>
 </div>
 <!--Modifier Hotel-->
-<div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" style="height: 520px;">
+<<<<<<< HEAD <div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" style="height: 520px;">
     <div class="modal-dialog modal-dialog-scrollable  modal-notify modal-primary xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -202,61 +201,80 @@
                         <label>
                             Hotel name:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control" #nom="ngModel" required>
-                        <div *ngIf="nom.errors?.required && nom.touched" class="alert alert-danger">
-                            Le nom d'hotel est obligatoire
-                        </div>
+                        <<<<<<< HEAD <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control" #nom="ngModel" required>
+                            =======
+                            <input type="text" [(ngModel)]="newHotel.nom" name="nomHotel" class="form-control" #nom="ngModel" required> >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+                            <div *ngIf="nom.errors?.required && nom.touched" class="alert alert-danger">
+                                Le nom d'hotel est obligatoire
+                            </div>
                     </div>
                     <div>
                         <label>
                             Price:
                         </label>
-                        <input type="number" [(ngModel)]="newHotel.prix" name="prixHotel" class="form-control" #prix="ngModel" required>
-                        <div *ngIf="prix.errors?.required && prix.touched" class="alert alert-danger">
-                            Le prix d'hotel est obligatoire
-                        </div>
+                        <<<<<<< HEAD <input type="number" [(ngModel)]="newHotel.prix" name="prixHotel" class="form-control" #prix="ngModel" required>
+                            =======
+                            <input type="number" [(ngModel)]="newHotel.prix" name="prixHotel" class="form-control" #prix="ngModel" required> >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+                            <div *ngIf="prix.errors?.required && prix.touched" class="alert alert-danger">
+                                Le prix d'hotel est obligatoire
+                            </div>
                     </div>
                     <div>
                         <label>
                             Location:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.lieu" name="lieuHotel" class="form-control" #lieu="ngModel" required>
-                        <div *ngIf="lieu.errors?.required &&  lieu.touched" class="alert alert-danger">
-                            La localisation d'hotel est obligatoire
-                        </div>
+                        <<<<<<< HEAD <input type="text" [(ngModel)]="newHotel.lieu" name="lieuHotel" class="form-control" #lieu="ngModel" required>
+                            =======
+                            <input type="text" [(ngModel)]="newHotel.lieu" name="lieuHotel" class="form-control" #lieu="ngModel" required> >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+                            <div *ngIf="lieu.errors?.required &&  lieu.touched" class="alert alert-danger">
+                                La localisation d'hotel est obligatoire
+                            </div>
                     </div>
                     <div>
                         <label>
                             Adresse:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.adresse" name="adresseHotel" class="form-control" #adresse="ngModel" required>
-                        <div *ngIf="adresse.errors?.required && adresse.touched" class="alert alert-danger">
-                            L'adresse d'hotel est obligatoire
-                        </div>
+                        <<<<<<< HEAD <input type="text" [(ngModel)]="newHotel.adresse" name="adresseHotel" class="form-control" #adresse="ngModel" required>
+                            =======
+                            <input type="text" [(ngModel)]="newHotel.adresse" name="adresseHotel" class="form-control" #adresse="ngModel" required> >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+                            <div *ngIf="adresse.errors?.required && adresse.touched" class="alert alert-danger">
+                                L'adresse d'hotel est obligatoire
+                            </div>
                     </div>
                     <div>
                         <label>
                             telephone:
                         </label>
-                        <input type="text" [(ngModel)]="newHotel.telephone" name="telephoneHotel" class="form-control" #telephone="ngModel" pattern="[1-9][0-9]{7}" required>
-                        <div *ngIf="telephone.errors?.required && telephone.touched" class="alert alert-danger">
-                            Le numero de telephone d'hotel est obligatoire
-                        </div>
-                        <div *ngIf="telephone.errors?.pattern" class="alert alert-warning">
-                            Le numero de telephone doit avoir 8 chiffres
-                        </div>
+                        <<<<<<< HEAD <input type="text" [(ngModel)]="newHotel.telephone" name="telephoneHotel" class="form-control" #telephone="ngModel" pattern="[1-9][0-9]{7}" required>
+                            <div *ngIf="telephone.errors?.required && telephone.touched" class="alert alert-danger">
+                                Le numero de telephone d'hotel est obligatoire
+                            </div>
+                            <div *ngIf="telephone.errors?.pattern" class="alert alert-warning">
+                                Le numero de telephone doit avoir 8 chiffres
+                            </div>
+                            =======
+                            <input type="text" [(ngModel)]="newHotel.telephone" name="telephoneHotel" class="form-control" #telephone="ngModel" pattern="[1-9][0-9]{7}" required>
+                            <div *ngIf="telephone.errors?.required && telephone.touched" class="alert alert-danger">
+                                Le numero de telephone d'hotel est obligatoire
+                            </div>
+                            <div *ngIf="telephone.errors?.pattern" class="alert alert-warning">
+                                Le numero de telephone doit avoir 8 chiffres
+                            </div>
+                            >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
                     </div>
                     <div>
                         <label>
                             Stars number:
                         </label>
-                        <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel" class="form-control" pattern="[0-5]" #nbEtoiles="ngModel" required>
-                        <div *ngIf="nbEtoiles.errors?.required && nbEtoiles.touched " class="alert alert-danger">
-                            Le nombre d'etoiles est obligatoire
-                        </div>
-                        <div *ngIf="nbEtoiles.errors?.pattern" class="alert alert-warning">
-                            Le nombre d'etoiles doit être entre 0 et 5
-                        </div>
+                        <<<<<<< HEAD <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel" class="form-control" pattern="[0-5]" #nbEtoiles="ngModel" required>
+                            =======
+                            <input type="number" max="5" [(ngModel)]="newHotel.nbEtoiles" name="nbEtoilesHotel" class="form-control" pattern="[0-5]" #nbEtoiles="ngModel" required> >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+                            <div *ngIf="nbEtoiles.errors?.required && nbEtoiles.touched " class="alert alert-danger">
+                                Le nombre d'etoiles est obligatoire
+                            </div>
+                            <div *ngIf="nbEtoiles.errors?.pattern" class="alert alert-warning">
+                                Le nombre d'etoiles doit être entre 0 et 5
+                            </div>
                     </div>
                     <div>
                         <label>
@@ -265,13 +283,15 @@
                         </label>
                     </div>
                     <div [hidden]="!newHotel.promotion">
-                        <input type="number" [(ngModel)]="newHotel.pourcentage" class="form-control" pattern="[1-8][0-9]" #pourcentage="ngModel" name="pourcentage" value="pourcentage" required>
-                        <div *ngIf="pourcentage.errors?.required && pourcentage.touched " class="alert alert-danger">
-                            Le pourcentage est obligatoire
-                        </div>
-                        <div *ngIf="pourcentage.errors?.pattern && pourcentage.dirty" class="alert alert-warning">
-                            Le pourcentage est entre 10 et 89
-                        </div>
+                        <<<<<<< HEAD <input type="number" [(ngModel)]="newHotel.pourcentage" class="form-control" pattern="[1-8][0-9]" #pourcentage="ngModel" name="pourcentage" value="pourcentage" required>
+                            =======
+                            <input type="number" [(ngModel)]="newHotel.pourcentage" class="form-control" pattern="[1-8][0-9]" #pourcentage="ngModel" name="pourcentage" value="pourcentage" required> >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+                            <div *ngIf="pourcentage.errors?.required && pourcentage.touched " class="alert alert-danger">
+                                Le pourcentage est obligatoire
+                            </div>
+                            <div *ngIf="pourcentage.errors?.pattern && pourcentage.dirty" class="alert alert-warning">
+                                Le pourcentage est entre 10 et 89
+                            </div>
                     </div>
                     <div>
                         <label>
@@ -301,29 +321,41 @@
                         <label>
                             Image Galerie:
                         </label>
-                        <!--<div *ngFor=" let t of newHotel.image">
+                        <<<<<<< HEAD <!--<div *ngFor=" let t of newHotel.image">
                             <input type="text" [(ngModel)]="t" name="imageHotel" class="form-control" [value]=t>
 
-                        </div>-->
-                        <!--<div *ngFor=" let g of galerie">
+                    </div>-->
+                    <!--<div *ngFor=" let g of galerie">
                             <input type="text" [value]="galerie[0]" class="form-control">
                         </div>-->
-                        <div *ngFor="let g of newHotel.images">
+                    <div *ngFor="let g of newHotel.images">
 
-                            <input type="text" [value]="g" name="" id="" style="width: 300px;">
-
-                        </div>
-
-
+                        <input type="text" [value]="g" name="" id="" style="width: 300px;">
 
                     </div>
-                </form>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" mdbBtn color="indigo" mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()" (click)="annuler()">Close</button>
-                    <button type="button" class="btn btn-primary" (click)="upDate()" aria-label="Close" (click)="basicModal2.hide()" mdbBtn mdbWavesEffect>Save Change</button>
+
+
+
+            </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" mdbBtn color="indigo" mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()" (click)="annuler()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="upDate()" aria-label="Close" (click)="basicModal2.hide()" mdbBtn mdbWavesEffect>Save Change</button> =======
+                <div *ngFor="let g of newHotel.images;let i = index">
+
+                    <input type="text" [value]="g" name="" id="" style="width: 300px;" class="form-control" name="images[i]">
+                    <a (click)="SupprimerImage(i)">
+                        <mdb-icon fas icon="times"></mdb-icon>
+                    </a>
                 </div>
             </div>
-
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" mdbBtn color="indigo" mdbWavesEffect aria-label="Close" (click)="basicModal2.hide()" (click)="annuler()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="upDate()" aria-label="Close" (click)="basicModal2.hide()" mdbBtn mdbWavesEffect>Save Change</button> >>>>>>> 2848b9fc1d19124f09534186d400e12d494e029d
+            </div>
         </div>
+
     </div>
-</div>
+    </div>
+    </div>

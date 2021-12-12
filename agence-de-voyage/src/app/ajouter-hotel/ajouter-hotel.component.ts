@@ -23,29 +23,28 @@ export class AjouterHotelComponent implements OnInit {
     return new Array(i);
   }
   onAjouter() {
-    this.hotelService.ajouterHotel(this.hotelForm.value).subscribe(data => {
+    this.hotelService.ajouterHotel(this.hotelForm.value).subscribe(
+      data => 
+      { 
       console.log(data);
-      //this.hotelForm.value.push(data);
+     this.hotelForm.value.push(data);
+      // console.log(this.images);
       this.SuccessSnackBar("The new Hotel is added");
       this.hotelForm.reset();
-      this.laGalerie.clear();
-     
-    }
+      this.images.clear();
+     }
     );
 
   }
   onAjouterGalerie()
   {
-    this.laGalerie.push(new FormControl());
+    this.images.push(this.fb.control(''));
   }
-  onReset() {
+  onReset() 
+  {
     this.hotelForm.reset();
-    this.laGalerie.clear();
+    this.images.clear();
   }
- 
-
-
-
   ngOnInit(): void {
     this.hotelForm = this.fb.group({
       nom: ['', Validators.required],
@@ -60,15 +59,13 @@ export class AjouterHotelComponent implements OnInit {
       internet: [false],
       piscine: [false],
       Parking: [false],
-      images:this.fb.array([])
+      images:this.fb.array([''])
     });
     this.hotelService.getHotels().subscribe(data => this.listHotel = data);
-
-  }
-  public get laGalerie() {
+  } 
+  public get images() {
     return this.hotelForm.get('images') as FormArray;
   }
-
   public get nom() {
     return this.hotelForm.get('nom');
   }
@@ -98,21 +95,12 @@ export class AjouterHotelComponent implements OnInit {
   }
   discount() {
     this.Discount = false;
-
   }
   isValidTel(): boolean {
     return this.hotelForm.controls['telephone'].errors?.pattern
-
   }
   isValidEtoile(): boolean {
     return this.hotelForm.controls['nbEtoiles'].errors?.pattern
-
   }
-
-}
-function adresse(adresse: any): number {
-  throw new Error('Function not implemented.');
-
-
 
 }

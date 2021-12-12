@@ -18,9 +18,6 @@ import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { ErrorComponent } from './error/error.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
-
-
 import { TelephonePipe } from '../pipe/telephone.pipe';
 import { ReservationComponent } from './reservation/reservation.component';
 
@@ -37,8 +34,6 @@ import { ReservationComponent } from './reservation/reservation.component';
     FooterComponent,
     ContactComponent,
     ErrorComponent,
-  
-   
     TelephonePipe,
     ReservationComponent,
    

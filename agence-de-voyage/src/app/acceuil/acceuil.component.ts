@@ -34,7 +34,7 @@ export class AcceuilComponent implements OnInit {
   hotelID: any;
   hotelData: Hotel;
   newHotel = new Hotel(10, '', '', '', 0, 0, true,0, "", 0, "", true, true, true, []);
-  galerie: string[] = this.newHotel.images;
+  images: string[] = this.newHotel.images;
   count:number;
 
 
@@ -44,30 +44,37 @@ export class AcceuilComponent implements OnInit {
     this.hotelService.getHotels().subscribe(data => this.listHotel = data);
     this.hotelService.getHotels().subscribe(data => this.allHotels = data);
     this.hotelService.getReservations().subscribe(data=>{this.listReservation=data;
-    console.log("list"+data)});
-    console.log("reservations"+this.listReservation);
+    //console.log("list"+data)
+  });
+   // console.log("reservations"+this.listReservation);
+    //console.log(this.listHotel);
   }
-  loadHotelDetails(productID) {
+  loadHotelDetails(productID): void {
     this.hotelService.getProductDetails(productID).subscribe(data => {
-
-
       this.hotelData = data;
-
-
     });
   }
-  getNavigation(link, id) {
-    if (id === '') {
+  getNavigation(link: string,id: number) {
+    /*if (id === '') {
       this.router.navigate([link]);
     } else {
       this.router.navigate([link + '/' + id]);
-    }
+    }*/
+    
+      this.router.navigate([link + '/' + id]);
+    
+
   }
   onSupprimer(id: number) {
     this.hotelService.supprimerHotel(id).subscribe(data => {
       this.listHotel = this.listHotel.filter(elet => elet.id != id);
       this.SuccessSnackBar("Hotel Deleted");
     });
+  }
+
+  SupprimerImage(i:number)
+  {
+
   }
   nePasSupprimer() {
     this.SuccessSnackBar("Hotel is not Deleted");
@@ -76,25 +83,23 @@ export class AcceuilComponent implements OnInit {
   onModifier(id: number, t: Hotel) {
     let p = Object.assign({}, t)
     this.newHotel = p;
-    console.log("listHotel:" + this.listHotel);
+    //console.log("listHotel:" + this.listHotel);
 
 
   }
   upDate()
    {
     this.hotelService.modifierHotel(this.newHotel.id, this.newHotel).subscribe(data =>
-      {
+      { 
         this.SuccessSnackBar("Hotel Modified");
-        console.log("listHotel:" + data)
+        //console.log("listHotel:" + data)
       }
     );
   }
   annuler()
    {
     this.SuccessSnackBar("Hotel is not Modified");
-
   }
-
   SuccessSnackBar(message: string) {
     this._snackBar.open(message, 'SUCCEEDED', { duration: 3000 });
   }
@@ -102,22 +107,35 @@ export class AcceuilComponent implements OnInit {
     this._snackBar.open(message, 'ERROR', { duration: 3000 });
   }
   search(a: string) {
-  
     if (a != "") 
-  
-    {
-      this.listHotel = this.allHotels.filter(hotel =>
+    {this.listHotel = this.allHotels.filter(hotel =>
         hotel.lieu.toLowerCase().includes(a.toLowerCase()));
-        this.count=this.listHotel.length;
-       
+        this.count=this.listHotel.length; 
     }
     else{
       this.listHotel = this.allHotels;
       this.count=this.listHotel.length;
   }
-  console.log(this.count);
 }
+isValidTel():boolean
+{ return this.hotelForm.controls['telephone'].errors?.pattern('[1-9][0-9]{7}')
 
+}
+isValidEtoile():boolean
+{ return this.hotelForm.controls['nbEtoiles'].errors?.pattern('[0-5]')
+
+}
+SupprimerReservation(id:number)
+{
+  this.hotelService.supprimerReservation(id).subscribe(data => {
+    this.listReservation = this.listReservation.filter(elet => elet.id != id);
+    this.SuccessSnackBar("Reservation Deleted");
+  });
+}
+/*public get images()
+{
+  return this.hotelForm.get('images');
+}
   public get nom()
   {
     return this.hotelForm.get('nom');
@@ -149,22 +167,8 @@ export class AcceuilComponent implements OnInit {
   public get pourcentage()
   {
     return this.hotelForm.get('pourcentage');
-  }
-  isValidTel():boolean
-  { return this.hotelForm.controls['telephone'].errors?.pattern('[1-9][0-9]{7}')
+  }*/
 
-  }
-  isValidEtoile():boolean
-  { return this.hotelForm.controls['nbEtoiles'].errors?.pattern('[0-5]')
-
-  }
-  SupprimerReservation(id:number)
-  {
-    this.hotelService.supprimerReservation(id).subscribe(data => {
-      this.listReservation = this.listReservation.filter(elet => elet.id != id);
-      this.SuccessSnackBar("Reservation Deleted");
-    });
-  }
-
+  
 
 }

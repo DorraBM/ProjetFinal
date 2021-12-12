@@ -1,33 +1,21 @@
-<!--<app-navbar></app-navbar>-->
 <div class="d-flex justify-content-center decalage ">
     <div class="card design" style="width: 50rem;">
         <div>
-            <!-- <div class=" d-flex justify-content-center"> -->
-
-
             <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-
-
                 <mdb-carousel-item *ngFor=" let t of hotelData.images">
-
                     <div class="view w-100 ">
                         <img class="d-block w-100 " [src]=t alt=" First slide ">
                         <div class="mask rgba-black-light waves-light " mdbWavesEffect></div>
                     </div>
-
                 </mdb-carousel-item>
 
 
             </mdb-carousel>
-            <!-- <img src="https://image.resabooking.com/images/image_panoramique/Hasdrubal_Prestige_Thalassa_et_Spa_2.jpg " style=" width:100vw; "></div> -->
             <div class="card-body ">
                 <h1 class="card-title ">{{hotelData.nom}}</h1>
-
-
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item "><strong>Description :</strong><br> {{hotelData.description}}
                     </li>
-
                     <li class="list-group-item " *ngIf="hotelData.promotion"><img src="https://img.icons8.com/dotty/30/000000/money-bag.png " /><strong>Prix:</strong> {{hotelData.prix-(hotelData.prix*hotelData.pourcentage/100)}}
                     </li>
                     <li class="list-group-item " *ngIf="!hotelData.promotion"><img src="https://img.icons8.com/dotty/30/000000/money-bag.png " /><strong>Prix:</strong> {{hotelData.prix}}
@@ -35,7 +23,8 @@
                     <li class="list-group-item "><img src="https://img.icons8.com/ios/30/000000/visit.png " />
                         <strong>Adresse:</strong> {{hotelData.adresse}}
                     </li>
-                    <li class="list-group-item "> <img src="https://img.icons8.com/ios/30/000000/phone-not-being-used.png " /><strong>  Phone Number:</strong>{{hotelData.telephone|telephone}}
+                    <li class="list-group-item "> <img src="https://img.icons8.com/ios/30/000000/phone-not-being-used.png " /><strong> Phone
+                            Number:</strong>{{hotelData.telephone|telephone}}
                     </li>
                     <li class="list-group-item "><strong>Équipements:</strong>
                         <div class="d-flex flex-row mr-3">
@@ -45,11 +34,8 @@
                         </div>
                     </li>
                     <li class="list-group-item ">
-
-
                         <div class="col-md-10 text-right " *ngIf="!authService.isloggedIn">
                             <button type="button" mdbBtn class="relative waves-light btn btn-primary btn-sm" (click)="basicModal.show()" mdbWavesEffect>
-
                                 reserver</button>
                         </div>
                     </li>
@@ -62,16 +48,12 @@
         <div class="modal-dialog modal-notify modal-lg modal-" role="document">
             <div class="modal-content reservation">
                 <div class="modal-header ">
-
                     <h1 class=" text-center modal-title w-100 couleur " id="myModalLabel ">
                         <span>Make your reservation</span>
                     </h1>
                 </div>
-
                 <div class="modal-body ">
                     <app-reservation></app-reservation>
-
-
                 </div>
             </div>
         </div>
