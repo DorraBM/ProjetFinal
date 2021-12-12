@@ -37,39 +37,26 @@ export class AcceuilComponent implements OnInit {
   hotelID: any;
   hotelData: Hotel;
   newHotel = new Hotel(10, '', '', '', 0, 0, true,0, "", 0, "", true, true, true, []);
-  
- images: string[] = this.newHotel.images;
+  images: string[] = this.newHotel.images;
   count:number;
 
 
   ngOnInit(): void {
     this.hotelID = this.route.snapshot.params['id'];
     this.loadHotelDetails(this.hotelID);
-    this.hotelService.getHotels().subscribe(data => this.listHotel = data);
-    
+    this.hotelService.getHotels().subscribe(data => this.listHotel = data); 
     this.hotelService.getHotels().subscribe(data => this.allHotels = data);
     this.hotelService.getReservations().subscribe(data=>{this.listReservation=data;
-   
-    //console.log("list"+data)
   });
-   // console.log("reservations"+this.listReservation);
-    //console.log(this.listHotel);
+  
   }
   loadHotelDetails(productID: any): void {
     this.hotelService.getProductDetails(productID).subscribe(data => {
       this.hotelData = data;
-       // console.log( "images"+ this.hotelForm.controls['images']);
     });
   }
   getNavigation(link: string,id: number) {
-    /*if (id === '') {
-      this.router.navigate([link]);
-    } else {
-      this.router.navigate([link + '/' + id]);
-    }*/
-    
-      this.router.navigate([link + '/' + id]);
-    
+      this.router.navigate([link + '/' + id]); 
   }
   onSupprimer(id: number) {
     this.hotelService.supprimerHotel(id).subscribe(data => {
@@ -88,27 +75,20 @@ export class AcceuilComponent implements OnInit {
     /*this.hotelService.supprimerImage(i).subscribe(data => {
       this.listHotel = this.listHotel.filter(elet => elet.images[i]!=this.newHotel.images[i]);
       this.SuccessSnackBar("image Deleted");
-    });*/
-  
-  
+    });*/ 
   }
   nePasSupprimer() {
     this.SuccessSnackBar("Hotel is not Deleted");
-
   }
   onModifier(id: number, t: Hotel) {
     let p = Object.assign({}, t)
     this.newHotel = p;
-    //console.log("listHotel:" + this.listHotel);
-
-
   }
   upDate()
    {
     this.hotelService.modifierHotel(this.newHotel.id, this.newHotel).subscribe(data =>
       { 
         this.SuccessSnackBar("Hotel Modified");
-        //console.log("listHotel:" + data)
       }
     );
   }
@@ -138,9 +118,7 @@ isValidTel():boolean
 
 }
 isValidEtoile():boolean
-{ return this.hotelForm.controls['nbEtoiles'].errors?.pattern('[0-5]')
-
-}
+{ return this.hotelForm.controls['nbEtoiles'].errors?.pattern('[0-5]')}
 SupprimerReservation(id:number)
 {
   this.hotelService.supprimerReservation(id).subscribe(data => {
@@ -148,43 +126,4 @@ SupprimerReservation(id:number)
     this.SuccessSnackBar("Reservation Deleted");
   });
 }
-/*public get images()
-{
-  return this.hotelForm.get('images');
-}
-  public get nom()
-  {
-    return this.hotelForm.get('nom');
-  }
-  public get prix()
-  {
-    return this.hotelForm.get('prix');
-  }
-  public get lieu()
-  {
-    return this.hotelForm.get('lieu');
-  }
-  public get telephone()
-  {
-    return this.hotelForm.get('telephone');
-  }
-  public get adresse()
-  {
-    return this.hotelForm.get('adresse');
-  }
-  public get nbEtoiles()
-  {
-    return this.hotelForm.get('nbEtoiles');
-  }
-  public get promotion()
-  {
-    return this.hotelForm.get('promotion');
-  }
-  public get pourcentage()
-  {
-    return this.hotelForm.get('pourcentage');
-  }*/
-
-  
-
 }

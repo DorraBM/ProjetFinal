@@ -8,11 +8,9 @@
                         <div class="mask rgba-black-light waves-light " mdbWavesEffect></div>
                     </div>
                 </mdb-carousel-item>
-
-
             </mdb-carousel>
             <div class="card-body ">
-                <h1 class="card-title ">{{hotelData.nom}}</h1>
+                <h1 class="card-title ms-5 ">{{hotelData.nom}}</h1>
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item "><strong>Description :</strong><br> {{hotelData.description}}
                     </li>
@@ -70,12 +68,44 @@
     </div>
 </div>
 <!-- commentaires -->
-<div class="d-flex justify-content-center ">
+
+<div class="d-flex justify-content-center mb-4">
     <div class="card design" style="width: 50rem;">
         <div class="card-body ">
-            <h1 class="card-title ">les avis</h1>
-            <ul class="list-group list-group-flush ">
-                <li class="list-group-item "></li>
-            </ul>
+            <h1 class="card-title ms-5 ">Opinions</h1>
+            <section>
+                <div class="container-sm">
+                    <div class="row ">
+                        <div *ngFor="let t of hotelData.commentaires"
+                            class="comment mt-4 pb-4  text-justify float-left">
+                            <div class="d-flex justify-content-start"> <img
+                                    src=" https://img.icons8.com/ios/50/000000/user-male-circle.png " alt=""
+                                    class="rounded-circle" width="40" height="40">
+                                <h1>{{t.nom |titlecase}}</h1>
+                            </div>
+                            <h2>Comment:</h2> {{t.texte}}
+                            <div class="d-flex justify-content-between">
+                                <ngb-rating id="nbEtoiles" [rate]="t.nbEtoiles"> </ngb-rating>
+                                {{t.date|date:'short'}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <form [formGroup]="commentaireForm">
+                            <input type="text " name="name " formControlName="nom" class="form-control " placeholder="name">
+                            <br>
+                            <input type="text " name="email " formControlName="email" class="form-control " placeholder="Email">
+                            <br>
+                            <textarea name="msg" formControlName="texte" placeholder="message" msg cols="50" rows="3">
+                            </textarea>
+                            <br>
+                            <ngb-rating id="star" [(rate)]="etoiles" formControlName="nbEtoiles"></ngb-rating><br>
+                            <button type="button" class="btn btn-primary" (click)="ajouterCommentaire()">
+                                Post Comment
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>

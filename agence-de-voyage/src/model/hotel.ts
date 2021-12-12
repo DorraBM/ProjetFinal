@@ -1,3 +1,5 @@
+import { Commentaire } from "./commentaire";
+
 export class Hotel {
     constructor(
         public id: number,
@@ -14,5 +16,6 @@ export class Hotel {
         public internet?: boolean,
         public piscine?: boolean,
         public Parking?: boolean,
-        public images?: string[]) { }
+        public images?: string[],
+        public commentaires?:Commentaire[]) { }
 }
