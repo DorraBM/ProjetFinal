@@ -6,6 +6,7 @@ import { Reservation } from 'src/model/reservation';
 import { Hotel } from '../model/hotel';
 const URL = " http://localhost:3000/hotels";
 const url = " http://localhost:3000/reservations"
+
 @Injectable({
   providedIn: 'root'
 })
