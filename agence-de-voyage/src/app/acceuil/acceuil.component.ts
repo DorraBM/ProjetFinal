@@ -1,5 +1,5 @@
 import { Reservation } from '../../model/reservation';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from '../../model/hotel';
 import { HotelsService } from '../../service/hotels.service';
@@ -20,13 +20,16 @@ export class AcceuilComponent implements OnInit {
     public authService: AuthService, 
     private route: ActivatedRoute, 
     private router: Router, 
+    private fb: FormBuilder
     ) 
     {
       config.max = 5;
       config.readonly = true;
       hotelService.getHotels().subscribe(data => this.listHotel = data);
     }
-    hotelForm:FormGroup=new FormGroup({});
+    hotelForm:FormGroup=new FormGroup({ 
+      // images: this.fb.array([])
+    });
   listHotel: Hotel[] = [];
   listReservation:Reservation[]=[];
   allHotels: Hotel[] = [];
@@ -34,7 +37,8 @@ export class AcceuilComponent implements OnInit {
   hotelID: any;
   hotelData: Hotel;
   newHotel = new Hotel(10, '', '', '', 0, 0, true,0, "", 0, "", true, true, true, []);
-  images: string[] = this.newHotel.images;
+  
+ images: string[] = this.newHotel.images;
   count:number;
 
 
@@ -42,16 +46,19 @@ export class AcceuilComponent implements OnInit {
     this.hotelID = this.route.snapshot.params['id'];
     this.loadHotelDetails(this.hotelID);
     this.hotelService.getHotels().subscribe(data => this.listHotel = data);
+    
     this.hotelService.getHotels().subscribe(data => this.allHotels = data);
     this.hotelService.getReservations().subscribe(data=>{this.listReservation=data;
+   
     //console.log("list"+data)
   });
    // console.log("reservations"+this.listReservation);
     //console.log(this.listHotel);
   }
-  loadHotelDetails(productID): void {
+  loadHotelDetails(productID: any): void {
     this.hotelService.getProductDetails(productID).subscribe(data => {
       this.hotelData = data;
+       // console.log( "images"+ this.hotelForm.controls['images']);
     });
   }
   getNavigation(link: string,id: number) {
@@ -63,7 +70,6 @@ export class AcceuilComponent implements OnInit {
     
       this.router.navigate([link + '/' + id]);
     
-
   }
   onSupprimer(id: number) {
     this.hotelService.supprimerHotel(id).subscribe(data => {
@@ -73,8 +79,18 @@ export class AcceuilComponent implements OnInit {
   }
 
   SupprimerImage(i:number)
-  {
-
+  { /*console.log(i);
+    const index = i;
+    if (index !== -1) {
+      this.images.splice(index, 1);
+    }
+    console.log(index);*/
+    /*this.hotelService.supprimerImage(i).subscribe(data => {
+      this.listHotel = this.listHotel.filter(elet => elet.images[i]!=this.newHotel.images[i]);
+      this.SuccessSnackBar("image Deleted");
+    });*/
+  
+  
   }
   nePasSupprimer() {
     this.SuccessSnackBar("Hotel is not Deleted");

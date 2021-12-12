@@ -26,7 +26,7 @@ export class AjouterHotelComponent implements OnInit {
     this.hotelService.ajouterHotel(this.hotelForm.value).subscribe(
       data => 
       { 
-      console.log(data);
+      //console.log(data);
      this.hotelForm.value.push(data);
       // console.log(this.images);
       this.SuccessSnackBar("The new Hotel is added");
@@ -55,7 +55,8 @@ export class AjouterHotelComponent implements OnInit {
       telephone: ['', [Validators.required, Validators.pattern('[1-9][0-9]{7}')]],
       nbEtoiles: [0, [Validators.required, Validators.pattern('[0-5]')]],
       promotion: [false],
-      pourcentage: [0, Validators.pattern('[1-8][0-9]')],
+      // pourcentage: [0, Validators.pattern('[1-8][0-9]')],
+      pourcentage:[0],
       internet: [false],
       piscine: [false],
       Parking: [false],
@@ -94,13 +95,22 @@ export class AjouterHotelComponent implements OnInit {
     this._snackBar.open(message, 'SUCCEEDED', { duration: 3000 });
   }
   discount() {
-    this.Discount = false;
+    this.Discount =!this.Discount;
+
   }
   isValidTel(): boolean {
     return this.hotelForm.controls['telephone'].errors?.pattern
+
   }
   isValidEtoile(): boolean {
     return this.hotelForm.controls['nbEtoiles'].errors?.pattern
+
   }
+
+}
+function adresse(adresse: any): number {
+  throw new Error('Function not implemented.');
+
+
 
 }

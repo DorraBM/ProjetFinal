@@ -67,9 +67,9 @@
     </div>
     <div [hidden]="Discount">
         <input type="number" formControlName="pourcentage" name="pourcentage">
-        <div *ngIf="pourcentage.errors?.pattern && pourcentage.dirty" class="alert alert-warning">
+        <!--<div *ngIf="pourcentage.errors?.pattern && pourcentage.dirty" class="alert alert-warning">
             Le pourcentage est entre 10 et 89
-        </div>
+        </div>-->
     </div>
     <div>
         <label>
@@ -104,7 +104,7 @@
     <div class="text-center">
         <div>
             <!--<button type="submit" (click)="onAjouter()" class="btn btn-success" [disabled]=f.invalid>-->
-            <button type="submit" (click)="onAjouter()" class="btn btn-success">
+            <button type="submit" (click)="onAjouter()" class="btn btn-success" [disabled]=f.invalid>
                 Add
             </button>
             <button class="btn btn-secondary" type="reset" (click)="onReset()">

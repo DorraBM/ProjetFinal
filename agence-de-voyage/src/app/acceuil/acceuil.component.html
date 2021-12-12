@@ -312,13 +312,13 @@
                             Image Galerie:
                         </label>
                         <div *ngFor="let g of newHotel.images;let i = index">
-
-                            <input type="text" [value]="g" name="" id="" style="width: 300px;" class="form-control"
-                                name="images[i]">
-                            <a (click)="SupprimerImage(i)">
-                                <mdb-icon fas icon="times"></mdb-icon>
-                            </a>
+                                <input type="text" [value]="g" name="" id="" style="width: 300px;" class="form-control"
+                                    name="images[i]">
+                                    <!--<a (click)="SupprimerImage(i)">
+                                        <mdb-icon fas icon="times"></mdb-icon>
+                                    </a> -->   
                         </div>
+                
                     </div>
                 </form>
                 <div class="modal-footer">

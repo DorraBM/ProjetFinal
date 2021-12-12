@@ -26,8 +26,8 @@ export class HotelsService {
   supprimerHotel(id: number) {
     return this.http.delete(URL + "/" + id);
   }
-  supprimerImage(id:number)
-  {}
+  /*supprimerImage(id:number)
+  {return this.http.delete(` http://localhost:4000/hotels/images/${id}`);}*/
   supprimerReservation(id: number) {
     return this.http.delete(url + "/" + id);
   }
